@@ -15,7 +15,6 @@
 
 package com.comcast.cdn.traffic_control.traffic_router.core.secure;
 
-
 import com.comcast.cdn.traffic_control.traffic_router.core.router.TrafficRouterManager;
 import com.comcast.cdn.traffic_control.traffic_router.core.util.ProtectedFetcher;
 import com.comcast.cdn.traffic_control.traffic_router.core.util.TrafficOpsUtils;
