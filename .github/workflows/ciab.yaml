@@ -116,13 +116,15 @@ jobs:
       - name: Check if TR Source Modified
         id: getfile
         run: |
-          echo "::set-output name=files::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }} | xargs)"
+          echo "::set-output name=files::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }})";
+          echo "::debug::"
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+        if: ${{ contains(join( steps.getfile.outputs.files, ','), 'traffic_router') }}
       - name: Build RPM
         uses: ./.github/actions/build-rpms
         env:
@@ -133,6 +135,7 @@ jobs:
         with:
           name: ${{ github.job }}
           path: ${{ github.workspace }}/dist/*.rpm
+        if: ${{ contains(join( steps.getfile.outputs.files, ','), 'traffic_router') }}
 
   traffic_stats:
     runs-on: ubuntu-latest
