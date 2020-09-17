@@ -117,7 +117,6 @@ jobs:
         id: getfile
         run: |
           echo "::set-output name=files::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }})";
-          echo "${{ steps.getfile.outputs.files }}"
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -127,7 +126,8 @@ jobs:
         if: ${{ contains(steps.getfile.outputs.files, 'traffic_router') }}
       - name: Debug Step Output Changed Files
         run: |
-          echo "${{ steps.getfile.outputs.files }}"
+          echo "${{ steps.getfile.outputs.files }}";
+          echo "$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }})"
       - name: Build RPM
         uses: ./.github/actions/build-rpms
         env:
