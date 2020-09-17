@@ -125,12 +125,13 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
         if: ${{ contains(join( steps.getfile.outputs.files, ','), 'traffic_router') }}
+      - name: Debug Step Output Changed Files
+        run: |
+          echo "${{ steps.getfile.outputs.files }}"
       - name: Build RPM
         uses: ./.github/actions/build-rpms
         env:
           ATC_COMPONENT: ${{ github.job }}
-        run: |
-          echo "${{ steps.getfile.outputs.files }}"
         if: ${{ contains(join( steps.getfile.outputs.files, ','), 'traffic_router') }}
       - name: Upload RPM
         uses: actions/upload-artifact@v2
