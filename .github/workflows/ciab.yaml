@@ -127,6 +127,8 @@ jobs:
         with:
           servers: '[{ "id": "central"}]'
           mirrors: '[{ "id": "google-mvn-central-us", "mirrorOf": "central", "url": "https://maven-central.storage-download.googleapis.com/maven2" },{ "id": "google-mvn-central-eu", "mirrorOf": "central", "url": "https://maven-central-eu.storage-download.googleapis.com/maven2/" }]'
+      - name: dump-mvn-settings
+        run: cat "/home/runner/.m2/settings.xml"
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -208,6 +210,7 @@ jobs:
         with:
           path: ${{ github.workspace }}/dist/
       - name: Start CDN-in-a-Box
+        shell: bash
         uses: ./.github/actions/run-ciab
       - name: Upload CDN-in-a-Box logs
         uses: actions/upload-artifact@v2
