@@ -125,7 +125,7 @@ jobs:
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v12
         with:
-          mirrors: '[{ "id": "google-mvn-central-us", "mirrorOf": "central", "url": "https://maven-central.storage-download.googleapis.com/maven2" },{ "id": "google-mvn-central-eu", "mirrorOf": "central", "url": "https://maven-central-eu.storage-download.googleapis.com/maven2/" },]'
+          mirrors: '[{ "id": "google-mvn-central-us", "mirrorOf": "central", "url": "https://maven-central.storage-download.googleapis.com/maven2" },{ "id": "google-mvn-central-eu", "mirrorOf": "central", "url": "https://maven-central-eu.storage-download.googleapis.com/maven2/" }]'
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
