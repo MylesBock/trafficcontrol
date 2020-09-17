@@ -118,6 +118,10 @@ jobs:
         shell: bash
         run: |
           echo "::set-output name=files::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }} | xargs)";
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
