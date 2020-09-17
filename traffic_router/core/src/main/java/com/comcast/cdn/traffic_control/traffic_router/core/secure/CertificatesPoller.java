@@ -15,7 +15,6 @@
 
 package com.comcast.cdn.traffic_control.traffic_router.core.secure;
 
-
 import com.comcast.cdn.traffic_control.traffic_router.configuration.ConfigurationListener;
 import com.comcast.cdn.traffic_control.traffic_router.core.router.TrafficRouterManager;
 import com.comcast.cdn.traffic_control.traffic_router.shared.CertificateData;
