@@ -117,7 +117,7 @@ jobs:
         id: getfile
         run: |
           echo "::set-output name=files::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }})";
-          echo "::debug::"
+          echo "${{ steps.getfile.outputs.files }}"
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -129,13 +129,15 @@ jobs:
         uses: ./.github/actions/build-rpms
         env:
           ATC_COMPONENT: ${{ github.job }}
+        run: |
+          echo "${{ steps.getfile.outputs.files }}"
         if: ${{ contains(join( steps.getfile.outputs.files, ','), 'traffic_router') }}
       - name: Upload RPM
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.job }}
           path: ${{ github.workspace }}/dist/*.rpm
-        if: ${{ contains(join( steps.getfile.outputs.files, ','), 'traffic_router') }}
+        if: ${{ contains(steps.getfile.outputs.files, 'traffic_router') }}
 
   traffic_stats:
     runs-on: ubuntu-latest
