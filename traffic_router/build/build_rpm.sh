@@ -41,7 +41,7 @@ buildRpmTrafficRouter () {
 	export STARTUP_SCRIPT_LOC="../core/src/main/lib/systemd/system"
 
 	cd "$TR_DIR" || { echo "Could not cd to $TR_DIR: $?"; return 1; }
-	mvn -X -T 2C -P rpm-build -Dmaven.artifact.threads=10 -Dmaven.test.skip=true -DminimumTPS=1 clean package ||  \
+	mvn -X -T 2C -P rpm-build -Dmaven.artifact.threads=1 -Dmaven.test.skip=true -DminimumTPS=1 clean package ||  \
 		{ echo "RPM BUILD FAILED: $?"; return 1; }
 
 	local rpm
