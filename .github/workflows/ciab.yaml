@@ -122,6 +122,10 @@ jobs:
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v12
+        with:
+          mirrors: '[{ "id": "google-mvn-central-us", "mirrorOf": "central", "url": "https://maven-central.storage-download.googleapis.com/maven2" },{ "id": "google-mvn-central-eu", "mirrorOf": "central", "url": "https://maven-central-eu.storage-download.googleapis.com/maven2/" },]'
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -129,11 +133,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
         if: ${{ contains(steps.getfile.outputs.files, 'traffic_router') }}
-      - name: Debug Step Output Changed Files
-        shell: bash
-        run: |
-          echo "::debug::${{ steps.getfile.outputs.files }}"; \
-          echo "::debug::$(git diff-tree -r --no-commit-id --name-only ${{ github.sha }})";
       - name: Build RPM
         uses: ./.github/actions/build-rpms
         env:
