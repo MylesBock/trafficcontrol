@@ -123,8 +123,9 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
       - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v12
+        uses: MylesBock/maven-settings-xml-action@master
         with:
+          servers: '[{ "id": "central"}]'
           mirrors: '[{ "id": "google-mvn-central-us", "mirrorOf": "central", "url": "https://maven-central.storage-download.googleapis.com/maven2" },{ "id": "google-mvn-central-eu", "mirrorOf": "central", "url": "https://maven-central-eu.storage-download.googleapis.com/maven2/" }]'
       - name: Cache Maven packages
         uses: actions/cache@v2
