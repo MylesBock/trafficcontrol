@@ -95,7 +95,11 @@ func (region *TORegion) GetType() string {
 
 func (region *TORegion) Validate() error {
 	if len(region.Name) < 1 {
-		return errors.New(`Region 'name' is required.`)
+		return errors.New(`region 'name' is required`)
+	}
+	if region.DivisionName == "" || region.Division == 0 {
+		// golang style guides say error strings shouldn't be capitalized or end with punctuation
+		return errors.New(`region 'division' is required`)
 	}
 	return nil
 }

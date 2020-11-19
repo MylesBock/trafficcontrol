@@ -20,6 +20,7 @@ package region
  */
 
 import (
+	"reflect"
 	"testing"
 	"time"
 
@@ -46,7 +47,6 @@ func getTestRegions() []tc.Region {
 
 	return regions
 }
-
 func TestReadRegions(t *testing.T) {
 
 	mockDB, mock, err := sqlmock.New()
@@ -107,5 +107,28 @@ func TestInterfaces(t *testing.T) {
 	}
 	if _, ok := i.(api.Identifier); !ok {
 		t.Errorf("Region must be Identifier")
+	}
+}
+func TestValidation(t *testing.T) {
+	testRegion := tc.Region{
+		DivisionName: "west",
+		ID:           1,
+		Name:         "region1",
+		LastUpdated:  tc.TimeNoMod{Time: time.Now()},
+	}
+	errs := test.SortErrors(test.SplitErrors(testRegion.Validate()))
+	expected := []error{}
+
+	if reflect.DeepEqual(expected, errs) {
+		t.Errorf(`expected %v,  got %v`, expected, errs)
+	}
+	testRegion = tc.Region{
+		ID:           1,
+		Name:         "region1",
+		LastUpdated:  tc.TimeNoMod{Time: time.Now()},
+	}
+	errs := test.SortErrors(test.SplitErrors(testRegion.Validate()))
+	if len(errs) == 0 {
+		t.Errorf(`expected an error with a nil division name, received no error`)
 	}
 }
