@@ -26,13 +26,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/rfc"
-	ims "github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 )
 
 type GenericCreator interface {

@@ -28,13 +28,18 @@ package toreq
 import (
 	"encoding/base64"
 	"errors"
+	"github.com/apache/trafficcontrol/pkg/atscfg"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
+
 	"net"
 	"net/url"
 	"strconv"
 	"time"
 
-	toclient "github.com/apache/trafficcontrol/pkg/v1-client"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/atstccfg/torequtil"
+	toclient "github.com/apache/trafficcontrol/pkg/v1-client"
 )
 
 type TOClient struct {
@@ -252,10 +257,10 @@ func (cl *TOClient) GetDeliveryServiceServers(dsIDs []int, serverIDs []int) ([]t
 	sIDsToFetch := ([]int)(nil)
 	if !DeliveryServiceServersAlwaysGetAll {
 		if len(dsIDs) > 0 {
-			dsIDsStr = base64.RawURLEncoding.EncodeToString((util.HashInts(dsIDs, sortIDsInHash)))
+			dsIDsStr = base64.RawURLEncoding.EncodeToString(util.HashInts(dsIDs, sortIDsInHash))
 		}
 		if len(serverIDs) > 0 {
-			serverIDsStr = base64.RawURLEncoding.EncodeToString((util.HashInts(serverIDs, sortIDsInHash)))
+			serverIDsStr = base64.RawURLEncoding.EncodeToString(util.HashInts(serverIDs, sortIDsInHash))
 		}
 		dsIDsToFetch = dsIDs
 		sIDsToFetch = serverIDs
@@ -488,7 +493,7 @@ func (cl *TOClient) GetServerCapabilitiesByID(serverIDs []int) (map[int]map[atsc
 	serverIDsStr := ""
 	if len(serverIDs) > 0 {
 		sortIDsInHash := true
-		serverIDsStr = base64.RawURLEncoding.EncodeToString((util.HashInts(serverIDs, sortIDsInHash)))
+		serverIDsStr = base64.RawURLEncoding.EncodeToString(util.HashInts(serverIDs, sortIDsInHash))
 	}
 
 	serverCaps := map[int]map[atscfg.ServerCapability]struct{}{}
@@ -526,7 +531,7 @@ func (cl *TOClient) GetDeliveryServiceRequiredCapabilitiesByID(dsIDs []int) (map
 	dsIDsStr := ""
 	if len(dsIDs) > 0 {
 		sortIDsInHash := true
-		dsIDsStr = base64.RawURLEncoding.EncodeToString((util.HashInts(dsIDs, sortIDsInHash)))
+		dsIDsStr = base64.RawURLEncoding.EncodeToString(util.HashInts(dsIDs, sortIDsInHash))
 	}
 
 	dsCaps := map[int]map[atscfg.ServerCapability]struct{}{}

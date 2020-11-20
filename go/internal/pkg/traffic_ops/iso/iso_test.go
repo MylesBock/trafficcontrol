@@ -33,11 +33,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/pkg/rfc"
 	libtc "github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func TestISOS(t *testing.T) {

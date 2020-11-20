@@ -38,24 +38,24 @@ func TestMakeHostingDotConfig(t *testing.T) {
 	hdr := "myHeaderComment"
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParamRAMDrivePrefix,
 			ConfigFile: HostingConfigParamConfigFile,
 			Value:      "ParamRAMDrivePrefix-shouldnotappearinconfig",
 			Profiles:   []byte(`["` + *server.Profile + `"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParamDrivePrefix,
 			ConfigFile: HostingConfigParamConfigFile,
 			Value:      "ParamDrivePrefix-shouldnotappearinconfig",
 			Profiles:   []byte(`["` + *server.Profile + `"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "somethingelse",
 			ConfigFile: HostingConfigParamConfigFile,
 			Value:      "somethingelse-shouldnotappearinconfig",
 			Profiles:   []byte(`["` + *server.Profile + `"]`),
-		},
+				},
 	}
 
 	origins := []string{
@@ -132,24 +132,24 @@ func TestMakeHostingDotConfigTopologiesIgnoreDSS(t *testing.T) {
 	hdr := "myHeaderComment"
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParamRAMDrivePrefix,
 			ConfigFile: HostingConfigParamConfigFile,
 			Value:      "ParamRAMDrivePrefix-shouldnotappearinconfig",
 			Profiles:   []byte(`["` + *server.Profile + `"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParamDrivePrefix,
 			ConfigFile: HostingConfigParamConfigFile,
 			Value:      "ParamDrivePrefix-shouldnotappearinconfig",
 			Profiles:   []byte(`["` + *server.Profile + `"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "somethingelse",
 			ConfigFile: HostingConfigParamConfigFile,
 			Value:      "somethingelse-shouldnotappearinconfig",
 			Profiles:   []byte(`["` + *server.Profile + `"]`),
-		},
+				},
 	}
 
 	dsTopology := makeGenericDS()
@@ -175,30 +175,30 @@ func TestMakeHostingDotConfigTopologiesIgnoreDSS(t *testing.T) {
 	dses := []DeliveryService{*dsTopology, *dsTopologyWithoutServer}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
-		tc.Topology{
+					},
+				},
+		{
 			Name: "t1",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "otherEdgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	servers := []Server{*server}

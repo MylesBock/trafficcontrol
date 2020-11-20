@@ -219,7 +219,7 @@ func MakeParentDotConfig(
 	}
 
 	cgServerIDs := map[int]struct{}{}
-	for serverID, _ := range cgServers {
+	for serverID := range cgServers {
 		cgServerIDs[serverID] = struct{}{}
 	}
 	cgServerIDs[*server.ID] = struct{}{}
@@ -1283,7 +1283,7 @@ func getOriginServersAndProfileCaches(
 
 	allDSMap := map[int]DeliveryService{} // all DSes for this server, NOT all dses in TO
 	for _, dsIDs := range parentServerDSes {
-		for dsID, _ := range dsIDs {
+		for dsID := range dsIDs {
 			if _, ok := dsIDMap[dsID]; !ok {
 				// this is normal if the TO was too old to understand our /deliveryserviceserver?servers= query param
 				// In which case, the DSS will include DSes from other CDNs, which aren't in the dsIDMap
@@ -1358,7 +1358,7 @@ func getOriginServersAndProfileCaches(
 		}
 
 		if cgSv.Type == tc.OriginTypeName {
-			for dsID, _ := range parentServerDSes[*cgSv.ID] { // map[serverID][]dsID
+			for dsID := range parentServerDSes[*cgSv.ID] { // map[serverID][]dsID
 				orgURI := dsOrigins[dsID]
 				if orgURI == nil {
 					// warnings = append(warnings, fmt.Sprintf(("ds %v has no origins! Skipping!\n", dsID) // TODO determine if this is normal
@@ -1521,7 +1521,7 @@ func makeDSOrigins(dsses []tc.DeliveryServiceServer, dses []DeliveryService, ser
 		}
 		dsID := DeliveryServiceID(*ds.ID)
 		assignedServers := dssMap[dsID]
-		for svID, _ := range assignedServers {
+		for svID := range assignedServers {
 			sv := svMap[svID]
 			if sv.Type != tc.OriginTypeName {
 				continue

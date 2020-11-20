@@ -29,9 +29,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/riaksvc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/miekg/dns"
 )

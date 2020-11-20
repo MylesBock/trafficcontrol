@@ -26,14 +26,14 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/parameter"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/jmoiron/sqlx"
@@ -113,9 +113,9 @@ func (prof *TOProfile) Read(h http.Header, useIMS bool) ([]interface{}, error, e
 	// Query Parameters to Database Query column mappings
 	// see the fields mapped in the SQL query
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		CDNQueryParam:  dbhelpers.WhereColumnInfo{"c.id", nil},
-		NameQueryParam: dbhelpers.WhereColumnInfo{"prof.name", nil},
-		IDQueryParam:   dbhelpers.WhereColumnInfo{"prof.id", api.IsInt},
+		CDNQueryParam: {"c.id", nil},
+		NameQueryParam: {"prof.name", nil},
+		IDQueryParam:   {"prof.id", api.IsInt},
 	}
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(prof.APIInfo().Params, queryParamsToQueryCols)
 

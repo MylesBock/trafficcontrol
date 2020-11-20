@@ -1,6 +1,6 @@
 package v13
 
-import tc "github.com/apache/trafficcontrol/pkg/tc"
+import "github.com/apache/trafficcontrol/pkg/tc"
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one

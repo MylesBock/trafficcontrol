@@ -20,6 +20,7 @@ package cfgfile
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/atscfg"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/atstccfg/config"
 )
 

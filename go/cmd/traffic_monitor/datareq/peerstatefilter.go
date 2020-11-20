@@ -21,6 +21,7 @@ package datareq
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"net/url"
 	"strconv"
 	"strings"
@@ -85,7 +86,7 @@ func (f *PeerStateFilter) WithinStatHistoryMax(n int) bool {
 // If `type` is empty, all cache types are returned.
 func NewPeerStateFilter(path string, params url.Values, cacheTypes map[tc.CacheName]tc.CacheType) (*PeerStateFilter, error) {
 	// TODO change legacy `stats` and `hosts` to `caches` and `monitors` (or `peers`).
-	validParams := map[string]struct{}{"hc": struct{}{}, "stats": struct{}{}, "wildcard": struct{}{}, "type": struct{}{}, "peers": struct{}{}}
+	validParams := map[string]struct{}{"hc": {}, "stats": {}, "wildcard": {}, "type": {}, "peers": {}}
 	if len(params) > len(validParams) {
 		return nil, fmt.Errorf("invalid query parameters")
 	}

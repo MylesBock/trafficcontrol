@@ -20,6 +20,9 @@ package cache
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+
 	"io"
 	"time"
 
@@ -121,7 +124,7 @@ func (result *Result) HasStat(stat string) bool {
 // server that was monitored to obtain the result.
 func (result *Result) InterfacesNames() []string {
 	interfaceNames := make([]string, 0, len(result.Statistics.Interfaces))
-	for name, _ := range result.Statistics.Interfaces {
+	for name := range result.Statistics.Interfaces {
 		interfaceNames = append(interfaceNames, name)
 	}
 	return interfaceNames

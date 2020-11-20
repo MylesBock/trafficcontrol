@@ -20,6 +20,7 @@ package peer
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"sync"
 	"time"
 )
@@ -153,7 +154,7 @@ func (t *CRStatesPeersThreadsafe) SetPeers(newPeers map[tc.TrafficMonitorName]st
 
 	peerCount := 0
 
-	for peer, _ := range t.crStates {
+	for peer := range t.crStates {
 		_, ok := newPeers[peer]
 		t.peerOnline[peer] = ok
 

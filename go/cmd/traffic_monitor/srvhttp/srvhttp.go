@@ -21,6 +21,8 @@ package srvhttp
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"io/ioutil"
 	"net"

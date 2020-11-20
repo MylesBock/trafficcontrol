@@ -18,7 +18,7 @@ import (
 	"net"
 	"net/url"
 
-	tc "github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 const (

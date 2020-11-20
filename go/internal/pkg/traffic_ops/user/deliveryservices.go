@@ -25,11 +25,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 )
 
 func GetDSes(w http.ResponseWriter, r *http.Request) {

@@ -84,11 +84,11 @@ func randStatistics() Statistics {
 			LatestPID:        rand.Int63(),
 		},
 		Interfaces: map[string]Interface{
-			randStr(): Interface{
+			randStr(): {
 				Speed:    rand.Int63(),
 				BytesIn:  rand.Uint64(),
 				BytesOut: rand.Uint64(),
-			},
+						},
 		},
 	}
 }

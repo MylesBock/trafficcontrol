@@ -25,11 +25,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -53,10 +53,10 @@ func (v *TOASNV11) NewReadObj() interface{}       { return &tc.ASNNullable{} }
 func (v *TOASNV11) SelectQuery() string           { return selectQuery() }
 func (v *TOASNV11) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"asn":            dbhelpers.WhereColumnInfo{"a.asn", api.IsInt},
-		"cachegroup":     dbhelpers.WhereColumnInfo{"c.id", api.IsInt},
-		"id":             dbhelpers.WhereColumnInfo{"a.id", api.IsInt},
-		"cachegroupName": dbhelpers.WhereColumnInfo{"c.name", nil},
+		"asn": {"a.asn", api.IsInt},
+		"cachegroup":     {"c.id", api.IsInt},
+		"id":             {"a.id", api.IsInt},
+		"cachegroupName": {"c.name", nil},
 	}
 }
 func (v *TOASNV11) UpdateQuery() string { return updateQuery() }

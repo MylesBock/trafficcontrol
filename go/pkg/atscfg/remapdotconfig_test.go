@@ -59,53 +59,53 @@ func TestMakeRemapDotConfig(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -181,59 +181,59 @@ func TestMakeRemapDotConfigMidLiveLocalExcluded(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -294,59 +294,59 @@ func TestMakeRemapDotConfigMid(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -421,59 +421,59 @@ func TestMakeRemapDotConfigNilOrigin(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -534,59 +534,59 @@ func TestMakeRemapDotConfigEmptyOrigin(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -672,73 +672,73 @@ func TestMakeRemapDotConfigDuplicateOrigins(t *testing.T) {
 	dses := []DeliveryService{ds, ds2}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds2.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: *ds2.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -800,59 +800,59 @@ func TestMakeRemapDotConfigNilMidRewrite(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -937,59 +937,59 @@ func TestMakeRemapDotConfigMidHasNoEdgeRewrite(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1065,59 +1065,59 @@ func TestMakeRemapDotConfigMidQStringPassUpATS7CacheKey(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "6",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1200,59 +1200,59 @@ func TestMakeRemapDotConfigMidQStringPassUpATS5CacheURL(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "5",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeyparamname",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyparamval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1336,71 +1336,71 @@ func TestMakeRemapDotConfigMidProfileCacheKey(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1485,71 +1485,71 @@ func TestMakeRemapDotConfigMidRangeRequestHandling(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1626,71 +1626,71 @@ func TestMakeRemapDotConfigMidSlicePluginRangeRequestHandling(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1796,71 +1796,71 @@ func TestMakeRemapDotConfigFirstExcludedSecondIncluded(t *testing.T) {
 	dses := []DeliveryService{ds, ds2}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -1949,85 +1949,85 @@ func TestMakeRemapDotConfigAnyMap(t *testing.T) {
 	dses := []DeliveryService{ds, ds2}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds2.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: *ds2.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -2294,169 +2294,169 @@ func TestMakeRemapDotConfigEdgeMissingRemapData(t *testing.T) {
 	}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(1),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(2),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(3),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(4),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(5),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(6),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(7),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(8),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: "ds",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypePathRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds2",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeSteeringRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds3",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHeaderRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds4",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      "",
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds5",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      "nonexistenttype",
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds6",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds7",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "myregexpattern2",
 				},
-			},
-		},
-		tc.DeliveryServiceRegexes{
+					},
+				},
+		{
 			DSName: "ds8",
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   "",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -2521,71 +2521,71 @@ func TestMakeRemapDotConfigEdgeHostRegexReplacement(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`, // common host regex syntax, should be replaced
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -2667,71 +2667,71 @@ func TestMakeRemapDotConfigEdgeHostRegexReplacementHTTP(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`, // common host regex syntax, should be replaced
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -2813,71 +2813,71 @@ func TestMakeRemapDotConfigEdgeHostRegexReplacementHTTPS(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`, // common host regex syntax, should be replaced
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -2959,71 +2959,71 @@ func TestMakeRemapDotConfigEdgeHostRegexReplacementHTTPToHTTPS(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`, // common host regex syntax, should be replaced
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3105,71 +3105,71 @@ func TestMakeRemapDotConfigEdgeRemapUnderscoreHTTPReplace(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3247,77 +3247,77 @@ func TestMakeRemapDotConfigEdgeDSCPRemap(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3395,77 +3395,77 @@ func TestMakeRemapDotConfigEdgeNoDSCPRemap(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3543,77 +3543,77 @@ func TestMakeRemapDotConfigEdgeHeaderRewrite(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3695,77 +3695,77 @@ func TestMakeRemapDotConfigEdgeHeaderRewriteEmpty(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3847,77 +3847,77 @@ func TestMakeRemapDotConfigEdgeHeaderRewriteNil(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -3999,77 +3999,77 @@ func TestMakeRemapDotConfigEdgeSigningURLSig(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -4146,77 +4146,77 @@ func TestMakeRemapDotConfigEdgeSigningURISigning(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -4293,77 +4293,77 @@ func TestMakeRemapDotConfigEdgeSigningNone(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -4440,77 +4440,77 @@ func TestMakeRemapDotConfigEdgeSigningEmpty(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -4587,77 +4587,77 @@ func TestMakeRemapDotConfigEdgeSigningWrong(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -4734,77 +4734,77 @@ func TestMakeRemapDotConfigEdgeQStringDropAtEdge(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -4879,77 +4879,77 @@ func TestMakeRemapDotConfigEdgeQStringIgnorePassUp(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -5027,77 +5027,77 @@ func TestMakeRemapDotConfigEdgeQStringIgnorePassUpWithCacheKeyParameter(t *testi
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -5175,50 +5175,50 @@ func TestMakeRemapDotConfigEdgeQStringIgnorePassUpCacheURLParam(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{}
@@ -5295,44 +5295,44 @@ func TestMakeRemapDotConfigEdgeQStringIgnorePassUpCacheURLParamCacheURL(t *testi
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "5",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{}
@@ -5414,44 +5414,44 @@ func TestMakeRemapDotConfigEdgeQStringIgnorePassUpCacheURLParamCacheURLAndDSCach
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "5",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{}
@@ -5538,44 +5538,44 @@ func TestMakeRemapDotConfigMidQStringIgnorePassUpCacheURLParamCacheURLAndDSCache
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "5",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{}
@@ -5659,44 +5659,44 @@ func TestMakeRemapDotConfigEdgeCacheURL(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{}
@@ -5772,77 +5772,77 @@ func TestMakeRemapDotConfigEdgeCacheKeyParams(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -5928,77 +5928,77 @@ func TestMakeRemapDotConfigEdgeRegexRemap(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6076,77 +6076,77 @@ func TestMakeRemapDotConfigEdgeRegexRemapEmpty(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6220,77 +6220,77 @@ func TestMakeRemapDotConfigEdgeRangeRequestNil(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6368,77 +6368,77 @@ func TestMakeRemapDotConfigEdgeRangeRequestDontCache(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6516,77 +6516,77 @@ func TestMakeRemapDotConfigEdgeRangeRequestBGFetch(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6665,77 +6665,77 @@ func TestMakeRemapDotConfigEdgeRangeRequestSlice(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6818,77 +6818,77 @@ func TestMakeRemapDotConfigRawRemapRangeDirective(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -6984,77 +6984,77 @@ func TestMakeRemapDotConfigRawRemapWithoutRangeDirective(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -7143,77 +7143,77 @@ func TestMakeRemapDotConfigEdgeRangeRequestCache(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -7291,77 +7291,77 @@ func TestMakeRemapDotConfigEdgeFQPacingNil(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -7435,77 +7435,77 @@ func TestMakeRemapDotConfigEdgeFQPacingNegative(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -7579,77 +7579,77 @@ func TestMakeRemapDotConfigEdgeFQPacingZero(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -7723,77 +7723,77 @@ func TestMakeRemapDotConfigEdgeFQPacingPositive(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `myliteralpattern__http__foo`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -7871,77 +7871,77 @@ func TestMakeRemapDotConfigEdgeDNS(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -8015,77 +8015,77 @@ func TestMakeRemapDotConfigEdgeDNSNoRoutingName(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      string(tc.DSMatchTypeHostRegex),
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{
@@ -8149,77 +8149,77 @@ func TestMakeRemapDotConfigEdgeRegexTypeNil(t *testing.T) {
 	dses := []DeliveryService{ds}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds.ID),
-		},
+				},
 	}
 
 	dsRegexes := []tc.DeliveryServiceRegexes{
-		tc.DeliveryServiceRegexes{
+		{
 			DSName: *ds.XMLID,
 			Regexes: []tc.DeliveryServiceRegex{
-				tc.DeliveryServiceRegex{
+				{
 					Type:      "",
 					SetNumber: 0,
 					Pattern:   `.*\.mypattern\..*`,
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "serverpkgval",
 			ConfigFile: "package",
 			Value:      "serverpkgval __HOSTNAME__ foo",
 			Profiles:   []byte(*server.Profile),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "dscp_remap_no",
 			ConfigFile: "package",
 			Value:      "notused",
 			Profiles:   []byte(*server.Profile),
-		},
+				},
 	}
 
 	cacheKeyParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "shouldnotexist",
 			ConfigFile: "cacheurl.config",
 			Value:      "shouldnotexisteither",
 			Profiles:   []byte(`["not-dsprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "cachekeykey",
 			ConfigFile: "cacheurl.config",
 			Value:      "cachekeyval",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cacheurl.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       "not_location",
 			ConfigFile: "cachekey.config",
 			Value:      "notinconfig",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	cdn := &tc.CDN{

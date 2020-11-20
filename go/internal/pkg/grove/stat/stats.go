@@ -181,7 +181,7 @@ func (s stats) CacheSize() uint64 {
 // CacheNames returns an array of all the cache names
 func (s stats) CacheNames() []string {
 	cNames := make([]string, 0)
-	for cacheName, _ := range s.caches {
+	for cacheName := range s.caches {
 		cNames = append(cNames, cacheName)
 	}
 	return cNames

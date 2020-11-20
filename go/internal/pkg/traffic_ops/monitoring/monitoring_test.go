@@ -16,7 +16,6 @@ import (
 
 	"github.com/jmoiron/sqlx"
 	"github.com/lib/pq"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 /*
@@ -443,22 +442,22 @@ func TestGetMonitoringJSON(t *testing.T) {
 		router := createMockRouter()
 
 		profiles := []Profile{
-			Profile{
+			{
 				Name: router.Profile,
 				Type: RouterType,
 				Parameters: map[string]interface{}{
 					"param0": "param0Val",
 					"param1": "param1Val",
-				},
-			},
-			Profile{
+							},
+						},
+			{
 				Name: cache.Profile,
 				Type: "EDGE",
 				Parameters: map[string]interface{}{
 					"2param0": "2param0Val",
 					"2param1": "2param1Val",
-				},
-			},
+							},
+						},
 		}
 
 		rows := sqlmock.NewRows([]string{"profile", "name", "value"})

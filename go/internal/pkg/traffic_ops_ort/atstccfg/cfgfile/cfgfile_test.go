@@ -21,6 +21,9 @@ package cfgfile
 
 import (
 	"bytes"
+	"github.com/apache/trafficcontrol/pkg/atscfg"
+	"github.com/apache/trafficcontrol/pkg/util"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"math/rand"
 	"strings"
 	"testing"
@@ -556,22 +559,22 @@ func MakeFakeTOData() *config.TOData {
 		},
 		ServerCapabilities: map[int]map[atscfg.ServerCapability]struct{}{
 			*randInt(): map[atscfg.ServerCapability]struct{}{
-				atscfg.ServerCapability(*randStr()): struct{}{},
-				atscfg.ServerCapability(*randStr()): struct{}{},
+				atscfg.ServerCapability(*randStr()): {},
+				atscfg.ServerCapability(*randStr()): {},
 			},
 			*randInt(): map[atscfg.ServerCapability]struct{}{
-				atscfg.ServerCapability(*randStr()): struct{}{},
-				atscfg.ServerCapability(*randStr()): struct{}{},
+				atscfg.ServerCapability(*randStr()): {},
+				atscfg.ServerCapability(*randStr()): {},
 			},
 		},
 		DSRequiredCapabilities: map[int]map[atscfg.ServerCapability]struct{}{
 			*randInt(): map[atscfg.ServerCapability]struct{}{
-				atscfg.ServerCapability(*randStr()): struct{}{},
-				atscfg.ServerCapability(*randStr()): struct{}{},
+				atscfg.ServerCapability(*randStr()): {},
+				atscfg.ServerCapability(*randStr()): {},
 			},
 			*randInt(): map[atscfg.ServerCapability]struct{}{
-				atscfg.ServerCapability(*randStr()): struct{}{},
-				atscfg.ServerCapability(*randStr()): struct{}{},
+				atscfg.ServerCapability(*randStr()): {},
+				atscfg.ServerCapability(*randStr()): {},
 			},
 		},
 		SSLKeys: []tc.CDNSSLKeys{

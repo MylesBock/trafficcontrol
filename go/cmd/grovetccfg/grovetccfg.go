@@ -37,10 +37,10 @@ import (
 	"github.com/apache/trafficcontrol/pkg/tc"
 	to "github.com/apache/trafficcontrol/pkg/v2-client"
 
-	"github.com/apache/trafficcontrol/internal/pkg/internal/pkg/grove/config"
-	"github.com/apache/trafficcontrol/internal/pkg/internal/pkg/grove/remap"
-	"github.com/apache/trafficcontrol/internal/pkg/internal/pkg/grove/remapdata"
-	"github.com/apache/trafficcontrol/internal/pkg/internal/pkg/grove/web"
+	"github.com/apache/trafficcontrol/internal/pkg/grove/config"
+	"github.com/apache/trafficcontrol/internal/pkg/grove/remap"
+	"github.com/apache/trafficcontrol/internal/pkg/grove/remapdata"
+	"github.com/apache/trafficcontrol/internal/pkg/grove/web"
 )
 
 const Version = "0.2"

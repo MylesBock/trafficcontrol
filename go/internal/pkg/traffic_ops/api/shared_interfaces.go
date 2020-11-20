@@ -20,9 +20,9 @@ package api
  */
 
 import (
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"net/http"
 	"time"
 )

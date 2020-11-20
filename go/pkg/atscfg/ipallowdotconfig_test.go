@@ -31,11 +31,11 @@ func TestMakeIPAllowDotConfig(t *testing.T) {
 	hdr := "myHeaderComment"
 
 	params := makeParamsFromMapArr("serverProfile", IPAllowConfigFileName, map[string][]string{
-		"purge_allow_ip":       []string{"192.168.2.99"},
-		ParamCoalesceMaskLenV4: []string{"24"},
-		ParamCoalesceNumberV4:  []string{"3"},
-		ParamCoalesceMaskLenV6: []string{"48"},
-		ParamCoalesceNumberV6:  []string{"4"},
+		"purge_allow_ip": {"192.168.2.99"},
+		ParamCoalesceMaskLenV4: {"24"},
+		ParamCoalesceNumberV4:  {"3"},
+		ParamCoalesceMaskLenV6: {"48"},
+		ParamCoalesceNumberV6:  {"4"},
 	})
 
 	svs := []Server{
@@ -65,7 +65,7 @@ func TestMakeIPAllowDotConfig(t *testing.T) {
 	}
 
 	cgs := []tc.CacheGroupNullable{
-		tc.CacheGroupNullable{
+		{
 			Name: util.StrPtr("cg0"),
 		},
 	}
@@ -130,10 +130,10 @@ func TestMakeIPAllowDotConfigEdge(t *testing.T) {
 	hdr := "myHeaderComment"
 
 	params := makeParamsFromMapArr("serverProfile", IPAllowConfigFileName, map[string][]string{
-		ParamCoalesceMaskLenV4: []string{"24"},
-		ParamCoalesceNumberV4:  []string{"3"},
-		ParamCoalesceMaskLenV6: []string{"48"},
-		ParamCoalesceNumberV6:  []string{"4"},
+		ParamCoalesceMaskLenV4: {"24"},
+		ParamCoalesceNumberV4:  {"3"},
+		ParamCoalesceMaskLenV6: {"48"},
+		ParamCoalesceNumberV6:  {"4"},
 	})
 
 	svs := []Server{
@@ -161,7 +161,7 @@ func TestMakeIPAllowDotConfigEdge(t *testing.T) {
 	}
 
 	cgs := []tc.CacheGroupNullable{
-		tc.CacheGroupNullable{
+		{
 			Name: util.StrPtr("cg0"),
 		},
 	}
@@ -211,11 +211,11 @@ func TestMakeIPAllowDotConfigEdge(t *testing.T) {
 func TestMakeIPAllowDotConfigNonDefaultV6Number(t *testing.T) {
 	hdr := "myHeaderComment"
 	params := makeParamsFromMapArr("serverProfile", IPAllowConfigFileName, map[string][]string{
-		"purge_allow_ip":       []string{"192.168.2.99"},
-		ParamCoalesceMaskLenV4: []string{"24"},
-		ParamCoalesceNumberV4:  []string{"3"},
-		ParamCoalesceMaskLenV6: []string{"48"},
-		ParamCoalesceNumberV6:  []string{"100"},
+		"purge_allow_ip": {"192.168.2.99"},
+		ParamCoalesceMaskLenV4: {"24"},
+		ParamCoalesceNumberV4:  {"3"},
+		ParamCoalesceMaskLenV6: {"48"},
+		ParamCoalesceNumberV6:  {"100"},
 	})
 
 	svs := []Server{
@@ -245,7 +245,7 @@ func TestMakeIPAllowDotConfigNonDefaultV6Number(t *testing.T) {
 	}
 
 	cgs := []tc.CacheGroupNullable{
-		tc.CacheGroupNullable{
+		{
 			Name: util.StrPtr("cg0"),
 		},
 	}

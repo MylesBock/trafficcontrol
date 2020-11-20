@@ -25,11 +25,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -51,9 +51,9 @@ func (v *TOProfileParameter) NewReadObj() interface{}    { return &tc.ProfilePar
 func (v *TOProfileParameter) SelectQuery() string        { return selectQuery() }
 func (v *TOProfileParameter) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"profileId":   dbhelpers.WhereColumnInfo{"pp.profile", nil},
-		"parameterId": dbhelpers.WhereColumnInfo{"pp.parameter", nil},
-		"lastUpdated": dbhelpers.WhereColumnInfo{"pp.last_updated", nil},
+		"profileId": {"pp.profile", nil},
+		"parameterId": {"pp.parameter", nil},
+		"lastUpdated": {"pp.last_updated", nil},
 	}
 }
 func (v *TOProfileParameter) DeleteQuery() string { return deleteQuery() }

@@ -24,8 +24,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/tmcheck"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	to "github.com/apache/trafficcontrol/pkg/v2-client"
 	"io"
 	"net/http"
@@ -104,7 +104,7 @@ func (l Logs) GetMonitors() []string {
 	l.m.RLock()
 	defer l.m.RUnlock()
 	monitors := []string{}
-	for name, _ := range l.logs {
+	for name := range l.logs {
 		monitors = append(monitors, string(name))
 	}
 	return monitors

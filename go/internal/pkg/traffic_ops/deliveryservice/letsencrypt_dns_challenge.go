@@ -23,9 +23,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -46,7 +46,7 @@ func GetDnsChallengeRecords(w http.ResponseWriter, r *http.Request) {
 	getQuery := `SELECT fqdn, record FROM dnschallenges`
 
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"fqdn": dbhelpers.WhereColumnInfo{"fqdn", nil},
+		"fqdn": {"fqdn", nil},
 	}
 
 	where, _, _, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(inf.Params, queryParamsToQueryCols)

@@ -141,7 +141,7 @@ func getMockCRStatesPeers(quorumMin int, numPeers int, availabilityType Availabi
 		randPeers[tc.TrafficMonitorName(randStr())] = struct{}{}
 	}
 
-	for peer, _ := range randPeers {
+	for peer := range randPeers {
 		ps.Set(getResult(peer, availabilityType))
 	}
 
@@ -273,7 +273,7 @@ func TestGetStats(t *testing.T) {
 		t.Fatalf("expected getStats QueryIntervalActual '%+v', actual: '%+v'\n", slowestCacheTime/time.Millisecond, st.QueryIntervalActual)
 	}
 	if st.QueryIntervalDelta != int((slowestCacheTime-pollingInterval)/time.Millisecond) {
-		t.Fatalf("expected getStats QueryIntervalActual '%+v', actual: '%+v'\n", (slowestCacheTime - pollingInterval), st.QueryIntervalDelta)
+		t.Fatalf("expected getStats QueryIntervalActual '%+v', actual: '%+v'\n", slowestCacheTime - pollingInterval, st.QueryIntervalDelta)
 	}
 	if st.LastQueryInterval != int(math.Max(float64(slowestCacheTime), float64(pollingInterval))/float64(time.Millisecond)) {
 		t.Fatalf("expected getStats LastQueryInterval expected '%+v', actual: '%+v'\n", int(math.Max(float64(slowestCacheTime), float64(pollingInterval))), st.LastQueryInterval)
@@ -302,7 +302,7 @@ func TestGetStats(t *testing.T) {
 		t.Fatalf("expected getStats OldestPolledPeer '%+v', actual: '%+v'\n", oldestPolledPeer, st.OldestPolledPeer)
 	}
 
-	oldestPolledPeerTimeMS := time.Now().Sub((oldestPolledPeerTime)).Nanoseconds() / util.MSPerNS
+	oldestPolledPeerTimeMS := time.Now().Sub(oldestPolledPeerTime).Nanoseconds() / util.MSPerNS
 	if st.OldestPolledPeerMs > oldestPolledPeerTimeMS+10 || st.OldestPolledPeerMs < oldestPolledPeerTimeMS-10 {
 		t.Fatalf("expected getStats OldestPolledPeerMs '%+v', actual: '%+v'\n", oldestPolledPeerTimeMS, st.OldestPolledPeerMs)
 	}

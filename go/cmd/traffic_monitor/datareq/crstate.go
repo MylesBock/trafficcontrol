@@ -25,6 +25,8 @@ import (
 	"net/url"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/peer"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 func srvTRState(params url.Values, localStates peer.CRStatesThreadsafe, combinedStates peer.CRStatesThreadsafe, peerStates peer.CRStatesPeersThreadsafe) ([]byte, int, error) {

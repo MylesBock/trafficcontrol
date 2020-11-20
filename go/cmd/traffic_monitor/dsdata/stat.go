@@ -22,6 +22,7 @@ package dsdata
 import (
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"net/url"
 	"strconv"
 	"time"
@@ -429,7 +430,7 @@ type LastStatData struct {
 func addCommonData(s *StatsOld, c *StatCommon, deliveryService tc.DeliveryServiceName, t int64, filter Filter) *StatsOld {
 	add := func(name string, val interface{}) {
 		if filter.UseStat(name) {
-			s.DeliveryService[deliveryService][StatName(name)] = []StatOld{StatOld{Time: t, Value: val}}
+			s.DeliveryService[deliveryService][StatName(name)] = []StatOld{{Time: t, Value: val}}
 		}
 	}
 	add("caches-configured", fmt.Sprintf("%d", c.CachesConfiguredNum.Value))
@@ -449,9 +450,9 @@ func addStatCacheStats(s *StatsOld, c *StatCacheStats, deliveryService tc.Delive
 			// This is for compatibility with the Traffic Monitor 1.0 API.
 			// TODO abstract this? Or deprecate and remove it?
 			if name == "isAvailable" || name == "error-string" {
-				s.DeliveryService[deliveryService][StatName("location."+prefix+name)] = []StatOld{StatOld{Time: t, Value: val}}
+				s.DeliveryService[deliveryService][StatName("location."+prefix+name)] = []StatOld{{Time: t, Value: val}}
 			} else {
-				s.DeliveryService[deliveryService][StatName(prefix+name)] = []StatOld{StatOld{Time: t, Value: val}}
+				s.DeliveryService[deliveryService][StatName(prefix+name)] = []StatOld{{Time: t, Value: val}}
 			}
 		}
 	}

@@ -25,11 +25,11 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -193,11 +193,11 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	// Query Parameters to Database Query column mappings
 	// see the fields mapped in the SQL query
 	queryParamsToSQLCols := map[string]dbhelpers.WhereColumnInfo{
-		"id":          dbhelpers.WhereColumnInfo{"e.id", api.IsInt},
-		"name":        dbhelpers.WhereColumnInfo{"e.name", nil},
-		"script_file": dbhelpers.WhereColumnInfo{"e.script_file", nil},
-		"isactive":    dbhelpers.WhereColumnInfo{"e.isactive", api.IsBool},
-		"type":        dbhelpers.WhereColumnInfo{"t.name", nil},
+		"id": {"e.id", api.IsInt},
+		"name":        {"e.name", nil},
+		"script_file": {"e.script_file", nil},
+		"isactive":    {"e.isactive", api.IsBool},
+		"type":        {"t.name", nil},
 	}
 
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(inf.Params, queryParamsToSQLCols)

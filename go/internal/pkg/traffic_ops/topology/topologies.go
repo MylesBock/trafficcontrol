@@ -27,15 +27,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/cachegroup"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/deliveryservice"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/jmoiron/sqlx"
@@ -323,7 +323,7 @@ func (topology *TOTopology) nodesInOtherTopologies() ([]tc.TopologyNode, map[str
 	// Build the list of topologies containing each cache group
 	for cacheGroup, topologiesMap := range topologiesMapByCacheGroup {
 		var topologies []string
-		for topology, _ := range topologiesMap {
+		for topology := range topologiesMap {
 			topologies = append(topologies, topology)
 		}
 		topologiesByCacheGroup[cacheGroup] = topologies
@@ -343,7 +343,7 @@ func (topology *TOTopology) nodesInOtherTopologies() ([]tc.TopologyNode, map[str
 	var cacheGroups []string
 	index := 0
 	// Get an index for each cachegroup
-	for cacheGroup, _ := range parentMapMap {
+	for cacheGroup := range parentMapMap {
 		cacheGroups = append(cacheGroups, cacheGroup)
 		indexByCachegroup[cacheGroup] = index
 		index++
@@ -356,7 +356,7 @@ func (topology *TOTopology) nodesInOtherTopologies() ([]tc.TopologyNode, map[str
 	for _, cacheGroup := range cacheGroups {
 		parentMap := parentMapMap[cacheGroup]
 		node := tc.TopologyNode{Cachegroup: cacheGroup}
-		for parent, _ := range parentMap {
+		for parent := range parentMap {
 			node.Parents = append(node.Parents, indexByCachegroup[parent])
 		}
 		nodes = append(nodes, node)

@@ -27,11 +27,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -55,9 +55,9 @@ func (v *TOType) SelectMaxLastUpdatedQuery(where string, orderBy string, paginat
 }
 func (v *TOType) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"name":       dbhelpers.WhereColumnInfo{"typ.name", nil},
-		"id":         dbhelpers.WhereColumnInfo{"typ.id", api.IsInt},
-		"useInTable": dbhelpers.WhereColumnInfo{"typ.use_in_table", nil},
+		"name": {"typ.name", nil},
+		"id":         {"typ.id", api.IsInt},
+		"useInTable": {"typ.use_in_table", nil},
 	}
 }
 func (v *TOType) UpdateQuery() string { return updateQuery() }

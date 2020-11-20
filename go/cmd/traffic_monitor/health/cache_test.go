@@ -20,6 +20,7 @@ package health
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"strings"
 	"testing"
 	"time"
@@ -46,16 +47,16 @@ func TestCalcAvailabilityThresholds(t *testing.T) {
 				LatestPID:        32109,
 			},
 			Interfaces: map[string]cache.Interface{
-				"bond0": cache.Interface{
+				"bond0": {
 					Speed:    20000,
 					BytesIn:  1234567891011121,
 					BytesOut: 12345678910111213,
-				},
-				"eth0": cache.Interface{
+								},
+				"eth0": {
 					Speed:    30000,
 					BytesIn:  1234567891011121,
 					BytesOut: 12345678910111213,
-				},
+								},
 			},
 			NotAvailable: false,
 		},

@@ -21,18 +21,18 @@ package parameter
 
 import (
 	"errors"
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"net/http"
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -76,10 +76,10 @@ func (v *TOParameter) NewReadObj() interface{} { return &tc.ParameterNullable{} 
 func (v *TOParameter) SelectQuery() string     { return selectQuery() }
 func (v *TOParameter) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		ConfigFileQueryParam: dbhelpers.WhereColumnInfo{"p.config_file", nil},
-		IDQueryParam:         dbhelpers.WhereColumnInfo{"p.id", api.IsInt},
-		NameQueryParam:       dbhelpers.WhereColumnInfo{"p.name", nil},
-		SecureQueryParam:     dbhelpers.WhereColumnInfo{"p.secure", api.IsBool}}
+		ConfigFileQueryParam: {"p.config_file", nil},
+		IDQueryParam:         {"p.id", api.IsInt},
+		NameQueryParam:       {"p.name", nil},
+		SecureQueryParam:     {"p.secure", api.IsBool}}
 }
 func (v *TOParameter) UpdateQuery() string { return updateQuery() }
 func (v *TOParameter) DeleteQuery() string { return deleteQuery() }

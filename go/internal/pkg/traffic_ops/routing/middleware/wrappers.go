@@ -30,13 +30,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/about"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tocookie"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/rfc"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/about"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tocookie"
 )
 
 // DefaultRequestTimeout is the default request timeout, if no timeout is configured.

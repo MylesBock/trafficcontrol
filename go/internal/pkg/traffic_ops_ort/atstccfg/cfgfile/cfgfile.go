@@ -21,12 +21,17 @@ package cfgfile
 
 import (
 	"errors"
+	"github.com/apache/trafficcontrol/pkg/atscfg"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"net"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/atstccfg/config"
+	"github.com/apache/trafficcontrol/pkg/tc"
+
 )
 
 const TrafficOpsProxyParameterName = `tm.rev_proxy.url`

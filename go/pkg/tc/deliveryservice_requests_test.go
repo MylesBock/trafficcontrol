@@ -32,12 +32,12 @@ func TestStatus(t *testing.T) {
 		name string
 	}
 	tests := []tester{
-		tester{RequestStatus("foo"), "invalid"},
-		tester{RequestStatusDraft, "draft"},
-		tester{RequestStatusSubmitted, "submitted"},
-		tester{RequestStatusRejected, "rejected"},
-		tester{RequestStatusPending, "pending"},
-		tester{RequestStatusComplete, "complete"},
+		{RequestStatus("foo"), "invalid"},
+		{RequestStatusDraft, "draft"},
+		{RequestStatusSubmitted, "submitted"},
+		{RequestStatusRejected, "rejected"},
+		{RequestStatusPending, "pending"},
+		{RequestStatusComplete, "complete"},
 	}
 
 	for _, tst := range tests {
@@ -52,11 +52,11 @@ func TestStatusTransition(t *testing.T) {
 	bad := errors.New("bad error")
 	var validTests = [][]error{
 		// To:  Dra  Sub  Rej  Pen  Com   // From:
-		[]error{nil, nil, bad, bad, bad}, // Draft
-		[]error{nil, nil, nil, nil, nil}, // Submitted
-		[]error{bad, bad, bad, bad, bad}, // Rejected
-		[]error{bad, bad, bad, nil, nil}, // Pending
-		[]error{bad, bad, bad, bad, bad}, // Complete
+		{nil, nil, bad, bad, bad}, // Draft
+		{nil, nil, nil, nil, nil}, // Submitted
+		{bad, bad, bad, bad, bad}, // Rejected
+		{bad, bad, bad, nil, nil}, // Pending
+		{bad, bad, bad, bad, bad}, // Complete
 	}
 
 	// test all transitions

@@ -22,6 +22,7 @@ package config
 import (
 	"encoding/json"
 	"errors"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"io/ioutil"
 	"strings"
 	"time"

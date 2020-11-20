@@ -19,7 +19,7 @@ import (
 	"encoding/json"
 	"strconv"
 
-	tc "github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 // SetUserDeliveryService associates the given delivery services with the given user.

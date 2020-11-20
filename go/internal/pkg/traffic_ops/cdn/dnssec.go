@@ -27,14 +27,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/deliveryservice"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/riaksvc"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 )
 
 const CDNDNSSECKeyType = "dnssec"

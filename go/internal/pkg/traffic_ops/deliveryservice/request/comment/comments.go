@@ -25,11 +25,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	"github.com/go-ozzo/ozzo-validation"
 )
@@ -61,10 +61,10 @@ func (v *TODeliveryServiceRequestComment) NewReadObj() interface{} {
 func (v *TODeliveryServiceRequestComment) SelectQuery() string { return selectQuery() }
 func (v *TODeliveryServiceRequestComment) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"authorId":                 dbhelpers.WhereColumnInfo{"dsrc.author_id", nil},
-		"author":                   dbhelpers.WhereColumnInfo{"a.username", nil},
-		"deliveryServiceRequestId": dbhelpers.WhereColumnInfo{"dsrc.deliveryservice_request_id", nil},
-		"id":                       dbhelpers.WhereColumnInfo{"dsrc.id", api.IsInt},
+		"authorId": {"dsrc.author_id", nil},
+		"author":                   {"a.username", nil},
+		"deliveryServiceRequestId": {"dsrc.deliveryservice_request_id", nil},
+		"id":                       {"dsrc.id", api.IsInt},
 	}
 }
 func (v *TODeliveryServiceRequestComment) UpdateQuery() string { return updateQuery() }

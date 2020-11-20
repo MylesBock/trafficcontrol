@@ -87,7 +87,7 @@ func TestMakeServerCacheDotConfig(t *testing.T) {
 		if line == "" {
 			continue
 		}
-		for unexpected, _ := range unexpecteds {
+		for unexpected := range unexpecteds {
 			if strings.Contains(line, unexpected) {
 				t.Errorf("expected NOT '%v' actual '%v'\n", unexpected, line)
 			}

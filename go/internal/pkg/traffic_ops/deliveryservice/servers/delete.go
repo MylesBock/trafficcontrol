@@ -25,10 +25,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 // Delete handler for deleting the association between a Delivery Service and a Server

@@ -141,7 +141,7 @@ func compareResponses(response1 responseType, response2 responseType, ignoreHdrs
 	if !equalBodies(response1.Body, response2.Body) {
 		return false
 	}
-	for hdrKey, _ := range response1.Headers {
+	for hdrKey := range response1.Headers {
 		if inStringSlice(hdrKey, ignoreHdrs) {
 			continue
 		}

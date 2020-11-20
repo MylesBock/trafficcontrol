@@ -25,9 +25,9 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 )
 
 const DefaultLogLimit = 1000

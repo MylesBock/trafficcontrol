@@ -27,12 +27,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/asaskevich/govalidator"
 	"github.com/go-ozzo/ozzo-validation"
 )
@@ -66,7 +66,7 @@ func (v *TOCDNFederation) SelectQuery() string {
 }
 func (v *TOCDNFederation) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	cols := map[string]dbhelpers.WhereColumnInfo{
-		"id": dbhelpers.WhereColumnInfo{Column: "federation.id", Checker: api.IsInt},
+		"id": {Column: "federation.id", Checker: api.IsInt},
 	}
 	if v.ID == nil {
 		cols["name"] = dbhelpers.WhereColumnInfo{Column: "cdn.name", Checker: nil}

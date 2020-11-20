@@ -30,6 +30,8 @@ import (
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/cache"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/srvhttp"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	jsoniter "github.com/json-iterator/go"
 )

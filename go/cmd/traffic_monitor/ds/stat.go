@@ -22,6 +22,9 @@ package ds
 import (
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"time"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/cache"

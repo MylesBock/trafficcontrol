@@ -32,7 +32,7 @@ import (
 	"sync"
 	"time"
 
-	tc "github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"golang.org/x/net/publicsuffix"
 )

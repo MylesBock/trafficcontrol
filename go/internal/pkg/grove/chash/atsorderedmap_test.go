@@ -20,9 +20,9 @@ import (
 
 func TestSimpleOrderedMapUInt64Node(t *testing.T) {
 	vals := map[uint64]*ATSConsistentHashNode{
-		1: &ATSConsistentHashNode{Name: "foo"},
-		2: &ATSConsistentHashNode{Name: "bar"},
-		3: &ATSConsistentHashNode{Name: "baz"},
+		1: {Name: "foo"},
+		2: {Name: "bar"},
+		3: {Name: "baz"},
 	}
 
 	m := NewSimpleOrderedMapUint64Node()

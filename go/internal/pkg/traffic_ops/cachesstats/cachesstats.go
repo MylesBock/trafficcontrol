@@ -25,11 +25,11 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/monitorhlp"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/monitorhlp"
 )
 
 const ATSCurrentConnectionsStat = "ats.proxy.process.http.current_client_connections"

@@ -24,10 +24,10 @@ import (
 )
 
 var testSet = map[string][5]string{
-	"traffic_ops-2.3.0-8095.fd4fc11a.el7": [5]string{"traffic_ops", "2.3.0", "8095", "fd4fc11a", "el7"},
-	"test0-0.1.0-1234.01ab23cd.el7":       [5]string{"test0", "0.1.0", "1234", "01ab23cd", "el7"},
-	"test1-0.2.0":                         [5]string{"test1", "0.2.0", "", ""},
-	"test2":                               [5]string{"test2", "", "", ""},
+	"traffic_ops-2.3.0-8095.fd4fc11a.el7": {"traffic_ops", "2.3.0", "8095", "fd4fc11a", "el7"},
+	"test0-0.1.0-1234.01ab23cd.el7":       {"test0", "0.1.0", "1234", "01ab23cd", "el7"},
+	"test1-0.2.0":                         {"test1", "0.2.0", "", ""},
+	"test2":                               {"test2", "", "", ""},
 }
 
 func TestSplitRPMVersion(t *testing.T) {

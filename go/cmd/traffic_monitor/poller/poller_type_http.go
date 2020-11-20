@@ -23,11 +23,11 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/cmd/traffic_monitor/config"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"io/ioutil"
 	"net/http"
 	"time"
-
-	"github.com/apache/trafficcontrol/cmd/traffic_monitor/config"
 )
 
 const PollerTypeHTTP = "http"

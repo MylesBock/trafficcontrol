@@ -23,9 +23,9 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/apache/trafficcontrol/lib/go-nagios"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/tmcheck"
-	to "github.com/apache/trafficcontrol/traffic_ops/v2-client"
+	"github.com/apache/trafficcontrol/pkg/nagios"
+	to "github.com/apache/trafficcontrol/pkg/v2-client"
 )
 
 const UserAgent = "tm-offline-validator/0.1"

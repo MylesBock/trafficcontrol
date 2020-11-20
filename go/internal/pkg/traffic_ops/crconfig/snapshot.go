@@ -25,9 +25,9 @@ import (
 	"errors"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/monitoring"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/monitoring"
 )
 
 // Snapshot takes the CRConfig JSON-serializable object (which may be generated via crconfig.Make), and writes it to the snapshot table.

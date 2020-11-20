@@ -46,33 +46,33 @@ func TestMakeParentDotConfig(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -112,14 +112,14 @@ func TestMakeParentDotConfig(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -157,33 +157,33 @@ func TestMakeParentDotConfigCapabilities(t *testing.T) {
 	dses := []DeliveryService{*ds0}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -214,11 +214,11 @@ func TestMakeParentDotConfigCapabilities(t *testing.T) {
 
 	topologies := []tc.Topology{}
 	serverCapabilities := map[int]map[ServerCapability]struct{}{
-		*mid1.ID: map[ServerCapability]struct{}{"FOO": {}},
-		*mid2.ID: map[ServerCapability]struct{}{"FOO": {}, "BAR": {}},
+		*mid1.ID: {"FOO": {}},
+		*mid2.ID: {"FOO": {}, "BAR": {}},
 	}
 	dsRequiredCapabilities := map[int]map[ServerCapability]struct{}{
-		*ds0.ID: map[ServerCapability]struct{}{"FOO": {}},
+		*ds0.ID: {"FOO": {}},
 	}
 
 	eCG := &tc.CacheGroupNullable{}
@@ -238,10 +238,10 @@ func TestMakeParentDotConfigCapabilities(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -301,33 +301,33 @@ func TestMakeParentDotConfigMSOSecondaryParent(t *testing.T) {
 	dses := []DeliveryService{*ds0}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -379,10 +379,10 @@ func TestMakeParentDotConfigMSOSecondaryParent(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG, *mCG1}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -424,33 +424,33 @@ func TestMakeParentDotConfigTopologies(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -474,18 +474,18 @@ func TestMakeParentDotConfigTopologies(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -508,14 +508,14 @@ func TestMakeParentDotConfigTopologies(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -562,33 +562,33 @@ func TestMakeParentDotConfigNotInTopologies(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -608,18 +608,18 @@ func TestMakeParentDotConfigNotInTopologies(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "otherEdgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -642,14 +642,14 @@ func TestMakeParentDotConfigNotInTopologies(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -702,33 +702,33 @@ func TestMakeParentDotConfigTopologiesCapabilities(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1, *ds2}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -752,28 +752,28 @@ func TestMakeParentDotConfigTopologiesCapabilities(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{
-		44: map[ServerCapability]struct{}{"FOO": {}},
-		45: map[ServerCapability]struct{}{"FOO": {}},
-		46: map[ServerCapability]struct{}{"FOO": {}},
+		44: {"FOO": {}},
+		45: {"FOO": {}},
+		46: {"FOO": {}},
 	}
 	dsRequiredCapabilities := map[int]map[ServerCapability]struct{}{
-		*ds1.ID: map[ServerCapability]struct{}{"FOO": {}},
-		*ds2.ID: map[ServerCapability]struct{}{"BAR": {}},
+		*ds1.ID: {"FOO": {}},
+		*ds2.ID: {"BAR": {}},
 	}
 
 	eCG := &tc.CacheGroupNullable{}
@@ -793,18 +793,18 @@ func TestMakeParentDotConfigTopologiesCapabilities(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds2.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -850,33 +850,33 @@ func TestMakeParentDotConfigTopologiesOmitOfflineParents(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -902,18 +902,18 @@ func TestMakeParentDotConfigTopologiesOmitOfflineParents(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -936,14 +936,14 @@ func TestMakeParentDotConfigTopologiesOmitOfflineParents(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -993,33 +993,33 @@ func TestMakeParentDotConfigTopologiesOmitDifferentCDNParents(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -1046,18 +1046,18 @@ func TestMakeParentDotConfigTopologiesOmitDifferentCDNParents(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -1080,14 +1080,14 @@ func TestMakeParentDotConfigTopologiesOmitDifferentCDNParents(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -1132,33 +1132,33 @@ func TestMakeParentDotConfigTopologiesMSO(t *testing.T) {
 	dses := []DeliveryService{*ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "7",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -1186,18 +1186,18 @@ func TestMakeParentDotConfigTopologiesMSO(t *testing.T) {
 	servers := []Server{*server, *origin0, *origin1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "originCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -1220,10 +1220,10 @@ func TestMakeParentDotConfigTopologiesMSO(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *oCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*origin0.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -1266,63 +1266,63 @@ func TestMakeParentDotConfigTopologiesMSOParams(t *testing.T) {
 	dses := []DeliveryService{*ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMSOAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      "consistent_hash",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMSOParentRetry,
 			ConfigFile: "parent.config",
 			Value:      "both",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMSOUnavailableServerRetryResponses,
 			ConfigFile: "parent.config",
 			Value:      `"400,503"`,
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMSOMaxSimpleRetries,
 			ConfigFile: "parent.config",
 			Value:      "14",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMSOMaxUnavailableServerRetries,
 			ConfigFile: "parent.config",
 			Value:      "9",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "8",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -1350,18 +1350,18 @@ func TestMakeParentDotConfigTopologiesMSOParams(t *testing.T) {
 	servers := []Server{*server, *origin0, *origin1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "originCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -1384,10 +1384,10 @@ func TestMakeParentDotConfigTopologiesMSOParams(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *oCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*origin0.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -1442,63 +1442,63 @@ func TestMakeParentDotConfigTopologiesParams(t *testing.T) {
 	dses := []DeliveryService{*ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      "consistent_hash",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamParentRetry,
 			ConfigFile: "parent.config",
 			Value:      "both",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamUnavailableServerRetryResponses,
 			ConfigFile: "parent.config",
 			Value:      `"400,503"`,
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMaxSimpleRetries,
 			ConfigFile: "parent.config",
 			Value:      "14",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamMaxUnavailableServerRetries,
 			ConfigFile: "parent.config",
 			Value:      "9",
 			Profiles:   []byte(`["ds1Profile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "8",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -1526,18 +1526,18 @@ func TestMakeParentDotConfigTopologiesParams(t *testing.T) {
 	servers := []Server{*server, *origin0, *origin1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "originCG",
 				},
-			},
-		},
+					},
+				},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -1560,10 +1560,10 @@ func TestMakeParentDotConfigTopologiesParams(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *oCG}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*origin0.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -1626,39 +1626,39 @@ func TestMakeParentDotConfigSecondaryMode(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamSecondaryMode,
 			ConfigFile: "parent.config",
 			Value:      "",
 			Profiles:   []byte(`["ds0Profile","ds1Profile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "8",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -1682,21 +1682,21 @@ func TestMakeParentDotConfigSecondaryMode(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1, 2},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG2",
+						},
+					},
 				},
-			},
-		},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -1727,14 +1727,14 @@ func TestMakeParentDotConfigSecondaryMode(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG, *mCG2}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",
@@ -1787,33 +1787,33 @@ func TestMakeParentDotConfigNoSecondaryMode(t *testing.T) {
 	dses := []DeliveryService{*ds0, *ds1}
 
 	parentConfigParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       ParentConfigParamQStringHandling,
 			ConfigFile: "parent.config",
 			Value:      "myQStringHandlingParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamAlgorithm,
 			ConfigFile: "parent.config",
 			Value:      tc.AlgorithmConsistentHash,
 			Profiles:   []byte(`["serverprofile"]`),
-		},
-		tc.Parameter{
+				},
+		{
 			Name:       ParentConfigParamQString,
 			ConfigFile: "parent.config",
 			Value:      "myQstringParam",
 			Profiles:   []byte(`["serverprofile"]`),
-		},
+				},
 	}
 
 	serverParams := []tc.Parameter{
-		tc.Parameter{
+		{
 			Name:       "trafficserver",
 			ConfigFile: "package",
 			Value:      "8",
 			Profiles:   []byte(`["global"]`),
-		},
+				},
 	}
 
 	server := makeTestParentServer()
@@ -1837,21 +1837,21 @@ func TestMakeParentDotConfigNoSecondaryMode(t *testing.T) {
 	servers := []Server{*server, *mid0, *mid1}
 
 	topologies := []tc.Topology{
-		tc.Topology{
+		{
 			Name: "t0",
 			Nodes: []tc.TopologyNode{
-				tc.TopologyNode{
+				{
 					Cachegroup: "edgeCG",
 					Parents:    []int{1, 2},
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG",
 				},
-				tc.TopologyNode{
+				{
 					Cachegroup: "midCG2",
+						},
+					},
 				},
-			},
-		},
 	}
 
 	serverCapabilities := map[int]map[ServerCapability]struct{}{}
@@ -1882,14 +1882,14 @@ func TestMakeParentDotConfigNoSecondaryMode(t *testing.T) {
 	cgs := []tc.CacheGroupNullable{*eCG, *mCG, *mCG2}
 
 	dss := []tc.DeliveryServiceServer{
-		tc.DeliveryServiceServer{
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds0.ID),
-		},
-		tc.DeliveryServiceServer{
+				},
+		{
 			Server:          util.IntPtr(*server.ID),
 			DeliveryService: util.IntPtr(*ds1.ID),
-		},
+				},
 	}
 	cdn := &tc.CDN{
 		DomainName: "cdndomain.example",

@@ -30,8 +30,6 @@ import "github.com/apache/trafficcontrol/pkg/tc"
 import "github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 import "github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 
-import "gopkg.in/DATA-DOG/go-sqlmock.v1"
-
 func TestAddFederationResolverMappingsForCurrentUser(t *testing.T) {
 	t.Run("add Federation Resolver Mappings for the current user", positiveTestAddFederationResolverMappingsForCurrentUser)
 	t.Run("add Federation Resolver Mappings for the current user when no federations exist/are assigned to them", testAddFederationResolverMappingsForCurrentUserWithoutFederations)
@@ -48,13 +46,13 @@ func positiveTestAddFederationResolverMappingsForCurrentUser(t *testing.T) {
 	}
 
 	mappings := []tc.DeliveryServiceFederationResolverMapping{
-		tc.DeliveryServiceFederationResolverMapping{
+		{
 			DeliveryService: "test",
 			Mappings: tc.ResolverMapping{
 				Resolve4: []string{"0.0.0.0", "127.0.0.1/12"},
 				Resolve6: []string{"abcd:ef01:2345:6789::", "f1d0::f00d/127"},
 			},
-		},
+				},
 	}
 
 	mockDB, mock, err := sqlmock.New()
@@ -119,13 +117,13 @@ func testAddFederationResolverMappingsForCurrentUserWithoutFederations(t *testin
 	}
 
 	mappings := []tc.DeliveryServiceFederationResolverMapping{
-		tc.DeliveryServiceFederationResolverMapping{
+		{
 			DeliveryService: "test",
 			Mappings: tc.ResolverMapping{
 				Resolve4: []string{"0.0.0.0"},
 				Resolve6: []string{},
 			},
-		},
+				},
 	}
 
 	mockDB, mock, err := sqlmock.New()
@@ -174,13 +172,13 @@ func testUnauthorizedDSOnResolverAdd(t *testing.T) {
 	}
 
 	mappings := []tc.DeliveryServiceFederationResolverMapping{
-		tc.DeliveryServiceFederationResolverMapping{
+		{
 			DeliveryService: "test",
 			Mappings: tc.ResolverMapping{
 				Resolve4: []string{},
 				Resolve6: []string{},
 			},
-		},
+				},
 	}
 
 	mockDB, mock, err := sqlmock.New()

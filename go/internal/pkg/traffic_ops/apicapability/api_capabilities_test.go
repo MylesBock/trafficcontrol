@@ -6,7 +6,6 @@ import (
 
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 /*
@@ -75,33 +74,33 @@ func TestGetAPICapabilities(t *testing.T) {
 
 func getTestCapabilities() []tc.APICapability {
 	return []tc.APICapability{
-		tc.APICapability{
+		{
 			ID:          1,
 			HTTPMethod:  "GET",
 			Route:       "asns",
 			Capability:  "asns-read",
 			LastUpdated: tc.TimeNoMod{Time: time.Now()},
-		},
-		tc.APICapability{
+				},
+		{
 			ID:          2,
 			HTTPMethod:  "POST",
 			Route:       "asns",
 			Capability:  "asns-write",
 			LastUpdated: tc.TimeNoMod{Time: time.Now()},
-		},
-		tc.APICapability{
+				},
+		{
 			ID:          3,
 			HTTPMethod:  "PUT",
 			Route:       "asns/*",
 			Capability:  "asns-write",
 			LastUpdated: tc.TimeNoMod{Time: time.Now()},
-		},
-		tc.APICapability{
+				},
+		{
 			ID:          4,
 			HTTPMethod:  "DELETE",
 			Route:       "asns/*",
 			Capability:  "asns-write",
 			LastUpdated: tc.TimeNoMod{Time: time.Now()},
-		},
+				},
 	}
 }

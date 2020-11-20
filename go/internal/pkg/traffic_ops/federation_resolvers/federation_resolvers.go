@@ -28,13 +28,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/rfc"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -121,9 +121,9 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	defer inf.Close()
 
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"id":        dbhelpers.WhereColumnInfo{"federation_resolver.id", api.IsInt},
-		"ipAddress": dbhelpers.WhereColumnInfo{"federation_resolver.ip_address", nil},
-		"type":      dbhelpers.WhereColumnInfo{"type.name", nil},
+		"id": {"federation_resolver.id", api.IsInt},
+		"ipAddress": {"federation_resolver.ip_address", nil},
+		"type":      {"type.name", nil},
 	}
 
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(inf.Params, queryParamsToQueryCols)
@@ -317,10 +317,10 @@ func DeleteByID(w http.ResponseWriter, r *http.Request) {
 		tc.Alerts{
 			Alerts: []tc.Alert{
 				alert,
-				tc.Alert{
+				{
 					Level: tc.WarnLevel.String(),
 					Text:  "This endpoint is deprecated, please use the 'id' query parameter of '/federation_resolvers' instead",
-				},
+								},
 			},
 		},
 		&respObj,

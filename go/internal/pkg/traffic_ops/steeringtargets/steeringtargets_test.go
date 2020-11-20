@@ -20,11 +20,10 @@ package steeringtargets
  */
 
 import (
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 	"testing"
 )
 

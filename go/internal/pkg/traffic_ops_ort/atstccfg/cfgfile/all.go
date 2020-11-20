@@ -22,6 +22,9 @@ package cfgfile
 import (
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/atscfg"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
 	"io"
 	"math/rand"
 	"mime/multipart"
@@ -216,7 +219,7 @@ func makeIPStr(ips []net.Addr) string {
 		ipStrM[ip.String()] = struct{}{}
 	}
 	ipStrArr := []string{}
-	for ipStr, _ := range ipStrM {
+	for ipStr := range ipStrM {
 		ipStrArr = append(ipStrArr, ipStr)
 	}
 	return `(` + strings.Join(ipStrArr, `,`) + `)`

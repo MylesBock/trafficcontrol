@@ -42,10 +42,10 @@ func (to *Session) CreateProfile(pl tc.Profile) (tc.Alerts, ReqInf, error) {
 		if len(cdns) == 0 {
 			return tc.Alerts{
 					Alerts: []tc.Alert{
-						tc.Alert{
+						{
 							Text:  fmt.Sprintf("no CDN with name %s", pl.CDNName),
 							Level: "error",
-						},
+												},
 					},
 				},
 				ReqInf{},

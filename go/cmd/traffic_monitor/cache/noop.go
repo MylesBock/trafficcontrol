@@ -43,11 +43,11 @@ func noOpParse(string, io.Reader, interface{}) (Statistics, map[string]interface
 			LatestPID:        30000,
 		},
 		Interfaces: map[string]Interface{
-			"bond0": Interface{
+			"bond0": {
 				Speed:    20000,
 				BytesIn:  10000,
 				BytesOut: 100000,
-			},
+						},
 		},
 	}
 	return stats, map[string]interface{}{}, nil

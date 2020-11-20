@@ -26,12 +26,12 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/jmoiron/sqlx"
@@ -62,9 +62,9 @@ func (v *TORole) NewReadObj() interface{}       { return &TORole{} }
 func (v *TORole) SelectQuery() string           { return selectQuery() }
 func (v *TORole) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"name":      dbhelpers.WhereColumnInfo{"name", nil},
-		"id":        dbhelpers.WhereColumnInfo{"id", api.IsInt},
-		"privLevel": dbhelpers.WhereColumnInfo{"priv_level", api.IsInt}}
+		"name": {"name", nil},
+		"id":        {"id", api.IsInt},
+		"privLevel": {"priv_level", api.IsInt}}
 }
 func (v *TORole) UpdateQuery() string { return updateQuery() }
 func (v *TORole) DeleteQuery() string { return deleteQuery() }

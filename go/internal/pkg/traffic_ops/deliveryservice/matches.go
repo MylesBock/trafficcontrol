@@ -26,9 +26,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/lib/pq"
 )

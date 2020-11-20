@@ -25,6 +25,8 @@ import (
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/handler"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/towrap" // TODO move to common
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 type MonitorCfg struct {

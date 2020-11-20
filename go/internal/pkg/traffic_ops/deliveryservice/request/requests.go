@@ -26,14 +26,14 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -87,15 +87,15 @@ func (req *TODeliveryServiceRequest) Read(h http.Header, useIMS bool) ([]interfa
 	var runSecond bool
 	deliveryServiceRequests := []interface{}{}
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"assignee":   dbhelpers.WhereColumnInfo{Column: "s.username"},
-		"assigneeId": dbhelpers.WhereColumnInfo{Column: "r.assignee_id", Checker: api.IsInt},
-		"author":     dbhelpers.WhereColumnInfo{Column: "a.username"},
-		"authorId":   dbhelpers.WhereColumnInfo{Column: "r.author_id", Checker: api.IsInt},
-		"changeType": dbhelpers.WhereColumnInfo{Column: "r.change_type"},
-		"createdAt":  dbhelpers.WhereColumnInfo{Column: "r.created_at"},
-		"id":         dbhelpers.WhereColumnInfo{Column: "r.id", Checker: api.IsInt},
-		"status":     dbhelpers.WhereColumnInfo{Column: "r.status"},
-		"xmlId":      dbhelpers.WhereColumnInfo{Column: "r.deliveryservice->>'xmlId'"},
+		"assignee": {Column: "s.username"},
+		"assigneeId": {Column: "r.assignee_id", Checker: api.IsInt},
+		"author":     {Column: "a.username"},
+		"authorId":   {Column: "r.author_id", Checker: api.IsInt},
+		"changeType": {Column: "r.change_type"},
+		"createdAt":  {Column: "r.created_at"},
+		"id":         {Column: "r.id", Checker: api.IsInt},
+		"status":     {Column: "r.status"},
+		"xmlId":      {Column: "r.deliveryservice->>'xmlId'"},
 	}
 
 	p := req.APIInfo().Params

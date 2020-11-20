@@ -32,11 +32,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/rfc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tocookie"
+	"github.com/apache/trafficcontrol/pkg/rfc"
 
 	"github.com/jmoiron/sqlx"
 	sqlmock "gopkg.in/DATA-DOG/go-sqlmock.v1"

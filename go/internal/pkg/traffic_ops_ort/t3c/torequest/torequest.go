@@ -27,6 +27,8 @@ import (
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/t3c/config"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/t3c/util"
 	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"io"
 	"io/ioutil"
 	"mime"
@@ -238,8 +240,8 @@ func (r *TrafficOpsReq) atsTcExecCommand(cmdstr string, queueState int, revalSta
 	case "update-status":
 		args = append(args, "--get-data=update-status")
 	case "send-update":
-		var queueStatus string = "false"
-		var revalStatus string = "false"
+		var queueStatus = "false"
+		var revalStatus = "false"
 		if queueState > 0 {
 			queueStatus = "true"
 		}
@@ -625,7 +627,7 @@ func (r *TrafficOpsReq) processUdevRules(cfg *ConfigFile) error {
 		log.Errorln("unable to read /proc/fs/ext4, cannot audit disks for filesystem usage.")
 	} else {
 		for _, disk := range fs {
-			for k, _ := range udevDevices {
+			for k := range udevDevices {
 				if strings.HasPrefix(k, disk.Name()) {
 					log.Warnf("Device %s has an active partition and filesystem!!!!\n", k)
 				}
@@ -836,8 +838,8 @@ func (r *TrafficOpsReq) verifyPlugins(cfg *ConfigFile) error {
 			plugins := strings.Split(line, "@plugin=")
 			if len(plugins) > 0 {
 				for jj := range plugins {
-					var plugin string = ""
-					var plugin_config string = ""
+					var plugin = ""
+					var plugin_config = ""
 					if jj > 0 {
 						params := strings.Split(plugins[jj], "@pparam=")
 						param_length := len(params)
@@ -903,7 +905,7 @@ func (r *TrafficOpsReq) CheckSystemServices() error {
 				value := result[ii]["value"]
 				arrv := strings.Fields(value)
 				var level []string
-				var enabled bool = false
+				var enabled = false
 				for jj := range arrv {
 					nv := strings.Split(arrv[jj], ":")
 					if len(nv) == 2 && strings.Contains(nv[1], "on") {
@@ -960,8 +962,8 @@ func (r *TrafficOpsReq) GetConfigFile(name string) (*ConfigFile, bool) {
 // GetConfigFileList fetches and parses the multipart config files
 // for a cache from traffic ops and loads them into the configFiles map.
 func (r *TrafficOpsReq) GetConfigFileList() error {
-	var atsUid int = 0
-	var atsGid int = 0
+	var atsUid = 0
+	var atsGid = 0
 
 	atsUser, err := user.Lookup(config.TrafficServerOwner)
 	if err != nil {
@@ -1050,7 +1052,7 @@ func (r *TrafficOpsReq) GetConfigFileList() error {
 
 // GetHeaderComment looks up the tm.toolname parameter from traffic ops.
 func (r *TrafficOpsReq) GetHeaderComment() string {
-	var toolName string = ""
+	var toolName = ""
 	out, err := r.atsTcExec("system-info")
 	if err != nil {
 		log.Errorln(err)
@@ -1130,7 +1132,7 @@ func (r *TrafficOpsReq) CheckSyncDSState() (UpdateStatus, error) {
 
 		if serverStatus.UpdatePending {
 			if r.Cfg.Dispersion > 0 {
-				log.Infof("Sleeping for %ds (dispersion) before proceeding with updates.\n\n", (randDispSec / time.Second))
+				log.Infof("Sleeping for %ds (dispersion) before proceeding with updates.\n\n", randDispSec / time.Second)
 				r.sleepTimer(serverStatus)
 			}
 			updateStatus = UpdateTropsNeeded
@@ -1174,7 +1176,7 @@ func (r *TrafficOpsReq) CheckSyncDSState() (UpdateStatus, error) {
 
 // ProcessConfigFiles processes all config files retrieved from Traffic Ops.
 func (r *TrafficOpsReq) ProcessConfigFiles() (UpdateStatus, error) {
-	var updateStatus UpdateStatus = UpdateTropsNotNeeded
+	var updateStatus = UpdateTropsNotNeeded
 
 	log.Infoln(" ======== Start processing config files ========")
 

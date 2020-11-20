@@ -1,7 +1,7 @@
 module github.com/apache/trafficcontrol
 
 go 1.15
-
+replace github.com/basho/riak-go-client => github.com/basho/riak-go-client v1.7.1-0.20170327205844-5587c16e0b8b
 require (
 	code.cloudfoundry.org/bytefmt v0.0.0-20200131002437-cf55d5288a48
 	github.com/GehirnInc/crypt v0.0.0-20200316065508-bb7000b8a962
@@ -27,6 +27,7 @@ require (
 	github.com/lib/pq v1.8.0
 	github.com/miekg/dns v1.1.35
 	github.com/ogier/pflag v0.0.1
+	github.com/pborman/getopt v1.1.0
 	github.com/pkg/errors v0.9.1
 	go.etcd.io/bbolt v1.3.5
 	golang.org/x/crypto v0.0.0-20201117144127-c1f2f97bffc9

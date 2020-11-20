@@ -24,8 +24,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 //     $self->db->resultset('ProfileParameter')->search( \%criteria, { prefetch => [ 'parameter', 'profile' ] } )->get_column('parameter')->all();

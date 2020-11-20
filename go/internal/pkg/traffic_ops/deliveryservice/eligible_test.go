@@ -22,8 +22,6 @@ import (
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/jmoiron/sqlx"
-
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func TestGetEligibleServers(t *testing.T) {

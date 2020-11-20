@@ -20,7 +20,9 @@ package threadsafe
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
+
 	"sync"
 	"time"
 

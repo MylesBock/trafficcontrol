@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/test"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/jmoiron/sqlx"
 
 	sqlmock "gopkg.in/DATA-DOG/go-sqlmock.v1"
@@ -59,7 +59,7 @@ func TestGetSystemInfo(t *testing.T) {
 	secondVal := "val2"
 
 	var sysInfoParameters = []tc.ParameterNullable{
-		tc.ParameterNullable{
+		{
 			ConfigFile:  &configFile,
 			ID:          &firstID,
 			LastUpdated: &lastUpdated,
@@ -67,9 +67,9 @@ func TestGetSystemInfo(t *testing.T) {
 			Profiles:    json.RawMessage(`["foo","bar"]`),
 			Secure:      &secure,
 			Value:       &firstVal,
-		},
+				},
 
-		tc.ParameterNullable{
+		{
 			ConfigFile:  &configFile,
 			ID:          &secondID,
 			LastUpdated: &lastUpdated,
@@ -77,7 +77,7 @@ func TestGetSystemInfo(t *testing.T) {
 			Profiles:    json.RawMessage(`["foo","bar"]`),
 			Secure:      &secure,
 			Value:       &secondVal,
-		},
+				},
 	}
 
 	for _, ts := range sysInfoParameters {

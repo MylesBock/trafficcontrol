@@ -28,6 +28,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"github.com/apache/trafficcontrol/pkg/log"
 )
 
 // GetRetry attempts to get the given object, retrying with exponential backoff up to cfg.NumRetries.

@@ -33,13 +33,13 @@ import (
 
 	"github.com/lib/pq"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/rfc"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 )
 
 type InvalidationJob struct {
@@ -209,14 +209,14 @@ func (job *InvalidationJob) Read(h http.Header, useIMS bool) ([]interface{}, err
 	var maxTime time.Time
 	var runSecond bool
 	queryParamsToSQLCols := map[string]dbhelpers.WhereColumnInfo{
-		"id":              dbhelpers.WhereColumnInfo{"job.id", api.IsInt},
-		"keyword":         dbhelpers.WhereColumnInfo{"job.keyword", nil},
-		"assetUrl":        dbhelpers.WhereColumnInfo{"job.asset_url", nil},
-		"startTime":       dbhelpers.WhereColumnInfo{"job.start_time", nil},
-		"userId":          dbhelpers.WhereColumnInfo{"job.job_user", api.IsInt},
-		"createdBy":       dbhelpers.WhereColumnInfo{`(SELECT tm_user.username FROM tm_user WHERE tm_user.id=job.job_user)`, nil},
-		"deliveryService": dbhelpers.WhereColumnInfo{`(SELECT deliveryservice.xml_id FROM deliveryservice WHERE deliveryservice.id=job.job_deliveryservice)`, nil},
-		"dsId":            dbhelpers.WhereColumnInfo{"job.job_deliveryservice", api.IsInt},
+		"id": {"job.id", api.IsInt},
+		"keyword":         {"job.keyword", nil},
+		"assetUrl":        {"job.asset_url", nil},
+		"startTime":       {"job.start_time", nil},
+		"userId":          {"job.job_user", api.IsInt},
+		"createdBy":       {`(SELECT tm_user.username FROM tm_user WHERE tm_user.id=job.job_user)`, nil},
+		"deliveryService": {`(SELECT deliveryservice.xml_id FROM deliveryservice WHERE deliveryservice.id=job.job_deliveryservice)`, nil},
+		"dsId":            {"job.job_deliveryservice", api.IsInt},
 	}
 
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(job.APIInfo().Params, queryParamsToSQLCols)
@@ -300,10 +300,10 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	if err := job.Validate(inf.Tx.Tx); err != nil {
 		response := tc.Alerts{
 			[]tc.Alert{
-				tc.Alert{
+				{
 					Text:  err.Error(),
 					Level: tc.ErrorLevel.String(),
-				},
+								},
 			},
 		}
 
@@ -650,7 +650,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response := apiResponse{[]tc.Alert{tc.Alert{"Content invalidation job was deleted", tc.SuccessLevel.String()}}, result}
+	response := apiResponse{[]tc.Alert{{"Content invalidation job was deleted", tc.SuccessLevel.String()}}, result}
 	resp, err := json.Marshal(response)
 	if err != nil {
 		sysErr = fmt.Errorf("encoding response: %v", err)

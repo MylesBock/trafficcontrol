@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -55,11 +55,11 @@ func getAPICapabilities(tx *sqlx.Tx, params map[string]string) ([]tc.APICapabili
 	var err error
 	selectQuery := `SELECT id, http_method, route, capability, last_updated FROM api_capability`
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"id":          dbhelpers.WhereColumnInfo{"id", api.IsInt},
-		"capability":  dbhelpers.WhereColumnInfo{"capability", nil},
-		"httpMethod":  dbhelpers.WhereColumnInfo{"http_method", nil},
-		"route":       dbhelpers.WhereColumnInfo{"route", nil},
-		"lastUpdated": dbhelpers.WhereColumnInfo{"last_updated", nil},
+		"id": {"id", api.IsInt},
+		"capability":  {"capability", nil},
+		"httpMethod":  {"http_method", nil},
+		"route":       {"route", nil},
+		"lastUpdated": {"last_updated", nil},
 	}
 
 	where, orderBy, pagination, queryValues, errs :=

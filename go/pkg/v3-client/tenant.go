@@ -22,7 +22,7 @@ import (
 	"net/http"
 	"net/url"
 
-	tc "github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 const API_TENANTS = apiBase + "/tenants"

@@ -21,13 +21,13 @@ package cdn
 
 import (
 	"fmt"
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"net/http"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/jmoiron/sqlx"
 )

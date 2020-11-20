@@ -27,14 +27,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/test"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func getTestOrigins() []tc.Origin {

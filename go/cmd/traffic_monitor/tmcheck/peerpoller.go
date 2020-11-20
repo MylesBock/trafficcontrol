@@ -21,7 +21,7 @@ package tmcheck
 
 import (
 	"fmt"
-	to "github.com/apache/trafficcontrol/traffic_ops/v2-client"
+	to "github.com/apache/trafficcontrol/pkg/v2-client"
 	"time"
 )
 

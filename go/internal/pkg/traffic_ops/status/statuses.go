@@ -26,11 +26,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -59,9 +59,9 @@ func (v *TOStatus) NewReadObj() interface{}       { return &TOStatus{} }
 func (v *TOStatus) SelectQuery() string           { return selectQuery() }
 func (v *TOStatus) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"id":          dbhelpers.WhereColumnInfo{"id", api.IsInt},
-		"description": dbhelpers.WhereColumnInfo{"description", nil},
-		"name":        dbhelpers.WhereColumnInfo{"name", nil},
+		"id": {"id", api.IsInt},
+		"description": {"description", nil},
+		"name":        {"name", nil},
 	}
 }
 func (v *TOStatus) UpdateQuery() string { return updateQuery() }

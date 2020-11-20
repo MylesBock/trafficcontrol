@@ -85,18 +85,18 @@ func ExampleAlerts_AddAlert() {
 func ExampleAlerts_AddAlerts() {
 	alerts1 := Alerts{
 		[]Alert{
-			Alert{
+			{
 				Level: InfoLevel.String(),
 				Text:  "foo",
-			},
+						},
 		},
 	}
 	alerts2 := Alerts{
 		[]Alert{
-			Alert{
+			{
 				Level: ErrorLevel.String(),
 				Text:  "bar",
-			},
+						},
 		},
 	}
 
@@ -141,7 +141,7 @@ func TestCreateAlerts(t *testing.T) {
 		t.Errorf("Expected %v Got %v", expected, alerts)
 	}
 
-	expected = Alerts{[]Alert{Alert{"message 1", WarnLevel.String()}, Alert{"message 2", WarnLevel.String()}, Alert{"message 3", WarnLevel.String()}}}
+	expected = Alerts{[]Alert{{"message 1", WarnLevel.String()}, {"message 2", WarnLevel.String()}, {"message 3", WarnLevel.String()}}}
 	alerts = CreateAlerts(WarnLevel, "message 1", "message 2", "message 3")
 	if !reflect.DeepEqual(expected, alerts) {
 		t.Errorf("Expected %v Got %v", expected, alerts)

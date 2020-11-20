@@ -20,6 +20,7 @@
 package datareq
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"net/http"
 	"net/url"
 	"time"
@@ -76,7 +77,7 @@ func createAPIPeerStates(peerStates map[tc.TrafficMonitorName]tc.CRStates, peers
 			if !filter.UseCache(cache) {
 				continue
 			}
-			peerState[cache] = []CacheState{CacheState{Value: available.IsAvailable, Ipv4Available: available.Ipv4Available, Ipv6Available: available.Ipv6Available}}
+			peerState[cache] = []CacheState{{Value: available.IsAvailable, Ipv4Available: available.Ipv4Available, Ipv6Available: available.Ipv6Available}}
 		}
 		apiPeerStates.Peers[peer] = peerState
 	}

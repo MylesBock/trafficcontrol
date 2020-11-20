@@ -36,10 +36,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/apache/trafficcontrol/pkg/atscfg"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"golang.org/x/net/publicsuffix"
 
-	toclient "github.com/apache/trafficcontrol/pkg/v3-client"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/atstccfg/torequtil"
+	toclient "github.com/apache/trafficcontrol/pkg/v3-client"
 )
 
 type TOClient struct {

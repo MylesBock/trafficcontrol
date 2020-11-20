@@ -32,8 +32,10 @@ import (
 	"time"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/config"
-	legacyClient "github.com/apache/trafficcontrol/traffic_ops/v2-client"
-	client "github.com/apache/trafficcontrol/traffic_ops/v3-client"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	legacyClient "github.com/apache/trafficcontrol/pkg/v2-client"
+	client "github.com/apache/trafficcontrol/pkg/v3-client"
 
 	jsoniter "github.com/json-iterator/go"
 )
@@ -684,7 +686,7 @@ func CreateMonitorConfig(crConfig tc.CRConfig, mc *tc.TrafficMonitorConfigMap) (
 	// because they're not in the CRConfig.
 	rawDeliveryServices := mc.DeliveryService
 	mc.DeliveryService = map[string]tc.TMDeliveryService{}
-	for name, _ := range crConfig.DeliveryServices {
+	for name := range crConfig.DeliveryServices {
 		if rawDS, ok := rawDeliveryServices[name]; ok {
 			// use the raw DS if it exists, because the CRConfig doesn't have
 			// thresholds or statuses

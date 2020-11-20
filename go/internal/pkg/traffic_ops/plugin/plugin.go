@@ -25,8 +25,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
+	"github.com/apache/trafficcontrol/pkg/log"
 )
 
 // List returns the list of plugin names compiled into the calling executable.

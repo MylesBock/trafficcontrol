@@ -26,8 +26,8 @@ import (
 
 func TestMakePackages(t *testing.T) {
 	params := map[string][]string{
-		"p0": []string{"p0v0", "p0v1"},
-		"1":  []string{"p1v0"},
+		"p0": {"p0v0", "p0v1"},
+		"1":  {"p1v0"},
 	}
 	paramData := makeParamsFromMapArr("serverProfile", LogsXMLFileName, params)
 

@@ -20,6 +20,7 @@
 package datareq
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"strconv"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/peer"

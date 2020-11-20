@@ -26,34 +26,32 @@ import (
 	"time"
 
 	"github.com/apache/trafficcontrol/pkg/tc"
-
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func ExpectedMakeLocations() (map[string]tc.CRConfigLatitudeLongitude, map[string]tc.CRConfigLatitudeLongitude) {
 	return map[string]tc.CRConfigLatitudeLongitude{
-			"cache0": tc.CRConfigLatitudeLongitude{
+			"cache0": {
 				Lat:                 *randFloat64(),
 				Lon:                 *randFloat64(),
 				LocalizationMethods: []tc.LocalizationMethod{tc.LocalizationMethodCZ},
-			},
-			"cache1": tc.CRConfigLatitudeLongitude{
+						},
+			"cache1": {
 				Lat:                 *randFloat64(),
 				Lon:                 *randFloat64(),
 				LocalizationMethods: []tc.LocalizationMethod{tc.LocalizationMethodCZ},
-			},
+						},
 		},
 		map[string]tc.CRConfigLatitudeLongitude{
-			"router0": tc.CRConfigLatitudeLongitude{
+			"router0": {
 				Lat:                 *randFloat64(),
 				Lon:                 *randFloat64(),
 				LocalizationMethods: []tc.LocalizationMethod{tc.LocalizationMethodGeo, tc.LocalizationMethodCZ, tc.LocalizationMethodDeepCZ},
-			},
-			"router1": tc.CRConfigLatitudeLongitude{
+						},
+			"router1": {
 				Lat:                 *randFloat64(),
 				Lon:                 *randFloat64(),
 				LocalizationMethods: []tc.LocalizationMethod{tc.LocalizationMethodGeo, tc.LocalizationMethodCZ, tc.LocalizationMethodDeepCZ},
-			},
+						},
 		}
 }
 

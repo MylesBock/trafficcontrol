@@ -37,10 +37,10 @@ func TestMakeServerUnknown(t *testing.T) {
 	fileName := "myconfig.config"
 
 	params := makeParamsFromMapArr(*server.Profile, fileName, map[string][]string{
-		"location":   []string{"locationshouldnotexist"},
-		"param0name": []string{"param0val0", "param0val1"},
-		"param1name": []string{"param1val0"},
-		"header":     []string{"//hdr"},
+		"location": {"locationshouldnotexist"},
+		"param0name": {"param0val0", "param0val1"},
+		"param1name": {"param1val0"},
+		"header":     {"//hdr"},
 	})
 
 	cfg, err := MakeServerUnknown(fileName, server, params, hdr)

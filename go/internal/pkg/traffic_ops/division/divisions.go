@@ -25,11 +25,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -57,8 +57,8 @@ func (v *TODivision) NewReadObj() interface{} { return &tc.Division{} }
 func (v *TODivision) SelectQuery() string     { return selectQuery() }
 func (v *TODivision) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"id":   dbhelpers.WhereColumnInfo{"id", api.IsInt},
-		"name": dbhelpers.WhereColumnInfo{"name", nil},
+		"id": {"id", api.IsInt},
+		"name": {"name", nil},
 	}
 }
 func (v *TODivision) UpdateQuery() string { return updateQuery() }

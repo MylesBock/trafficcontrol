@@ -107,7 +107,7 @@ func sortParams(params map[string][]string) []param {
 func getServerUnknownConfigCommentType(
 	params map[string][]string,
 ) string {
-	for name, _ := range params {
+	for name := range params {
 		if name == "header" {
 			return ""
 		}

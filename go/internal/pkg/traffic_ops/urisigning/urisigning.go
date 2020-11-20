@@ -29,14 +29,14 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apache/trafficcontrol/pkg/rfc"
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/riaksvc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/rfc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/basho/riak-go-client"
-	"github.com/lestrrat/go-jwx/jwk"
+	"github.com/lestrrat/go-jwx/jwe"
 )
 
 // CDNURIKeysBucket is the namespace or bucket used for CDN URI signing keys.
@@ -45,7 +45,7 @@ const CDNURIKeysBucket = "cdn_uri_sig_keys"
 // URISignerKeyset is the container for the CDN URI signing keys
 type URISignerKeyset struct {
 	RenewalKid *string               `json:"renewal_kid"`
-	Keys       []jwk.EssentialHeader `json:"keys"`
+	Keys       []jwe.EssentialHeader `json:"keys"`
 }
 
 // endpoint handler for fetching uri signing keys from riak

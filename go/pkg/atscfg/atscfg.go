@@ -589,7 +589,7 @@ func getATSMajorVersion(serverParams []tc.Parameter) (int, []string) {
 
 // hasRequiredCapabilities returns whether the given caps has all the required capabilities in the given reqCaps.
 func hasRequiredCapabilities(caps map[ServerCapability]struct{}, reqCaps map[ServerCapability]struct{}) bool {
-	for reqCap, _ := range reqCaps {
+	for reqCap := range reqCaps {
 		if _, ok := caps[reqCap]; !ok {
 			return false
 		}

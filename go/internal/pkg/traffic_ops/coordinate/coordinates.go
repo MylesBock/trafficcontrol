@@ -26,10 +26,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -46,8 +46,8 @@ func (v *TOCoordinate) NewReadObj() interface{}       { return &tc.CoordinateNul
 func (v *TOCoordinate) SelectQuery() string           { return selectQuery() }
 func (v *TOCoordinate) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"id":   dbhelpers.WhereColumnInfo{"id", api.IsInt},
-		"name": dbhelpers.WhereColumnInfo{"name", nil},
+		"id": {"id", api.IsInt},
+		"name": {"name", nil},
 	}
 }
 

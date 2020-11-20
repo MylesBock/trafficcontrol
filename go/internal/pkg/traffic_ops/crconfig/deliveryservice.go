@@ -536,19 +536,19 @@ order by dr.set_number asc
 // If any profiles have conflicting parameters, an error is returned.
 func getDSParams(serverParams map[string]map[string]string) (map[string]string, error) {
 	dsParamNames := map[string]struct{}{
-		"tld.soa.admin":     struct{}{},
-		"tld.soa.expire":    struct{}{},
-		"tld.soa.minimum":   struct{}{},
-		"tld.soa.refresh":   struct{}{},
-		"tld.soa.retry":     struct{}{},
-		"tld.ttls.SOA":      struct{}{},
-		"tld.ttls.NS":       struct{}{},
-		"LogRequestHeaders": struct{}{},
+		"tld.soa.admin": {},
+		"tld.soa.expire":    {},
+		"tld.soa.minimum":   {},
+		"tld.soa.refresh":   {},
+		"tld.soa.retry":     {},
+		"tld.ttls.SOA":      {},
+		"tld.ttls.NS":       {},
+		"LogRequestHeaders": {},
 	}
 	dsParams := map[string]string{}
 	dsParamsOriginalProfile := map[string]string{} // map[paramName]profile - used exclusively for the error message
 	for profile, profileParams := range serverParams {
-		for paramName, _ := range dsParamNames {
+		for paramName := range dsParamNames {
 			paramVal, profileHasParam := profileParams[paramName]
 			if !profileHasParam {
 				continue

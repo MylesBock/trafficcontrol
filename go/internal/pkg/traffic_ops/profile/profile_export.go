@@ -27,9 +27,9 @@ import (
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/jmoiron/sqlx"
 
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/log"
 )
 
 // ExportProfileHandler exports a profile per ID

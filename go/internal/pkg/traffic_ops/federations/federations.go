@@ -30,14 +30,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/rfc"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	"github.com/lib/pq"
 )
@@ -553,14 +553,14 @@ func ReplaceFederationResolverMappingsForCurrentUser(w http.ResponseWriter, r *h
 
 	alerts := tc.Alerts{
 		[]tc.Alert{
-			tc.Alert{
+			{
 				Level: tc.SuccessLevel.String(),
 				Text:  deletedMsg,
-			},
-			tc.Alert{
+						},
+			{
 				Level: tc.SuccessLevel.String(),
 				Text:  createdMsg,
-			},
+						},
 		},
 	}
 	resp := struct {

@@ -28,7 +28,6 @@ import (
 
 	"github.com/basho/riak-go-client"
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 type MockStorageCluster struct {

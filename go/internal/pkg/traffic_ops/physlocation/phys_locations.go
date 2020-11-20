@@ -24,11 +24,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
@@ -49,9 +49,9 @@ func (v *TOPhysLocation) NewReadObj() interface{}       { return &tc.PhysLocatio
 func (v *TOPhysLocation) SelectQuery() string           { return selectQuery() }
 func (v *TOPhysLocation) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"name":   dbhelpers.WhereColumnInfo{"pl.name", nil},
-		"id":     dbhelpers.WhereColumnInfo{"pl.id", api.IsInt},
-		"region": dbhelpers.WhereColumnInfo{"pl.region", api.IsInt},
+		"name": {"pl.name", nil},
+		"id":     {"pl.id", api.IsInt},
+		"region": {"pl.region", api.IsInt},
 	}
 }
 func (v *TOPhysLocation) UpdateQuery() string { return updateQuery() }

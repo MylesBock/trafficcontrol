@@ -132,30 +132,30 @@ func TestGetImportProfileParameters(t *testing.T) {
 		{
 			description: "Success: All import parameters new",
 			mockStorageReturns: map[string][]mockStorageReturn{
-				*param1.Name: []mockStorageReturn{
+				*param1.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						empty: true,
 						query: "SELECT",
 					},
 					// Insert Returns
-					mockStorageReturn{
+					{
 						id:    1,
 						query: "INSERT INTO parameter",
-					},
-				},
-				*param2.Name: []mockStorageReturn{
+														},
+								},
+				*param2.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						empty: true,
 						query: "SELECT",
 					},
 					// Insert Returns
-					mockStorageReturn{
+					{
 						id:    2,
 						query: "INSERT INTO parameter",
-					},
-				},
+														},
+								},
 			},
 			parameters: []tc.ProfileExportImportParameterNullable{
 				param1,
@@ -166,20 +166,20 @@ func TestGetImportProfileParameters(t *testing.T) {
 		{
 			description: "Success: All parameters exisiting",
 			mockStorageReturns: map[string][]mockStorageReturn{
-				*param1.Name: []mockStorageReturn{
+				*param1.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						query: "SELECT",
 						id:    1,
 					},
-				},
-				*param2.Name: []mockStorageReturn{
+								},
+				*param2.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						query: "SELECT",
 						id:    2,
 					},
-				},
+								},
 			},
 			parameters: []tc.ProfileExportImportParameterNullable{
 				param1,
@@ -190,25 +190,25 @@ func TestGetImportProfileParameters(t *testing.T) {
 		{
 			description: "Success: Mix of existing/new parameters",
 			mockStorageReturns: map[string][]mockStorageReturn{
-				*param1.Name: []mockStorageReturn{
+				*param1.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						empty: true,
 						query: "SELECT",
 					},
 					// Insert Returns
-					mockStorageReturn{
+					{
 						id:    1,
 						query: "INSERT INTO parameter",
-					},
-				},
-				*param2.Name: []mockStorageReturn{
+														},
+								},
+				*param2.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						query: "SELECT",
 						id:    2,
 					},
-				},
+								},
 			},
 			parameters: []tc.ProfileExportImportParameterNullable{
 				param1,
@@ -220,25 +220,25 @@ func TestGetImportProfileParameters(t *testing.T) {
 		{
 			description: "Success: Dup of existing",
 			mockStorageReturns: map[string][]mockStorageReturn{
-				*param1.Name: []mockStorageReturn{
+				*param1.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						empty: true,
 						query: "SELECT",
 					},
 					// Insert Returns
-					mockStorageReturn{
+					{
 						id:    1,
 						query: "INSERT INTO parameter",
-					},
-				},
-				*param2.Name: []mockStorageReturn{
+														},
+								},
+				*param2.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						query: "SELECT",
 						id:    2,
 					},
-				},
+								},
 			},
 			parameters: []tc.ProfileExportImportParameterNullable{
 				param1,
@@ -251,14 +251,14 @@ func TestGetImportProfileParameters(t *testing.T) {
 		{
 			description: "Fail: Storage error selecting param",
 			mockStorageReturns: map[string][]mockStorageReturn{
-				*param1.Name: []mockStorageReturn{
+				*param1.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						empty:      true,
 						query:      "SELECT",
 						storageErr: errors.New("storage error"),
-					},
-				},
+														},
+								},
 			},
 			parameters: []tc.ProfileExportImportParameterNullable{
 				param1,
@@ -268,18 +268,18 @@ func TestGetImportProfileParameters(t *testing.T) {
 		{
 			description: "Fail: Storage error inserting param",
 			mockStorageReturns: map[string][]mockStorageReturn{
-				*param1.Name: []mockStorageReturn{
+				*param1.Name: {
 					// Select Returns
-					mockStorageReturn{
+					{
 						empty: true,
 						query: "SELECT",
 					},
 					// Insert Returns
-					mockStorageReturn{
+					{
 						query:      "INSERT INTO parameter",
 						storageErr: errors.New("storage error"),
-					},
-				},
+														},
+								},
 			},
 			parameters: []tc.ProfileExportImportParameterNullable{
 				param1,

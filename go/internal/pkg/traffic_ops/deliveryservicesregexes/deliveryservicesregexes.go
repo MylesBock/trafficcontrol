@@ -27,12 +27,12 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/lib/pq"
 )
@@ -102,8 +102,8 @@ JOIN regex as r ON dsr.regex = r.id
 JOIN type as rt ON r.type = rt.id
 `
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"dsid": dbhelpers.WhereColumnInfo{"ds.ID", api.IsInt},
-		"id":   dbhelpers.WhereColumnInfo{"r.id", api.IsInt}}
+		"dsid": {"ds.ID", api.IsInt},
+		"id":   {"r.id", api.IsInt}}
 	where, _, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(inf.Params, queryParamsToQueryCols)
 	if len(errs) > 0 {
 		api.HandleErr(w, r, inf.Tx.Tx, http.StatusBadRequest, util.JoinErrs(errs), nil)

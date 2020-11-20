@@ -30,13 +30,13 @@ import (
 	"testing"
 	"time"
 
-	tc_log "github.com/apache/trafficcontrol/lib/log"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/cache"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/dsdata"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/health"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/peer"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/threadsafe"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
+	tc_log "github.com/apache/trafficcontrol/lib/log"
 )
 
 func checkLogOutput(t *testing.T, buffer *bytes.Buffer, toData todata.TOData, caches []tc.CacheName) {
@@ -65,12 +65,12 @@ func TestCreateStats(t *testing.T) {
 	localCRStates := peer.NewCRStatesThreadsafe()
 
 	dses := []tc.DeliveryServiceName{}
-	for ds, _ := range toData.DeliveryServiceServers {
+	for ds := range toData.DeliveryServiceServers {
 		dses = append(dses, ds)
 	}
 
 	caches := []tc.CacheName{}
-	for cache, _ := range toData.ServerDeliveryServices {
+	for cache := range toData.ServerDeliveryServices {
 		caches = append(caches, cache)
 	}
 
@@ -116,7 +116,7 @@ func TestCreateStats(t *testing.T) {
 	}
 
 	caMap := map[tc.CacheName]struct{}{}
-	for ca, _ := range toData.ServerDeliveryServices {
+	for ca := range toData.ServerDeliveryServices {
 		caMap[ca] = struct{}{}
 	}
 
@@ -387,7 +387,7 @@ func randPrecomputedData(toData todata.TOData) cache.PrecomputedData {
 
 func randDsStats(toData todata.TOData) map[string]*cache.DSStat {
 	a := map[string]*cache.DSStat{}
-	for ds, _ := range toData.DeliveryServiceServers {
+	for ds := range toData.DeliveryServiceServers {
 		a[string(ds)] = randAStat()
 	}
 	return a

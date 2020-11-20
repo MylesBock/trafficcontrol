@@ -22,7 +22,7 @@ package threadsafe
 import (
 	"sync"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 // TrafficMonitorConfigMapThreadsafe encapsulates a LegacyTrafficMonitorConfigMap safe for multiple readers and a single writer.

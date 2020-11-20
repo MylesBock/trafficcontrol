@@ -25,11 +25,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 
 	"github.com/asaskevich/govalidator"
 	validation "github.com/go-ozzo/ozzo-validation"
@@ -58,10 +58,10 @@ func (v *TOCDN) NewReadObj() interface{}       { return &tc.CDNNullable{} }
 func (v *TOCDN) SelectQuery() string           { return selectQuery() }
 func (v *TOCDN) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"domainName":    dbhelpers.WhereColumnInfo{"domain_name", nil},
-		"dnssecEnabled": dbhelpers.WhereColumnInfo{"dnssec_enabled", nil},
-		"id":            dbhelpers.WhereColumnInfo{"id", api.IsInt},
-		"name":          dbhelpers.WhereColumnInfo{"name", nil},
+		"domainName": {"domain_name", nil},
+		"dnssecEnabled": {"dnssec_enabled", nil},
+		"id":            {"id", api.IsInt},
+		"name":          {"name", nil},
 	}
 }
 func (v *TOCDN) UpdateQuery() string { return updateQuery() }

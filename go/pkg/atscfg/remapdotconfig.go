@@ -383,7 +383,7 @@ func buildEdgeRemapLine(
 		text += ` @plugin=cachekey.so`
 
 		keys := []string{}
-		for key, _ := range cacheKeyConfigParams {
+		for key := range cacheKeyConfigParams {
 			keys = append(keys, key)
 		}
 		sort.Sort(sort.StringSlice(keys))

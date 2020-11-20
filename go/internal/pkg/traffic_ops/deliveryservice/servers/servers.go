@@ -29,17 +29,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/rfc"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/deliveryservice"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/jmoiron/sqlx"
@@ -798,8 +798,8 @@ func (dss *TODSSDeliveryService) Read(h http.Header, useIMS bool) ([]interface{}
 	// Query Parameters to Database Query column mappings
 	// see the fields mapped in the SQL query
 	queryParamsToSQLCols := map[string]dbhelpers.WhereColumnInfo{
-		"xml_id": dbhelpers.WhereColumnInfo{"ds.xml_id", nil},
-		"xmlId":  dbhelpers.WhereColumnInfo{"ds.xml_id", nil},
+		"xml_id": {"ds.xml_id", nil},
+		"xmlId":  {"ds.xml_id", nil},
 	}
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(params, queryParamsToSQLCols)
 	if len(errs) > 0 {

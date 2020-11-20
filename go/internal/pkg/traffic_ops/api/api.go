@@ -38,13 +38,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/rfc"
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tocookie"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	influx "github.com/influxdata/influxdb/client/v2"
 	"github.com/jmoiron/sqlx"

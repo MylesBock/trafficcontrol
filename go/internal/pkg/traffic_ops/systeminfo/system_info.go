@@ -24,9 +24,9 @@ import (
 	"net/http"
 	"time"
 
-	tc "github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/jmoiron/sqlx"
 )

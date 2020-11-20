@@ -23,6 +23,7 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"io"
 	"math"
 	"strconv"

@@ -23,6 +23,8 @@ import (
 	"strconv"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/peer"
+	"github.com/apache/trafficcontrol/pkg/tc"
+
 )
 
 func srvAPICacheAvailableCount(localStates peer.CRStatesThreadsafe) []byte {

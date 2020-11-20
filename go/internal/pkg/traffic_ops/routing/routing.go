@@ -33,11 +33,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/plugin"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/routing/middleware"
+	"github.com/apache/trafficcontrol/pkg/log"
 
 	"github.com/jmoiron/sqlx"
 )

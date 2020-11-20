@@ -43,36 +43,36 @@ func TestGetDailyStats(t *testing.T) {
 
 	// Passing a non-empty result slice should behave as expected
 	results = []influx.Result{
-		influx.Result{
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateDailyValues(0),
 				},
 			},
-		},
-		influx.Result{
+				},
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateDailyValues(1),
 				},
-				models.Row{
+				{
 					Values: generateDailyValues(2),
 				},
-			},
-		},
-		influx.Result{
+					},
+				},
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateDailyValues(3),
 				},
-				models.Row{
+				{
 					Values: generateDailyValues(4),
 				},
-				models.Row{
+				{
 					Values: generateDailyValues(5),
+						},
+					},
 				},
-			},
-		},
 	}
 	dailyStatsMap = getDailyStats(results)
 	assert.NotNil(t, dailyStatsMap)
@@ -93,36 +93,36 @@ func TestGetDeliveryServicesStats(t *testing.T) {
 	assert.Empty(t, getDeliveryServiceStatsMap)
 
 	results = []influx.Result{
-		influx.Result{
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateDeliveryServiceValues(0),
 				},
 			},
-		},
-		influx.Result{
+				},
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateDeliveryServiceValues(1),
 				},
-				models.Row{
+				{
 					Values: generateDeliveryServiceValues(2),
 				},
-			},
-		},
-		influx.Result{
+					},
+				},
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateDeliveryServiceValues(3),
 				},
-				models.Row{
+				{
 					Values: generateDeliveryServiceValues(4),
 				},
-				models.Row{
+				{
 					Values: generateDeliveryServiceValues(5),
+						},
+					},
 				},
-			},
-		},
 	}
 	getDeliveryServiceStatsMap = getDeliveryServiceStats(results)
 	assert.NotNil(t, getDeliveryServiceStatsMap)
@@ -143,36 +143,36 @@ func TestGetCacheStats(t *testing.T) {
 	assert.Empty(t, getCacheStatsMap)
 
 	results = []influx.Result{
-		influx.Result{
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateCacheValues(0),
 				},
 			},
-		},
-		influx.Result{
+				},
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateCacheValues(1),
 				},
-				models.Row{
+				{
 					Values: generateCacheValues(2),
 				},
-			},
-		},
-		influx.Result{
+					},
+				},
+		{
 			Series: []models.Row{
-				models.Row{
+				{
 					Values: generateCacheValues(3),
 				},
-				models.Row{
+				{
 					Values: generateCacheValues(4),
 				},
-				models.Row{
+				{
 					Values: generateCacheValues(5),
+						},
+					},
 				},
-			},
-		},
 	}
 	getCacheStatsMap = getCacheStats(results)
 	assert.NotNil(t, getCacheStatsMap)

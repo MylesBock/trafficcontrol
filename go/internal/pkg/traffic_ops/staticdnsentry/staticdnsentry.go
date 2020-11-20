@@ -25,11 +25,11 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/go-ozzo/ozzo-validation/is"
 )
@@ -49,16 +49,16 @@ func (v *TOStaticDNSEntry) NewReadObj() interface{}       { return &tc.StaticDNS
 func (v *TOStaticDNSEntry) SelectQuery() string           { return selectQuery() }
 func (v *TOStaticDNSEntry) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"address":           dbhelpers.WhereColumnInfo{"sde.address", nil},
-		"cachegroup":        dbhelpers.WhereColumnInfo{"cg.name", nil},
-		"cachegroupId":      dbhelpers.WhereColumnInfo{"cg.id", nil},
-		"deliveryservice":   dbhelpers.WhereColumnInfo{"ds.xml_id", nil},
-		"deliveryserviceId": dbhelpers.WhereColumnInfo{"sde.deliveryservice", nil},
-		"host":              dbhelpers.WhereColumnInfo{"sde.host", nil},
-		"id":                dbhelpers.WhereColumnInfo{"sde.id", nil},
-		"ttl":               dbhelpers.WhereColumnInfo{"sde.ttl", nil},
-		"type":              dbhelpers.WhereColumnInfo{"tp.name", nil},
-		"typeId":            dbhelpers.WhereColumnInfo{"tp.id", nil},
+		"address": {"sde.address", nil},
+		"cachegroup":        {"cg.name", nil},
+		"cachegroupId":      {"cg.id", nil},
+		"deliveryservice":   {"ds.xml_id", nil},
+		"deliveryserviceId": {"sde.deliveryservice", nil},
+		"host":              {"sde.host", nil},
+		"id":                {"sde.id", nil},
+		"ttl":               {"sde.ttl", nil},
+		"type":              {"tp.name", nil},
+		"typeId":            {"tp.id", nil},
 	}
 }
 func (v *TOStaticDNSEntry) UpdateQuery() string { return updateQuery() }

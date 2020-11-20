@@ -27,13 +27,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/jmoiron/sqlx"
@@ -65,9 +65,9 @@ func (ssc *TOServerServerCapability) NewReadObj() interface{} {
 func (ssc *TOServerServerCapability) SelectQuery() string { return scSelectQuery() }
 func (ssc *TOServerServerCapability) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		ServerCapabilityQueryParam: dbhelpers.WhereColumnInfo{"sc.server_capability", nil},
-		ServerQueryParam:           dbhelpers.WhereColumnInfo{"s.id", api.IsInt},
-		ServerHostNameQueryParam:   dbhelpers.WhereColumnInfo{"s.host_name", nil},
+		ServerCapabilityQueryParam: {"sc.server_capability", nil},
+		ServerQueryParam:           {"s.id", api.IsInt},
+		ServerHostNameQueryParam:   {"s.host_name", nil},
 	}
 
 }

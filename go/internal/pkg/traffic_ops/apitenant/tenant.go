@@ -25,13 +25,13 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/lib/pq"
 	"net/http"
@@ -63,11 +63,11 @@ func (v *TOTenant) SelectQuery() string {
 }
 func (v *TOTenant) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"active":      dbhelpers.WhereColumnInfo{Column: "q.active", Checker: nil},
-		"id":          dbhelpers.WhereColumnInfo{Column: "q.id", Checker: api.IsInt},
-		"name":        dbhelpers.WhereColumnInfo{Column: "q.name", Checker: nil},
-		"parent_id":   dbhelpers.WhereColumnInfo{Column: "q.parent_id", Checker: api.IsInt},
-		"parent_name": dbhelpers.WhereColumnInfo{Column: "p.name", Checker: nil},
+		"active": {Column: "q.active", Checker: nil},
+		"id":          {Column: "q.id", Checker: api.IsInt},
+		"name":        {Column: "q.name", Checker: nil},
+		"parent_id":   {Column: "q.parent_id", Checker: api.IsInt},
+		"parent_name": {Column: "p.name", Checker: nil},
 	}
 }
 func (v *TOTenant) UpdateQuery() string { return updateQuery() }

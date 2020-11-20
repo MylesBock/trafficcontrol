@@ -28,9 +28,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/monitoring"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 func ExpectedGetSnapshot(crc *tc.CRConfig) ([]byte, error) {

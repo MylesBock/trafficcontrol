@@ -17,7 +17,7 @@ package thread
 import (
 	"sync"
 
-	cacheobj "github.com/apache/trafficcontrol/internal/pkg/grove/cacheobj"
+	"github.com/apache/trafficcontrol/internal/pkg/grove/cacheobj"
 )
 
 type Getter interface {

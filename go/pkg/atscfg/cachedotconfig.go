@@ -135,7 +135,7 @@ func makeCacheDotConfigEdge(
 	}
 
 	linesArr := []string{}
-	for line, _ := range lines {
+	for line := range lines {
 		linesArr = append(linesArr, line)
 	}
 	sort.Strings(linesArr)

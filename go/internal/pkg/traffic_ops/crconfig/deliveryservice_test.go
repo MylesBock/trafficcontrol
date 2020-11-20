@@ -29,8 +29,6 @@ import (
 	"time"
 
 	"github.com/apache/trafficcontrol/pkg/tc"
-
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func randDS() tc.CRConfigDeliveryService {
@@ -93,25 +91,25 @@ func randDS() tc.CRConfigDeliveryService {
 		IP6RoutingEnabled: randBool(),
 		RoutingName:       randStr(),
 		BypassDestination: map[string]*tc.CRConfigBypassDestination{
-			"HTTP": &tc.CRConfigBypassDestination{
+			"HTTP": {
 				// IP: randStr(),
 				// IP6: randStr(),
 				// CName: randStr(),
 				// TTL: randInt(),
 				FQDN: randStr(),
 				// Port: randStr(),
-			},
+						},
 		},
 		DeepCachingType: nil,
 		GeoEnabled:      nil,
 		// GeoLimitRedirectURL: randStr(),
 		StaticDNSEntries: []tc.CRConfigStaticDNSEntry{
-			tc.CRConfigStaticDNSEntry{
+			{
 				Name:  *randStr(),
 				TTL:   *randInt(),
 				Type:  *randStr(),
 				Value: *randStr(),
-			},
+						},
 		},
 	}
 }
@@ -253,7 +251,7 @@ func TestMakeDSes(t *testing.T) {
 
 func ExpectedGetServerProfileParams(expectedMakeDSes map[string]tc.CRConfigDeliveryService) map[string]map[string]string {
 	expected := map[string]map[string]string{}
-	for dsName, _ := range expectedMakeDSes {
+	for dsName := range expectedMakeDSes {
 		expected[dsName] = map[string]string{
 			"param0": "val0",
 			"param1": "val1",
@@ -329,7 +327,7 @@ func ExpectedGetDSRegexesDomains(expectedDSParams map[string]string) (map[string
 		domain = val
 	}
 
-	for dsName, _ := range expectedDSParams {
+	for dsName := range expectedDSParams {
 		pattern := `.*\.` + dsName + `\..*`
 
 		matchsets[dsName][setnum] = &tc.MatchSet{}

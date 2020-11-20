@@ -21,6 +21,7 @@ package datareq
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"net/url"
 	"strconv"
 	"strings"
@@ -103,13 +104,13 @@ func (f *CacheStatFilter) WithinStatHistoryMax(n uint64) bool {
 // If `type` is empty, all cache types are returned.
 func NewCacheStatFilter(path string, params url.Values, cacheTypes map[tc.CacheName]tc.CacheType) (cache.Filter, error) {
 	validParams := map[string]struct{}{
-		"hc":             struct{}{},
-		"stats":          struct{}{},
-		"interfaceStats": struct{}{},
-		"wildcard":       struct{}{},
-		"type":           struct{}{},
-		"hosts":          struct{}{},
-		"cache":          struct{}{},
+		"hc": {},
+		"stats":          {},
+		"interfaceStats": {},
+		"wildcard":       {},
+		"type":           {},
+		"hosts":          {},
+		"cache":          {},
 	}
 	if len(params) > len(validParams) {
 		return nil, fmt.Errorf("invalid query parameters")

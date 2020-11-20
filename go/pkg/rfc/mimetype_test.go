@@ -171,22 +171,22 @@ func ExampleMimeTypesFromAccept() {
 func ExampleSortMimeTypes() {
 	// Normally don't do this, but for the sake of brevity in an example I will
 	mimes := []MimeType{
-		MimeType{
+		{
 			"text/html",
 			map[string]string{},
-		},
-		MimeType{
+				},
+		{
 			"text/xml",
 			map[string]string{"q": "0.9"},
-		},
-		MimeType{
+				},
+		{
 			"text/*",
 			map[string]string{"q": "0.9"},
-		},
-		MimeType{
+				},
+		{
 			"*/*",
 			map[string]string{},
-		},
+				},
 	}
 
 	SortMimeTypes(mimes)

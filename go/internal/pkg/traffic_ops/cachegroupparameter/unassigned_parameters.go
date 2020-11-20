@@ -22,18 +22,18 @@ package cachegroupparameter
 import (
 	"errors"
 	"fmt"
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"net/http"
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/parameter"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 )
 
 // TOCacheGroupUnassignedParameter Unassigned Parameter TO request
@@ -45,7 +45,7 @@ type TOCacheGroupUnassignedParameter struct {
 // ParamColumns Parameter Where Column definitions
 func (cgunparam *TOCacheGroupUnassignedParameter) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		ParameterIDQueryParam: dbhelpers.WhereColumnInfo{"p.id", api.IsInt},
+		ParameterIDQueryParam: {"p.id", api.IsInt},
 	}
 }
 

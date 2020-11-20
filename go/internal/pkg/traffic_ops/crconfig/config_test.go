@@ -25,8 +25,6 @@ import (
 	"strings"
 	"testing"
 	"time"
-
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func ExpectedGetConfigParams(domain string) []CRConfigConfigParameter {

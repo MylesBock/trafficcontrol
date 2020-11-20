@@ -21,6 +21,7 @@ package health
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"sync"
 	"time"
 )

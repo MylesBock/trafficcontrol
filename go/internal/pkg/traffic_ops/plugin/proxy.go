@@ -21,8 +21,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/pkg/log"
 )
 
 // The proxy plugin reverse-proxies to other HTTP services, as configured.

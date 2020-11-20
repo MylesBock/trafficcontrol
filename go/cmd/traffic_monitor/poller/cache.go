@@ -21,6 +21,7 @@ package poller
 
 import (
 	"bytes"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"io"
 	"math/rand"
 	"runtime"
@@ -212,7 +213,7 @@ func diffConfigs(old CachePollerConfig, new CachePollerConfig) ([]string, []Cach
 	additions := []CachePollInfo{}
 
 	if old.Interval != new.Interval || old.NoKeepAlive != new.NoKeepAlive {
-		for id, _ := range old.Urls {
+		for id := range old.Urls {
 			deletions = append(deletions, id)
 		}
 		for id, pollCfg := range new.Urls {

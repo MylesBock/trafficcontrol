@@ -20,6 +20,9 @@
 package datareq
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
+
 	"math"
 	"runtime"
 	"sort"
@@ -102,7 +105,7 @@ func getStats(staticAppData config.StaticAppData, pollingInterval time.Duration,
 
 	oldestPolledPeer, oldestPolledPeerTime := oldestPeerPollTime(peerStates.GetQueryTimes(), peerStates.GetPeersOnline())
 	s.OldestPolledPeer = string(oldestPolledPeer)
-	s.OldestPolledPeerMs = time.Now().Sub((oldestPolledPeerTime)).Nanoseconds() / util.MSPerNS
+	s.OldestPolledPeerMs = time.Now().Sub(oldestPolledPeerTime).Nanoseconds() / util.MSPerNS
 
 	s.QueryInterval95thPercentile = getCacheTimePercentile(lastHealthTimes, 0.95).Nanoseconds() / util.MSPerNS
 

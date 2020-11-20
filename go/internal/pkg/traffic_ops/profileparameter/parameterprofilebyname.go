@@ -25,8 +25,8 @@ import (
 	"github.com/apache/trafficcontrol/pkg/util"
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 const API_PROFILES_NAME_NAME_PARAMETERS = "profiles/name/{name}/parameters"

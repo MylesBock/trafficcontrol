@@ -24,6 +24,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/t3c/config"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/gofrs/flock"
 	"io/ioutil"
 	"math/rand"
@@ -143,8 +144,8 @@ func ReadFile(fn string) ([]byte, error) {
 }
 
 func GetServiceStatus(name string) (ServiceStatus, int, error) {
-	var pid int = -1
-	var active bool = false
+	var pid = -1
+	var active = false
 
 	output, rc, err := ExecCommand("/usr/sbin/service", name, "status")
 	// service is down
@@ -218,9 +219,9 @@ func WriteFileWithOwner(fn string, data []byte, uid int, gid int, perm os.FileMo
 }
 
 func PackageAction(cmdstr string, name string) (bool, error) {
-	var rc int = -1
+	var rc = -1
 	var err error = nil
-	var result bool = false
+	var result = false
 
 	switch cmdstr {
 	case "info":

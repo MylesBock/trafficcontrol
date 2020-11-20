@@ -29,6 +29,10 @@ import (
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/peer"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/threadsafe"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
+
 )
 
 // Used as a dummy value for evaluating threshold stats (which don't use real

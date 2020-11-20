@@ -20,6 +20,7 @@ package cache
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"time"
 )
 

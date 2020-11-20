@@ -23,6 +23,8 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/pborman/getopt"
 	"net/url"
 	"os"
 	"os/exec"
@@ -30,8 +32,8 @@ import (
 	"time"
 )
 
-var TSHome string = "/opt/trafficserver"
-var TSConfigDir string = "/opt/trafficserver/etc/trafficserver"
+var TSHome = "/opt/trafficserver"
+var TSConfigDir = "/opt/trafficserver/etc/trafficserver"
 
 const (
 	StatusDir          = "/opt/ort/status"
@@ -129,7 +131,7 @@ func directoryExists(dir string) (bool, os.FileInfo) {
 func GetTSPackageHome() string {
 	var dir []string
 	var output bytes.Buffer
-	var tsHome string = ""
+	var tsHome = ""
 	var files []string
 
 	cmd := exec.Command("/bin/rpm", "-q", "-c", "trafficserver")

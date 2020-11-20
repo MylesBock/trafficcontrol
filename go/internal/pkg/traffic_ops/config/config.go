@@ -30,10 +30,10 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/riaksvc"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/rfc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/riaksvc"
 	"github.com/basho/riak-go-client"
 )
 

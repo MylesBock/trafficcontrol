@@ -32,8 +32,6 @@ import (
 
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 type StringArray pq.StringArray
@@ -140,17 +138,17 @@ func randServer(ipService bool, ip6Service bool) tc.CRConfigTrafficOpsServer {
 
 func ExpectedGetServerParams() map[string]ServerParams {
 	return map[string]ServerParams{
-		"cache0": ServerParams{
+		"cache0": {
 			APIPort:          randStr(),
 			SecureAPIPort:    randStr(),
 			Weight:           randFloat64(),
 			WeightMultiplier: randFloat64(),
-		},
-		"cache1": ServerParams{
+				},
+		"cache1": {
 			APIPort:          randStr(),
 			Weight:           randFloat64(),
 			WeightMultiplier: randFloat64(),
-		},
+				},
 	}
 }
 
@@ -489,8 +487,8 @@ func TestGetAllServersNonService(t *testing.T) {
 
 func ExpectedGetServerDSNames() map[tc.CacheName][]tc.DeliveryServiceName {
 	return map[tc.CacheName][]tc.DeliveryServiceName{
-		"cache0": []tc.DeliveryServiceName{"ds0", "ds1"},
-		"cache1": []tc.DeliveryServiceName{"ds0", "ds1"},
+		"cache0": {"ds0", "ds1"},
+		"cache1": {"ds0", "ds1"},
 	}
 }
 

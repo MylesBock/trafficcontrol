@@ -24,8 +24,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/jmoiron/sqlx"
 	sqlmock "gopkg.in/DATA-DOG/go-sqlmock.v1"
 )

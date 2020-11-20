@@ -26,15 +26,15 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -114,8 +114,8 @@ func read(h http.Header, tx *sqlx.Tx, parameters map[string]string, user *auth.C
 	var maxTime time.Time
 	var runSecond bool
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"deliveryservice": dbhelpers.WhereColumnInfo{"st.deliveryservice", api.IsInt},
-		"target":          dbhelpers.WhereColumnInfo{"st.target", api.IsInt},
+		"deliveryservice": {"st.deliveryservice", api.IsInt},
+		"target":          {"st.target", api.IsInt},
 	}
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(parameters, queryParamsToQueryCols)
 	if len(errs) > 0 {

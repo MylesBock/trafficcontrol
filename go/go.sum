@@ -37,6 +37,8 @@ github.com/basho/backoff v0.0.0-20150307023525-2ff7c4694083 h1:GKs410QTI0WKMlVOH
 github.com/basho/backoff v0.0.0-20150307023525-2ff7c4694083/go.mod h1:LPMmhtk79U7hVIuDjCUSLi5eujsYZhjUYremMNOd7/Y=
 github.com/basho/riak-go-client v1.7.0 h1:tswHqvworxn0sGV8lL4HiPjrwWUqdhlsLbtXscUTbKo=
 github.com/basho/riak-go-client v1.7.0/go.mod h1:/kA2cT67OJUBL2iod0m2oK9iIOzp++uogoqJRLWFeCo=
+github.com/basho/riak-go-client v1.7.1-0.20170327205844-5587c16e0b8b h1:vSR1g20UzfoT5R+mBYb3msz+alUk68AfG/h52WJ/MrM=
+github.com/basho/riak-go-client v1.7.1-0.20170327205844-5587c16e0b8b/go.mod h1:/kA2cT67OJUBL2iod0m2oK9iIOzp++uogoqJRLWFeCo=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=
 github.com/bmizerany/pat v0.0.0-20170815010413-6226ea591a40/go.mod h1:8rLXio+WjiTceGBHIoTvn60HIbs7Hm7bcHjyrSqYB9c=
@@ -219,6 +221,8 @@ github.com/onsi/gomega v1.10.3/go.mod h1:V9xEwhxec5O8UDM77eCW8vLymOMltsqPVYWrpDs
 github.com/opentracing/opentracing-go v1.0.2/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
 github.com/opentracing/opentracing-go v1.0.3-0.20180606204148-bd9c31933947/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
 github.com/paulbellamy/ratecounter v0.2.0/go.mod h1:Hfx1hDpSGoqxkVVpBi/IlYD7kChlfo5C6hzIHwPqfFE=
+github.com/pborman/getopt v1.1.0 h1:eJ3aFZroQqq0bWmraivjQNt6Dmm5M0h2JcDW38/Azb0=
+github.com/pborman/getopt v1.1.0/go.mod h1:FxXoW1Re00sQG/+KIkuSqRL/LwQgSkv7uyac+STFsbk=
 github.com/peterh/liner v1.0.1-0.20180619022028-8c1271fcf47f/go.mod h1:xIteQHvHuaLYG9IFj6mSxM0fCKrs34IrEQUhOYuGPHc=
 github.com/philhofer/fwd v1.0.0/go.mod h1:gk3iGcWd9+svBvR0sR+KPcfE+RNWozjowpeBVG3ZVNU=
 github.com/pierrec/lz4 v2.0.5+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=

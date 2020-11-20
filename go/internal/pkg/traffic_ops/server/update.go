@@ -26,9 +26,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 // UpdateHandler implements an http handler that updates a server's upd_pending and reval_pending values.

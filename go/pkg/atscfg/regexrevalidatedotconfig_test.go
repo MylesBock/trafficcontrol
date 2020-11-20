@@ -41,12 +41,12 @@ func TestMakeRegexRevalidateDotConfig(t *testing.T) {
 	dses := []DeliveryService{*ds}
 
 	params := makeParamsFromMapArr("GLOBAL", RegexRevalidateFileName, map[string][]string{
-		RegexRevalidateMaxRevalDurationDaysParamName: []string{"42"},
-		"unrelated": []string{"unrelated0", "unrelated1"},
+		RegexRevalidateMaxRevalDurationDaysParamName: {"42"},
+		"unrelated": {"unrelated0", "unrelated1"},
 	})
 
 	jobs := []tc.Job{
-		tc.Job{
+		{
 			AssetURL:        "assetURL0",
 			StartTime:       time.Now().Add(42*24*time.Hour + time.Hour).Format(tc.JobTimeFormat),
 			DeliveryService: "myds",
@@ -54,8 +54,8 @@ func TestMakeRegexRevalidateDotConfig(t *testing.T) {
 			ID:              42,
 			Parameters:      "TTL:14h",
 			Keyword:         JobKeywordPurge,
-		},
-		tc.Job{
+				},
+		{
 			AssetURL:        "expiredassetURL0",
 			StartTime:       time.Now().Add(-24 * time.Hour).Format(tc.JobTimeFormat),
 			DeliveryService: "expiredmyds",
@@ -63,7 +63,7 @@ func TestMakeRegexRevalidateDotConfig(t *testing.T) {
 			ID:              42,
 			Parameters:      "TTL:14h",
 			Keyword:         JobKeywordPurge,
-		},
+				},
 	}
 
 	cfg, err := MakeRegexRevalidateDotConfig(server, dses, params, jobs, hdr)

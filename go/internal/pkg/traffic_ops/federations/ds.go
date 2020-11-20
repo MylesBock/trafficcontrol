@@ -27,9 +27,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/lib/pq"
 )
@@ -135,8 +135,8 @@ func (v *TOFedDSes) NewReadObj() interface{} { return &tc.FederationDeliveryServ
 func (v *TOFedDSes) SelectQuery() string     { return selectQuery() }
 func (v *TOFedDSes) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"id":   dbhelpers.WhereColumnInfo{"fds.federation", api.IsInt},
-		"dsID": dbhelpers.WhereColumnInfo{"fds.deliveryservice", api.IsInt},
+		"id": {"fds.federation", api.IsInt},
+		"dsID": {"fds.deliveryservice", api.IsInt},
 	}
 }
 func (v *TOFedDSes) GetType() string {

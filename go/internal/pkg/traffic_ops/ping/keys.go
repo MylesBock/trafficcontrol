@@ -22,9 +22,9 @@ package ping
 import (
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/riaksvc"
+	"github.com/apache/trafficcontrol/pkg/util"
 )
 
 const API_VAULT_PING = "/vault/ping"

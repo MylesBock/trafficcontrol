@@ -24,7 +24,8 @@ import (
 	"time"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/dsdata"
-	to "github.com/apache/trafficcontrol/traffic_ops/v2-client"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	to "github.com/apache/trafficcontrol/pkg/v2-client"
 
 	"github.com/json-iterator/go"
 )
@@ -76,7 +77,7 @@ func hasCaches(dsName string, crconfig *tc.CRConfig) bool {
 
 // ValidateDSStatsData validates that all delivery services in the given CRConfig with caches assigned exist in the given DSStats.
 func ValidateDSStatsData(dsStats *dsdata.StatsOld, crconfig *tc.CRConfig) error {
-	for dsName, _ := range crconfig.DeliveryServices {
+	for dsName := range crconfig.DeliveryServices {
 		if !hasCaches(dsName, crconfig) {
 			continue
 		}

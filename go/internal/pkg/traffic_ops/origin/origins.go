@@ -29,14 +29,14 @@ import (
 
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/go-ozzo/ozzo-validation/is"
@@ -155,14 +155,14 @@ func getOrigins(h http.Header, params map[string]string, tx *sqlx.Tx, user *auth
 	// Query Parameters to Database Query column mappings
 	// see the fields mapped in the SQL query
 	queryParamsToSQLCols := map[string]dbhelpers.WhereColumnInfo{
-		"cachegroup":      dbhelpers.WhereColumnInfo{"o.cachegroup", api.IsInt},
-		"coordinate":      dbhelpers.WhereColumnInfo{"o.coordinate", api.IsInt},
-		"deliveryservice": dbhelpers.WhereColumnInfo{"o.deliveryservice", api.IsInt},
-		"id":              dbhelpers.WhereColumnInfo{"o.id", api.IsInt},
-		"name":            dbhelpers.WhereColumnInfo{"o.name", nil},
-		"primary":         dbhelpers.WhereColumnInfo{"o.is_primary", api.IsBool},
-		"profileId":       dbhelpers.WhereColumnInfo{"o.profile", api.IsInt},
-		"tenant":          dbhelpers.WhereColumnInfo{"o.tenant", api.IsInt},
+		"cachegroup": {"o.cachegroup", api.IsInt},
+		"coordinate":      {"o.coordinate", api.IsInt},
+		"deliveryservice": {"o.deliveryservice", api.IsInt},
+		"id":              {"o.id", api.IsInt},
+		"name":            {"o.name", nil},
+		"primary":         {"o.is_primary", api.IsBool},
+		"profileId":       {"o.profile", api.IsInt},
+		"tenant":          {"o.tenant", api.IsInt},
 	}
 
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(params, queryParamsToSQLCols)

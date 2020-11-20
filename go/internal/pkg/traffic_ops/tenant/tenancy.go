@@ -28,10 +28,10 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 )
 
 // DeliveryServiceTenantInfo provides only deliveryservice info needed here

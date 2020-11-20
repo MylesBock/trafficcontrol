@@ -25,7 +25,7 @@ import (
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/t3c/config"
 )
 
-var testCfg config.Cfg = config.Cfg{
+var testCfg = config.Cfg{
 	Dispersion:          300,
 	LogLocationDebug:    "stdout",
 	LogLocationErr:      "stdout",

@@ -20,6 +20,8 @@ package cache
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"testing"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"

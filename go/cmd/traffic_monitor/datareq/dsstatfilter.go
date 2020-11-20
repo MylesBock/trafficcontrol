@@ -21,6 +21,7 @@ package datareq
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"net/url"
 	"strconv"
 	"strings"
@@ -84,7 +85,7 @@ func (f *DSStatFilter) WithinStatHistoryMax(n int) bool {
 // If `wildcard` is empty, `stats` is considered exact.
 // If `type` is empty, all types are returned.
 func NewDSStatFilter(path string, params url.Values, dsTypes map[tc.DeliveryServiceName]tc.DSTypeCategory) (dsdata.Filter, error) {
-	validParams := map[string]struct{}{"hc": struct{}{}, "stats": struct{}{}, "wildcard": struct{}{}, "type": struct{}{}, "deliveryservices": struct{}{}}
+	validParams := map[string]struct{}{"hc": {}, "stats": {}, "wildcard": {}, "type": {}, "deliveryservices": {}}
 	if len(params) > len(validParams) {
 		return nil, fmt.Errorf("invalid query parameters")
 	}

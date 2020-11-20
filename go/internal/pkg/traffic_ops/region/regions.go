@@ -24,9 +24,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 //we need a type alias to define functions on
@@ -45,9 +45,9 @@ func (v *TORegion) NewReadObj() interface{}       { return &tc.Region{} }
 func (v *TORegion) SelectQuery() string           { return selectQuery() }
 func (v *TORegion) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"name":     dbhelpers.WhereColumnInfo{"r.name", nil},
-		"division": dbhelpers.WhereColumnInfo{"r.division", nil},
-		"id":       dbhelpers.WhereColumnInfo{"r.id", api.IsInt},
+		"name": {"r.name", nil},
+		"division": {"r.division", nil},
+		"id":       {"r.id", api.IsInt},
 	}
 }
 func (v *TORegion) UpdateQuery() string { return updateQuery() }
@@ -70,8 +70,8 @@ func (region TORegion) GetKeys() (map[string]interface{}, bool) {
 // DeleteKeyOptions returns a map containing the different fields a resource can be deleted by.
 func (region TORegion) DeleteKeyOptions() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"id":   dbhelpers.WhereColumnInfo{"r.id", api.IsInt},
-		"name": dbhelpers.WhereColumnInfo{"r.name", nil},
+		"id": {"r.id", api.IsInt},
+		"name": {"r.name", nil},
 	}
 }
 

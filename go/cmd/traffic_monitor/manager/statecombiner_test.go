@@ -23,6 +23,7 @@ import (
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/health"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/peer"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"math/rand"
 	"testing"
 	"time"
@@ -72,7 +73,7 @@ func TestCombineCacheState(t *testing.T) {
 	}
 	peerStates.Set(peerResult)
 	peerSet := map[tc.TrafficMonitorName]struct{}{
-		tc.TrafficMonitorName("TestTM-01"): struct{}{},
+		tc.TrafficMonitorName("TestTM-01"): {},
 	}
 	peerStates.SetPeers(peerSet)
 	peerStates.SetTimeout(time.Duration(rand.Int()))
@@ -128,7 +129,7 @@ func TestCombineCacheStateCacheDown(t *testing.T) {
 	}
 	peerStates.Set(peerResult)
 	peerSet := map[tc.TrafficMonitorName]struct{}{
-		tc.TrafficMonitorName("TestTM-01"): struct{}{},
+		tc.TrafficMonitorName("TestTM-01"): {},
 	}
 	peerStates.SetPeers(peerSet)
 	peerStates.SetTimeout(time.Duration(rand.Int()))

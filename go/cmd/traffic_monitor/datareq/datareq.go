@@ -35,6 +35,8 @@ import (
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/threadsafe"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/towrap"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/rfc"
 )
 
 // MakeDispatchMap returns the map of paths to http.HandlerFuncs for dispatching.

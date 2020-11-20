@@ -28,14 +28,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 	"github.com/lib/pq"
@@ -76,18 +76,18 @@ func (rc *RequiredCapability) SelectQuery() string {
 // ParamColumns implements the api.GenericReader interface.
 func (rc *RequiredCapability) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		deliveryServiceQueryParam: dbhelpers.WhereColumnInfo{
+		deliveryServiceQueryParam: {
 			Column:  "rc.deliveryservice_id",
 			Checker: api.IsInt,
-		},
-		xmlIDQueryParam: dbhelpers.WhereColumnInfo{
+				},
+		xmlIDQueryParam: {
 			Column:  "ds.xml_id",
 			Checker: nil,
-		},
-		requiredCapabilityQueryParam: dbhelpers.WhereColumnInfo{
+				},
+		requiredCapabilityQueryParam: {
 			Column:  "rc.required_capability",
 			Checker: nil,
-		},
+				},
 	}
 }
 

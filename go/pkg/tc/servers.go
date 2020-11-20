@@ -657,7 +657,7 @@ func (s ServerNullableV2) ToNonNullable() Server {
 	ret := Server{
 		Cachegroup:     coerceString(s.Cachegroup),
 		CachegroupID:   coerceInt(s.CachegroupID),
-		CDNID:          coerceInt((s.CDNID)),
+		CDNID:          coerceInt(s.CDNID),
 		CDNName:        coerceString(s.CDNName),
 		DomainName:     coerceString(s.DomainName),
 		FQDN:           s.FQDN,

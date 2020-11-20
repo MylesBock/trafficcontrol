@@ -38,6 +38,7 @@ import (
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/dsdata"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/poller"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
+	"github.com/apache/trafficcontrol/pkg/log"
 	jsoniter "github.com/json-iterator/go"
 )
 

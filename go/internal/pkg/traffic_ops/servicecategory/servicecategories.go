@@ -26,11 +26,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
 	"github.com/apache/trafficcontrol/pkg/util"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/go-ozzo/ozzo-validation"
 )
 
@@ -80,7 +80,7 @@ func (serviceCategory TOServiceCategory) GetType() string {
 
 func (serviceCategory *TOServiceCategory) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"name": dbhelpers.WhereColumnInfo{"sc.name", nil},
+		"name": {"sc.name", nil},
 	}
 }
 

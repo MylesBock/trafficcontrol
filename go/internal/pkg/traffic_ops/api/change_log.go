@@ -25,9 +25,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 )
 
 type ChangeLog struct {

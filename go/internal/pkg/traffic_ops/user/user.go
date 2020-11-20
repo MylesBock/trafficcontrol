@@ -26,15 +26,15 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/tenant"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/tc/tovalidate"
+	"github.com/apache/trafficcontrol/pkg/util"
 
 	"github.com/go-ozzo/ozzo-validation"
 	"github.com/go-ozzo/ozzo-validation/is"
@@ -85,10 +85,10 @@ func (user *TOUser) NewReadObj() interface{} {
 
 func (user *TOUser) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		"id":       dbhelpers.WhereColumnInfo{"u.id", api.IsInt},
-		"role":     dbhelpers.WhereColumnInfo{"r.name", nil},
-		"tenant":   dbhelpers.WhereColumnInfo{"t.name", nil},
-		"username": dbhelpers.WhereColumnInfo{"u.username", nil},
+		"id": {"u.id", api.IsInt},
+		"role":     {"r.name", nil},
+		"tenant":   {"t.name", nil},
+		"username": {"u.username", nil},
 	}
 }
 

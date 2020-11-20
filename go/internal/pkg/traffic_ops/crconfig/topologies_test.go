@@ -23,7 +23,6 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/apache/trafficcontrol/pkg/tc"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 	"reflect"
 	"strings"
 	"testing"

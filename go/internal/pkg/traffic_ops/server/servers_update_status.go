@@ -23,10 +23,10 @@ import (
 	"database/sql"
 	"net/http"
 
-	"github.com/apache/trafficcontrol/pkg/log"
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/config"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 func GetServerUpdateStatusHandler(w http.ResponseWriter, r *http.Request) {

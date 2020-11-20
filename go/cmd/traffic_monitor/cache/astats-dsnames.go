@@ -30,6 +30,8 @@ import (
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/dsdata"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 func init() {

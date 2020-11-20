@@ -30,8 +30,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
+	"github.com/apache/trafficcontrol/pkg/tc"
 )
 
 const MonitorProxyParameter = "tm.traffic_mon_fwd_proxy"

@@ -190,7 +190,7 @@ func pruneCombinedDSState(combinedStates peer.CRStatesThreadsafe, localStates tc
 // pruneCombinedCaches deletes caches in combined states which have been removed from localStates.
 func pruneCombinedCaches(combinedStates peer.CRStatesThreadsafe, localStates tc.CRStates) {
 	combinedCaches := combinedStates.GetCaches()
-	for cacheName, _ := range combinedCaches {
+	for cacheName := range combinedCaches {
 		if _, ok := localStates.Caches[cacheName]; !ok {
 			combinedStates.DeleteCache(cacheName)
 		}

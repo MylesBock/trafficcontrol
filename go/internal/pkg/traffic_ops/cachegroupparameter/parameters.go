@@ -24,8 +24,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/apache/trafficcontrol/pkg/log"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/util/ims"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -34,12 +34,12 @@ import (
 
 	"github.com/jmoiron/sqlx"
 
-	"github.com/apache/trafficcontrol/pkg/tc"
-	"github.com/apache/trafficcontrol/pkg/util"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/api"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/auth"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/dbhelpers"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/parameter"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 )
 
 const (
@@ -57,8 +57,8 @@ type TOCacheGroupParameter struct {
 
 func (cgparam *TOCacheGroupParameter) ParamColumns() map[string]dbhelpers.WhereColumnInfo {
 	return map[string]dbhelpers.WhereColumnInfo{
-		CacheGroupIDQueryParam: dbhelpers.WhereColumnInfo{"cgp.cachegroup", api.IsInt},
-		ParameterIDQueryParam:  dbhelpers.WhereColumnInfo{"p.id", api.IsInt},
+		CacheGroupIDQueryParam: {"cgp.cachegroup", api.IsInt},
+		ParameterIDQueryParam:  {"p.id", api.IsInt},
 	}
 }
 
@@ -235,8 +235,8 @@ func GetAllCacheGroupParameters(tx *sqlx.Tx, parameters map[string]string) (tc.C
 	// Query Parameters to Database Query column mappings
 	// see the fields mapped in the SQL query
 	queryParamsToQueryCols := map[string]dbhelpers.WhereColumnInfo{
-		"cachegroup": dbhelpers.WhereColumnInfo{"cgp.cachegroup", api.IsInt},
-		"parameter":  dbhelpers.WhereColumnInfo{"cgp.parameter", api.IsInt},
+		"cachegroup": {"cgp.cachegroup", api.IsInt},
+		"parameter":  {"cgp.parameter", api.IsInt},
 	}
 
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(parameters, queryParamsToQueryCols)

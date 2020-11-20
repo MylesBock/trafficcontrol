@@ -32,7 +32,6 @@ import (
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/test"
 
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 type ServerAndInterfaces struct {
@@ -94,11 +93,11 @@ func getTestServers() []ServerAndInterfaces {
 
 	iface := tc.ServerInterfaceInfo{
 		IPAddresses: []tc.ServerIPAddress{
-			tc.ServerIPAddress{
+			{
 				Address:        testServer.IPAddress,
 				Gateway:        nil,
 				ServiceAddress: true,
-			},
+						},
 		},
 		MaxBandwidth: nil,
 		Monitor:      true,
@@ -512,11 +511,11 @@ func TestV3Validations(t *testing.T) {
 
 	goodInterface := tc.ServerInterfaceInfo{
 		IPAddresses: []tc.ServerIPAddress{
-			tc.ServerIPAddress{
+			{
 				Address:        "127.0.0.1/32",
 				Gateway:        nil,
 				ServiceAddress: true,
-			},
+						},
 		},
 		MaxBandwidth: nil,
 		Monitor:      true,

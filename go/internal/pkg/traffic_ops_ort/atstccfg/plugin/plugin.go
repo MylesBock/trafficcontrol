@@ -22,6 +22,7 @@ import (
 	"sort"
 	"strings"
 	"time"
+	"github.com/apache/trafficcontrol/pkg/log"
 
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/atstccfg/config"
 )

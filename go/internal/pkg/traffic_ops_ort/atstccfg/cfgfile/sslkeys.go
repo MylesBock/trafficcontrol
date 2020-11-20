@@ -21,7 +21,9 @@ package cfgfile
 
 import (
 	"encoding/base64"
-
+	"github.com/apache/trafficcontrol/pkg/atscfg"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops_ort/atstccfg/config"
 )
 

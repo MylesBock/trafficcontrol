@@ -26,6 +26,8 @@ import (
 	"sync"
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/towrap"
+	"github.com/apache/trafficcontrol/pkg/log"
+	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/json-iterator/go"
 )

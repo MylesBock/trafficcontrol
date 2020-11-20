@@ -34,7 +34,6 @@ import (
 	"github.com/apache/trafficcontrol/pkg/tc"
 
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func stripAllWhitespace(s string) string {
@@ -57,8 +56,8 @@ FROM table t
 	// Query Parameters to Database Query column mappings
 	// see the fields mapped in the SQL query
 	queryParamsToSQLCols := map[string]WhereColumnInfo{
-		"param1": WhereColumnInfo{"t.col1", nil},
-		"param2": WhereColumnInfo{"t.col2", nil},
+		"param1": {"t.col1", nil},
+		"param2": {"t.col2", nil},
 	}
 	where, orderBy, pagination, queryValues, _ := BuildWhereAndOrderByAndPagination(v, queryParamsToSQLCols)
 	query := selectStmt + where + orderBy + pagination

@@ -21,6 +21,7 @@ package cache
 
 import (
 	"bytes"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
@@ -29,6 +30,7 @@ import (
 
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/poller"
 	"github.com/apache/trafficcontrol/cmd/traffic_monitor/todata"
+
 )
 
 func TestAstatsJson(t *testing.T) {
@@ -213,11 +215,11 @@ func getMockStatistics(infSpeed int64, outBytes uint64) Statistics {
 			LatestPID:        1234,
 		},
 		Interfaces: map[string]Interface{
-			infName: Interface{
+			infName: {
 				Speed:    infSpeed,
 				BytesOut: outBytes,
 				BytesIn:  12234567,
-			},
+						},
 		},
 		NotAvailable: randBool(),
 	}

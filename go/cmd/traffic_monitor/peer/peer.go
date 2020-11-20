@@ -23,6 +23,7 @@ import (
 	"io"
 	"time"
 
+	"github.com/apache/trafficcontrol/pkg/tc"
 	jsoniter "github.com/json-iterator/go"
 )
 

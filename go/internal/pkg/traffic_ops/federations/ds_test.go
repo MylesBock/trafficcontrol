@@ -23,7 +23,6 @@ import (
 	"testing"
 
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 )
 
 func TestCheckFedDSDeletion(t *testing.T) {

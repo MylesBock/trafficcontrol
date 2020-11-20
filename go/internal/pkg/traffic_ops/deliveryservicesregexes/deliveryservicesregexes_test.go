@@ -22,7 +22,6 @@ package deliveryservicesregexes
 import (
 	"github.com/apache/trafficcontrol/pkg/tc"
 	"github.com/jmoiron/sqlx"
-	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 	"testing"
 )
 
