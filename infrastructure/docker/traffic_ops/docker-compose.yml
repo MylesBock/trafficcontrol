@@ -81,6 +81,6 @@ services:
       args:
         RPM: traffic_ops.rpm 
     volumes:
-      - ../../../traffic_ops/traffic_ops_golang/traffic_ops_golang:/opt/traffic_ops/app/bin/traffic_ops_golang
+      - ../../../traffic_ops/traffic_ops/traffic_ops:/opt/traffic_ops/app/bin/traffic_ops
     depends_on:
       - db_init

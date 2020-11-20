@@ -20,8 +20,8 @@ cpanfile.snapshot
 rpm/build.number
 rpmbuild/
 docs/build/*
-/grove/grove
-/grove/grovetccfg/grovetccfg
+/go/cmd/grove/grove
+/go/cmd/grovetccfg/grovetccfg
 local
 !/infrastructure/cdn-in-a-box/traffic_ops/local/
 /infrastructure/cdn-in-a-box/traffic_ops/local/*
@@ -37,7 +37,7 @@ docs/source/_build/
 traffic_ops/app/conf/ldap.conf
 traffic_ops/app/db/admin
 traffic_ops/**/*.log
-traffic_stats/traffic_stats
+go/cmd/traffic_stats/traffic_stats
 misc/traffic-control-cdn/downloads/*.rpm
 traffic_router/*/*.log
 traffic_router/*.log

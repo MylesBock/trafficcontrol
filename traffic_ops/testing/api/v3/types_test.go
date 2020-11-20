@@ -23,7 +23,7 @@ import (
 	"time"
 
 	"github.com/apache/trafficcontrol/lib/go-rfc"
-	tc "github.com/apache/trafficcontrol/lib/go-tc"
+	tc "github.com/apache/trafficcontrol/lib/tc"
 )
 
 func TestTypes(t *testing.T) {

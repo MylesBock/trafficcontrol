@@ -36,7 +36,7 @@
 # Check that env vars are set
 
 # Setting the monitor shell option enables job control, which we need in order
-# to bring traffic_ops_golang back to the foreground.
+# to bring traffic_ops back to the foreground.
 set -o xtrace -o monitor;
 
 envvars=( DB_SERVER DB_PORT DB_ROOT_PASS DB_USER DB_USER_PASS ADMIN_USER ADMIN_PASS)
@@ -82,7 +82,7 @@ RIAKCONF=/opt/traffic_ops/app/conf/production/riak.conf
 mkdir -p /var/log/traffic_ops
 touch /var/log/traffic_ops/traffic_ops.log
 
-# enroll in the background so traffic_ops_golang can run in foreground
+# enroll in the background so traffic_ops can run in foreground
 TO_USER=$TO_ADMIN_USER TO_PASSWORD=$TO_ADMIN_PASSWORD to-enroll $(hostname -s) &
 
 traffic_ops_golang_command=(./bin/traffic_ops_golang -cfg "$CDNCONF" -dbcfg "$DBCONF" -riakcfg "$RIAKCONF");
@@ -124,7 +124,7 @@ if [[ "$AUTO_SNAPQUEUE_ENABLED" = true ]]; then
   to-auto-snapqueue $AUTO_SNAPQUEUE_SERVERS $CDN_NAME
 fi
 
-fg '"${traffic_ops_golang_command[@]}"'; # Bring traffic_ops_golang to foreground
+fg '"${traffic_ops_golang_command[@]}"'; # Bring traffic_ops to foreground
 fg; # Bring to-enroll to foreground if it is still running
 
 tail -f /dev/null; # Keeps the container running indefinitely. The container health check (see dockerfile) will report whether Traffic Ops is running.

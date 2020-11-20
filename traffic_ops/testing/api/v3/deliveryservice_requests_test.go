@@ -22,7 +22,7 @@ import (
 	"time"
 
 	"github.com/apache/trafficcontrol/lib/go-rfc"
-	tc "github.com/apache/trafficcontrol/lib/go-tc"
+	tc "github.com/apache/trafficcontrol/lib/tc"
 	"github.com/apache/trafficcontrol/traffic_ops/testing/api/utils"
 )
 

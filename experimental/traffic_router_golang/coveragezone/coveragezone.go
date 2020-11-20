@@ -29,7 +29,7 @@ import (
 	"github.com/apache/trafficcontrol/lib/go-tc"
 )
 
-// TODO put in lib/go-tc
+// TODO put in lib/tc
 type JSONCoverageZones struct {
 	CoverageZones map[tc.CacheGroupName]JSONCoverageZoneCacheGroup `json:"coverageZones"`
 	CustomerName  string                                           `json:"customerName"`

@@ -60,7 +60,7 @@ initBuildArea() {
 		golang.org/x/text/secure/bidirule ||
 		{ echo "Could not get go package dependencies"; return 1; }
 
-	# compile traffic_ops_golang
+	# compile traffic_ops
 	cd traffic_ops_golang
 	gcflags=''
 	ldflags=''

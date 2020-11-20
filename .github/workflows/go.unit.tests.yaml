@@ -24,7 +24,7 @@ on:
       - grove/**.go
       - lib/**.go
       - traffic_monitor/**.go
-      - traffic_ops/traffic_ops_golang/**.go
+      - traffic_ops/traffic_ops/**.go
       - traffic_ops_ort/atstccfg/**.go
       - traffic_stats/**.go
   create:
@@ -34,7 +34,7 @@ on:
       - grove/**.go
       - lib/**.go
       - traffic_monitor/**.go
-      - traffic_ops/traffic_ops_golang/**.go
+      - traffic_ops/traffic_ops/**.go
       - traffic_ops_ort/atstccfg/**.go
       - traffic_stats/**.go
     types: [opened, reopened, ready_for_review, synchronize]
@@ -50,4 +50,4 @@ jobs:
     - name: Run unit tests
       uses: ./.github/actions/go-test
       with:
-        dir: ./grove/... ./lib/... ./traffic_monitor/... ./traffic_ops/traffic_ops_golang/... ./traffic_ops_ort/atstccfg/... ./traffic_stats/... ./traffic_ops/app/bin/...
+        dir: ./grove/... ./lib/... ./traffic_monitor/... ./traffic_ops/traffic_ops/... ./traffic_ops_ort/atstccfg/... ./traffic_stats/... ./traffic_ops/app/bin/...

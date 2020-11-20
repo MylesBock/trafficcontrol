@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Traffic Monitor</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script src="script.js"></script>
+</head>
+<body>
+	<div id="top-bar">
+		<div>Caches: count=<span id="cache-count">0</span> available=<span id="cache-available">0</span> down=<span id="cache-down">0</span> </div>
+		<div>Bandwidth: <span id="bandwidth">0</span> / <span id="bandwidth-capacity">∞</span> gbps</div>
+		<div>Traffic Ops: <span id="source-uri">unknown</span></div>
+		<div>CDN: <span id="cdn-name">unknown</span></div>
+		<div>Version: <span id="version">unknown</span></div>
+	</div>
+
+	<div id="links">
+		<div>
+			<a href="/publish/EventLog">EventLog</a>
+			<a href="/publish/CacheStatsNew">CacheStats</a>
+			<a href="/publish/DsStats">DsStats</a>
+			<a href="/publish/CrStates">CrStates (as published to Traffic Routers)</a>
+			<a href="/publish/CrConfig">CrConfig (json)</a>
+			<a href="/publish/PeerStates">PeerStates</a>
+			<a href="/publish/Stats">Stats</a>
+			<a href="/publish/StatSummary">StatSummary</a>
+			<a href="/publish/ConfigDoc">ConfigDoc</a>
+		</div>
+
+		<div>
+			<a href="/api/cache-count">/api/cache-count</a>
+			<a href="/api/cache-available-count">/api/cache-available-count</a>
+			<a href="/api/cache-down-count">/api/cache-down-count</a>
+			<a href="/api/version">/api/version</a>
+			<a href="/api/traffic-ops-uri">/api/traffic-ops-uri</a>
+			<a href="/api/cache-statuses">/api/cache-statuses</a>
+			<a href="/api/bandwidth-kbps">/api/bandwidth-kbps</a>
+			<a href="/api/bandwidth-capacity-kbps">/api/bandwidth-capacity-kbps</a>
+			<a href="/api/monitor-config">/api/monitor-config</a>
+			<a href="/api/crconfig-history">/api/crconfig-history</a>
+		</div>
+	</div>
+
+	<!-- TODO: There's no reference to these in the script nor styling; safe to remove? -->
+	<div>Number of updates: <span>0</span></div>
+	<div>Last Val: <span>0</span></div>
+	<div id="icon-disc-holder" hidden>
+		<span class="icon-disc-tooltip">Traffic Monitor is using a disk backup of Traffic Ops</span>
+		<i id="icon-disc"></i>
+	</div>
+
+	<ul class="tabs" role="tablist">
+		<li class="tab" id="cache-states-content-tab">
+			<input type="radio" name="tabs" class="tab" id="cache-states-input" checked/>
+			<label for="cache-states-input">Cache States</label>
+			<div id="cache-states-content" class="tabcontent">
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th class="text-entry">Server</th>
+							<th class="text-entry">Type</th>
+							<th class="text-entry">IPv4</th>
+							<th class="text-entry">IPv6</th>
+							<th class="text-entry">Status</th>
+							<th class="number-entry">Load Average</th>
+							<th class="number-entry">Query Time (ms)</th>
+							<th class="number-entry">Health Time (ms)</th>
+							<th class="number-entry">Stat Time (ms)</th>
+							<th class="number-entry">Health Span (ms)</th>
+							<th class="number-entry">Stat Span (ms)</th>
+							<th class="number-entry">Bandwidth (mbps)</th>
+							<th class="number-entry">Connection Count</th>
+						</tr>
+					</thead>
+					<tbody id="cache-states"></tbody>
+				</table>
+				<template id="interface-template" >
+					<table class="sub-table">
+						<thead>
+						<tr>
+							<th class="text-entry">Interface</th>
+							<th class="text-entry">IPv4</th>
+							<th class="text-entry">IPv6</th>
+							<th class="text-entry">Status</th>
+							<th class="number-entry">Bandwidth (mbps)</th>
+							<th class="number-entry">Connection Count</th>
+						</tr>
+						</thead>
+						<tbody class="interface-content"></tbody>
+					</table>
+				</template>
+				<template id="cache-status-row-template">
+				<tr class="server-status">
+						<td> <div class="sub-table-indicator right"></div> </td>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+					</tr>
+				</template>
+				<template id="interface-row-template">
+					<tr>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="text-entry"></td>
+						<td class="number-entry"></td>
+						<td class="number-entry"></td>
+					</tr>
+				</template>
+			</div>
+		</li>
+
+		<li class="tab" id="deliveryservice-stats-content-tab">
+			<input type="radio" name="tabs" class="tab" id="deliveryservice-stats-input"/>
+			<label for="deliveryservice-stats-input">Delivery Service States</label>
+			<div id="deliveryservice-stats-content" class="tabcontent">
+				<table>
+					<thead>
+						<tr>
+							<th>Delivery Service</th>
+							<th>Status</th>
+							<th>Caches Reporting/Available/Configured</th>
+							<th>Bandwidth (mbps)</th>
+							<th>t/sec</th>
+							<th>2xx/sec</th>
+							<th>3xx/sec</th>
+							<th>4xx/sec</th>
+							<th>5xx/sec</th>
+							<th>Disabled Locations</th>
+						</tr>
+					</thead>
+					<tbody id="deliveryservice-stats"></tbody>
+				</table>
+			</div>
+		</li>
+
+		<li id="event-log-content-tab" class="tab">
+			<input type="radio" name="tabs" class="tab" id="event-log-input"/>
+			<label for="event-log-input">Event Log</label>
+			<div id="event-log-content" class="tabcontent">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Status</th>
+							<th>Description</th>
+							<th>Event Time</th>
+						</tr>
+					</thead>
+					<tbody id="event-log"></tbody>
+				</table>
+			</div>
+		</li>
+	</ul>
+
+</body>
+</html>
