@@ -20,7 +20,6 @@ package region
  */
 
 import (
-	"reflect"
 	"testing"
 	"time"
 
@@ -116,19 +115,23 @@ func TestValidation(t *testing.T) {
 		Name:         "region1",
 		LastUpdated:  tc.TimeNoMod{Time: time.Now()},
 	}
-	errs := test.SortErrors(test.SplitErrors(testRegion.Validate()))
-	expected := []error{}
+	testTORegion := TORegion{Region: testRegion}
+	errs := test.SortErrors(test.SplitErrors(testTORegion.Validate()))
 
-	if reflect.DeepEqual(expected, errs) {
-		t.Errorf(`expected %v,  got %v`, expected, errs)
+	if len(errs) > 0 {
+		t.Errorf(`expected no errors,  got %v`, errs)
 	}
-	testRegion = tc.Region{
-		ID:           1,
-		Name:         "region1",
-		LastUpdated:  tc.TimeNoMod{Time: time.Now()},
+
+	testRegionNoDivision := tc.Region{
+		ID:          1,
+		Name:        "region1",
+		LastUpdated: tc.TimeNoMod{Time: time.Now()},
 	}
-	errs := test.SortErrors(test.SplitErrors(testRegion.Validate()))
+	testTORegionNoDivision := TORegion{Region: testRegionNoDivision}
+	errs = test.SortErrors(test.SplitErrors(testTORegionNoDivision.Validate()))
 	if len(errs) == 0 {
 		t.Errorf(`expected an error with a nil division name, received no error`)
+	} else {
+		t.Logf(`Got expected error validating region with no division: %s`, errs[0].Error())
 	}
 }

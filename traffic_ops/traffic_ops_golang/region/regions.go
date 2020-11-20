@@ -98,7 +98,6 @@ func (region *TORegion) Validate() error {
 		return errors.New(`region 'name' is required`)
 	}
 	if region.DivisionName == "" || region.Division == 0 {
-		// golang style guides say error strings shouldn't be capitalized or end with punctuation
 		return errors.New(`region 'division' is required`)
 	}
 	return nil
