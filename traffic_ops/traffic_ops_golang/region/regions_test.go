@@ -22,7 +22,7 @@ package region
 import (
 	"testing"
 	"time"
-
+	"github.com/apache/trafficcontrol/lib/go-tc"
 	"github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang/api"
 	"github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang/test"
 	"github.com/jmoiron/sqlx"
@@ -110,6 +110,7 @@ func TestInterfaces(t *testing.T) {
 func TestValidation(t *testing.T) {
 	testRegion := tc.Region{
 		DivisionName: "west",
+		Division:     77,
 		ID:           1,
 		Name:         "region1",
 		LastUpdated:  tc.TimeNoMod{Time: time.Now()},
