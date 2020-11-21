@@ -18,7 +18,9 @@ package main
  * specific language governing permissions and limitations
  * under the License.
  */
-
+/*
+ TODO (restructure): move this under tools
+ */
 import (
 	"bytes"
 	"errors"

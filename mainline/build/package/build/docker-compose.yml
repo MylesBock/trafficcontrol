@@ -21,48 +21,48 @@ services:
   source:
     image: apache/traffic_source_tarballer:master
     build:
-      dockerfile: ../build/Dockerfile-source
-      context: ../../../..
+      dockerfile: ./build/Dockerfile-source
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   traffic_monitor_build:
     image: apache/traffic_monitor_builder:master
     build:
-      dockerfile: ../traffic_monitor/build/Dockerfile-traffic_monitor
-      context: ../../../..
+      dockerfile: ./traffic_monitor/build/Dockerfile-traffic_monitor
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   traffic_ops_build:
     image: apache/traffic_ops_builder:master
     build:
-      dockerfile: ../traffic_ops/Dockerfile-traffic_ops
-      context: ../../../..
+      dockerfile: ./traffic_ops/build/Dockerfile-traffic_ops
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   traffic_ops_ort_build:
     image: apache/traffic_ops_ort_builder:master
     build:
-       dockerfile: ../traffic_ops_ort/build/Dockerfile-traffic_ops_ort
-       context: ../../../..
+       dockerfile: ./traffic_ops_ort/build/Dockerfile-traffic_ops_ort
+       context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   traffic_portal_build:
     image: apache/traffic_portal_builder:master
     build:
-      dockerfile: ../traffic_portal/build/Dockerfile-traffic_portal
-      context: ../../../..
+      dockerfile: ./traffic_portal/build/Dockerfile-traffic_portal
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   traffic_router_build:
     image: apache/traffic_router_builder:master
     build:
-      dockerfile: ../../../../traffic_router/build/Dockerfile-traffic_router
-      context: ../../../..
+      dockerfile: ./traffic_router/build/Dockerfile-traffic_router
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
       - ../../../../.m2:/root/.m2:z
@@ -70,24 +70,24 @@ services:
   traffic_stats_build:
     image: apache/traffic_stats_builder:master
     build:
-      dockerfile: ../traffic_stats/build/Dockerfile-traffic_stats
-      context: ../../../..
+      dockerfile: ./traffic_stats/build/Dockerfile-traffic_stats
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   grove_build:
     image: apache/traffic_grove_builder:master
     build:
-      dockerfile: ../grove/Dockerfile-grove
-      context: ../../../..
+      dockerfile: ./grove/build/Dockerfile-grove
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
   grovetccfg_build:
     image: apache/traffic_grovetccfg_builder:master
     build:
-      dockerfile: ../grovetccfg/build/Dockerfile-grovetccfg
-      context: ../../../..
+      dockerfile: ./grovetccfg/build/Dockerfile-grovetccfg
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z
 
@@ -100,7 +100,7 @@ services:
   docs:
     image: apache/traffic_docs_builder:master
     build:
-      dockerfile: ../docs/Dockerfile-docs
-      context: ../../../..
+      dockerfile: ./docs/Dockerfile-docs
+      context: ..
     volumes:
       - ../../../..:/trafficcontrol:z

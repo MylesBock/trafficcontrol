@@ -61,26 +61,25 @@ Built: %(date) by %{getenv: USER}
 
 		# update the go version referenced in install_go.sh
 		sed -i.bak 's/__GO_VERSION__/%{go_version}/g' install/bin/install_go.sh
-
 		# copy traffic_ops_golang binary
-		godir=src/github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang
+		godir=src/github.com/apache/trafficcontrol/traffic_ops
 		( mkdir -p "$godir" && \
 			cd "$godir" && \
-			cp "$TC_DIR"/traffic_ops/traffic_ops_golang/traffic_ops_golang .
+			cp "$TC_DIR"/mainline/cmd/traffic_ops/traffic_ops .
 		) || { echo "Could not copy go program at $(pwd): $!"; exit 1; }
 
 		# copy TO DB admin
 		db_admin_dir=src/github.com/apache/trafficcontrol/traffic_ops/app/db
 		( mkdir -p "$db_admin_dir" && \
 			cd "$db_admin_dir" && \
-			cp "$TC_DIR"/traffic_ops/app/db/admin .
+			cp "$TC_DIR"/mainline/build/package/traffic_ops/app/db/admin .
 		) || { echo "Could not copy go db admin at $(pwd): $!"; exit 1; };
-
+        pwd
 		# copy TO profile converter
 		convert_dir=src/github.com/apache/trafficcontrol/traffic_ops/install/bin/convert_profile
 		( mkdir -p "$convert_dir" && \
 			cd "$convert_dir" && \
-			cp "$TC_DIR"/traffic_ops/install/bin/convert_profile/convert_profile .
+			cp "$TC_DIR"/mainline/build/package/traffic_ops/install/bin/convert_profile/convert_profile .
 		) || { echo "Could not copy go profile converter at $(pwd): $!"; exit 1; };
 
 %install
@@ -110,15 +109,15 @@ Built: %(date) by %{getenv: USER}
 				%__mkdir -p $RPM_BUILD_ROOT/%{PACKAGEDIR}/app/bin
 		fi
 
-		src=src/github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang
-		%__cp -p  "$src"/traffic_ops_golang        "${RPM_BUILD_ROOT}"/opt/traffic_ops/app/bin/traffic_ops_golang
+		src=src/github.com/apache/trafficcontrol/traffic_ops
+		%__cp -p  "$src"/traffic_ops      "${RPM_BUILD_ROOT}"/opt/traffic_ops/app/bin/traffic_ops_golang
 
-		db_admin_src=src/github.com/apache/trafficcontrol/traffic_ops/app/db
-		%__cp -p  "$db_admin_src"/admin           "${RPM_BUILD_ROOT}"/opt/traffic_ops/app/db/admin
+		db_admin_src=src/github.com/apache/trafficcontrol/mainline/build/package/traffic_ops/app/db
+		%__cp -p  app/db/admin           "${RPM_BUILD_ROOT}"/opt/traffic_ops/app/db/admin
 		%__rm $RPM_BUILD_ROOT/%{PACKAGEDIR}/app/db/*.go
 
-		convert_profile_src=src/github.com/apache/trafficcontrol/traffic_ops/install/bin/convert_profile
-		%__cp -p  "$convert_profile_src"/convert_profile           "${RPM_BUILD_ROOT}"/opt/traffic_ops/install/bin/convert_profile
+		convert_profile_src=src/github.com/apache/trafficcontrol/mainline/build/package/traffic_ops/install/bin/convert_profile
+		%__cp -p install/bin/convert_profile/convert_profile     "${RPM_BUILD_ROOT}"/opt/traffic_ops/install/bin/convert_profile
 		%__rm $RPM_BUILD_ROOT/%{PACKAGEDIR}/install/bin/convert_profile/*.go
 
 %pre

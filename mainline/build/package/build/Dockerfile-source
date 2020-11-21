@@ -37,6 +37,6 @@ RUN	yum -y install \
 	yum -y clean all
 
 WORKDIR /trafficcontrol
-CMD build/clean_build.sh tarball
+CMD /trafficcontrol/mainline/build/package/build/clean_build.sh tarball
 
 # vi:syntax=Dockerfile

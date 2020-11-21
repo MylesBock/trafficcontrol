@@ -69,5 +69,6 @@ if [ $# -eq 0 ]; then
 fi
 
 for project in "$@"; do
-	./go/scripts/build/build.sh "${project}" 2>&1 | tee "dist/build-${project//\//-}.log"
+  pwd
+	./mainline/build/package/build/build.sh "${project}" 2>&1 | tee "dist/build-${project//\//-}.log"
 done

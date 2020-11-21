@@ -47,6 +47,6 @@ RUN curl -L https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3
 
 ###
 
-CMD /trafficcontrol/go/scripts/build/clean_build.sh traffic_router
+CMD /trafficcontrol/mainline/build/package/build/clean_build.sh traffic_router
 
 # vi:syntax=Dockerfile

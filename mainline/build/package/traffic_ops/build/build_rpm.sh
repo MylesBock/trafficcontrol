@@ -84,32 +84,32 @@ initBuildArea() {
 	set -o nounset; }
 	go build -v -gcflags "$gcflags" -ldflags "${ldflags} -X main.version=traffic_ops-${TC_VERSION}-${BUILD_NUMBER}.${RHEL_VERSION} -B 0x$(git rev-parse HEAD)" -tags "$tags" || \
 								{ echo "Could not build traffic_ops_golang binary"; return 1; }
-	#cd -
+	cd -
 
   # todo (restructure) move these to tools
   # also properly change to that directory
 	# compile db/admin
-	(cd app/db
+	(cd traffic_ops/app/db
 	go build -v -o admin -gcflags "$gcflags" -ldflags "$ldflags" -tags "$tags" || \
 								{ echo "Could not build db/admin binary"; return 1;})
 
 	# compile TO profile converter
-	(cd install/bin/convert_profile
+	(cd traffic_ops/install/bin/convert_profile
 	go build -v -gcflags "$gcflags" -ldflags "$ldflags" -tags="$tags" || \
 								{ echo "Could not build convert_profile binary"; return 1; })
 
-	rsync -av etc install "$dest"/ || \
+	rsync -av traffic_ops/etc traffic_ops/install "$dest"/ || \
 		 { echo "Could not copy to $dest: $?"; return 1; }
-	if ! (cd app; rsync -av bin conf cpanfile db lib public script templates "${dest}/app"); then
+	if ! (cd traffic_ops/app; rsync -av bin conf cpanfile db lib public script templates "${dest}/app"); then
 		echo "Could not copy to $dest/app"
 		return 1
 	fi
 	tar -czvf "$dest".tgz -C "$RPMBUILD"/SOURCES "$(basename "$dest")" || \
 		 { echo "Could not create tar archive $dest.tgz: $?"; return 1; }
-	cp "$TO_DIR"/build/traffic_ops.spec "$RPMBUILD"/SPECS/. || \
+	cp traffic_ops/build/traffic_ops.spec "$RPMBUILD"/SPECS/. || \
 		 { echo "Could not copy spec files: $?"; return 1; }
   # todo (restructure) update this to reflect new structure
-	PLUGINS="$(grep -l 'AddPlugin(' "${TO_DIR}/traffic_ops_golang/plugin/"*.go | grep -v 'func AddPlugin(' | xargs -I '{}' basename {} '.go')"
+	PLUGINS="$(grep -l 'AddPlugin(' "${TC_DIR}/mainline/internal/pkg/traffic_ops/plugin/"*.go | grep -v 'func AddPlugin(' | xargs -I '{}' basename {} '.go')"
 	export PLUGINS
 
 	echo "The build area has been initialized."

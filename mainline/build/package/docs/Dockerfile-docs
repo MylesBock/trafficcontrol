@@ -31,7 +31,7 @@ RUN	rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
 	yum -y clean all
 
 ### docs specific requirements
-ADD go/scripts/docs/source/requirements.txt /docs.requirements.txt
+ADD docs/source/requirements.txt /docs.requirements.txt
 RUN	yum -y install \
 		python36 \
 		python36-pip \
@@ -44,6 +44,6 @@ RUN	python3 -m pip install --upgrade setuptools && \
 	python3 -m pip install -r /docs.requirements.txt
 ###
 
-CMD /trafficcontrol/go/scripts/build/clean_build.sh docs
+CMD /trafficcontrol/mainline/build/package/build/clean_build.sh docs
 
 # vi:syntax=Dockerfile

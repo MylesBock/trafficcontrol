@@ -18,7 +18,7 @@ set -o errexit -o nounset -o pipefail;
 # By default all sub-projects are built.  Supply a list of projects to build if
 # only a subset is wanted.
 
-. go/scripts/build/functions.sh
+. mainline/build/package/build/functions.sh
 
 # make sure we start out in traffic_control dir
 topscript='' TC_DIR=''

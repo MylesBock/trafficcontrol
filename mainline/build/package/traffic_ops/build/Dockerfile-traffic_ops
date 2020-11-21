@@ -53,6 +53,6 @@ RUN go_version=$(cat /GO_VERSION) && \
 
 ###
 
-CMD /trafficcontrol/go/scripts/build/clean_build.sh traffic_ops
+CMD /trafficcontrol/mainline/build/package/build/clean_build.sh traffic_ops
 
 # vi:syntax=Dockerfile
