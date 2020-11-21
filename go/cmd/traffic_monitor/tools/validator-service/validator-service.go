@@ -24,7 +24,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/apache/trafficcontrol/cmd/traffic_monitor/tmcheck"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_monitor/tmcheck"
 	"github.com/apache/trafficcontrol/pkg/tc"
 	to "github.com/apache/trafficcontrol/pkg/v2-client"
 	"io"

@@ -22,11 +22,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_monitor/config"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_monitor/manager"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"os"
 	"runtime"
-
-	"github.com/apache/trafficcontrol/cmd/traffic_monitor/config"
-	"github.com/apache/trafficcontrol/cmd/traffic_monitor/manager"
 )
 
 // GitRevision is the git revision of the app. The app SHOULD always be built with this set via the `-X` flag.

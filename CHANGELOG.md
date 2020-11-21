@@ -376,12 +376,12 @@ will be returned indicating that overlap exists.
 - Added cache-side config generator, atstccfg, installed with ORT. Includes all configs. Includes a plugin system.
 - Fixed ATS config generation to omit regex remap, header rewrite, URL Sig, and URI Signing files for delivery services not assigned to that server.
 - In Traffic Portal, all tables now include a 'CSV' link to enable the export of table data in CSV format.
-- Pylint configuration now enforced (present in [a file in the Python client directory](./traffic_control/clients/python/pylint.rc))
+- Pylint configuration now enforced (present in [a file in the Python client directory](go/tools/traffic_control/clients/python/pylint.rc))
 - Added an optional SMTP server configuration to the TO configuration file, api now has unused abilitiy to send emails
 - Traffic Monitor now has "gbps" calculated stat, allowing operators to monitor bandwidth in Gbps.
 - Added an API 1.4 endpoint, /api/1.4/deliveryservices_required_capabilities, to create, read, and delete associations between a delivery service and a required capability.
 - Added ATS config generation omitting parents without Delivery Service Required Capabilities.
-- In Traffic Portal, added the ability to create, view and delete server capabilities and associate those server capabilities with servers and delivery services. See [blueprint](./blueprints/server-capabilitites.md)
+- In Traffic Portal, added the ability to create, view and delete server capabilities and associate those server capabilities with servers and delivery services. See [blueprint](go/docs/blueprints/server-capabilitites.md)
 - Added validation to prevent assigning servers to delivery services without required capabilities.
 - Added deep coverage zone routing percentage to the Traffic Portal dashboard.
 - Added a `traffic_ops/app/bin/osversions-convert.pl` script to convert the `osversions.cfg` file from Perl to JSON as part of the `/osversions` endpoint rewrite.
