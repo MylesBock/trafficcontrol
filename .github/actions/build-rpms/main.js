@@ -20,7 +20,7 @@ const spawnOptions = {
 };
 
 let atcComponent = process.env.ATC_COMPONENT;
-const dockerComposeArgs = ["-f", `${process.env.GITHUB_WORKSPACE}/go/deployments/docker/build/docker-compose.yml`, "run", "--rm"];
+const dockerComposeArgs = ["-f", `${process.env.GITHUB_WORKSPACE}/mainline/build/package/build/docker-compose.yml`, "run", "--rm"];
 if (typeof atcComponent !== "string" || atcComponent.length === 0) {
 	console.error("Missing environment variable ATC_COMPONENT");
 	process.exit(1);

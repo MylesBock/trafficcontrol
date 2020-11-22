@@ -10,7 +10,7 @@
 		"workers": 12
 	},
 	"use_ims": true,
-	"traffic_ops_golang": {
+	"traffic_ops": {
 		"insecure": true,
 		"port": "6443",
 		"log_location_error": "error.log",

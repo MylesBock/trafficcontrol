@@ -25,7 +25,7 @@ on:
       - '**/*.md'
       - '**/test/**'
       - 'blueprints/**'
-      - 'docs/**'
+      - 'mainline/build/docs/**'
       - 'experimental/**'
       - '.github/**'
       - '!.github/actions/build-ciab/*'
