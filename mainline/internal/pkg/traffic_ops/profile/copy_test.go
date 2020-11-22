@@ -310,7 +310,7 @@ func mockHTTPReq(t *testing.T, path string, db *sqlx.DB) *http.Request {
 		t.Error("Error creating new request")
 	}
 
-	cfg := config.Config{ConfigTrafficOpsGolang: config.ConfigTrafficOpsGolang{DBQueryTimeoutSeconds: 20}}
+	cfg := config.Config{ConfigTrafficOps: config.ConfigTrafficOpsGolang{DBQueryTimeoutSeconds: 20}}
 	ctx := req.Context()
 	ctx = context.WithValue(ctx, auth.CurrentUserKey,
 		auth.CurrentUser{UserName: "username", ID: 1, PrivLevel: auth.PrivLevelAdmin})

@@ -101,7 +101,6 @@ COPY build/package/cdn-in-a-box/dns/set-dns.sh \
      /usr/local/sbin/
 
 VOLUME ["/junit"]
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 WORKDIR /opt/integration/app
 CMD ./run.sh

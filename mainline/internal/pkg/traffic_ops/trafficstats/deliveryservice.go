@@ -83,7 +83,7 @@ func dsConfigFromRequest(r *http.Request, i *api.APIInfo) (tc.TrafficDSStatsConf
 	}
 	c.TrafficStatsConfig = statsConfig
 	c.MetricType = i.Params["metricType"]
-	if _, found := findMetric(i.Config.ConfigTrafficOpsGolang.SupportedDSMetrics, c.MetricType); !found {
+	if _, found := findMetric(i.Config.ConfigTrafficOps.SupportedDSMetrics, c.MetricType); !found {
 		e = fmt.Errorf("Metric is not supported: %s", c.MetricType)
 		return c, http.StatusBadRequest, e
 	}

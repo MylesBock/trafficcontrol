@@ -57,12 +57,12 @@ Copy `traffic_ops/app/conf/cdn.conf` to `$HOME/cdn.conf` so you can modify it fo
 `$HOME/cdn.conf`
 
 ```
-       "traffic_ops_golang" : {
+       "traffic_ops" : {
           "port" : "443",
 ```
 
 ```
-       "traffic_ops_golang" : {
+       "traffic_ops" : {
           "port" : "8443",
 ```
 
@@ -73,7 +73,7 @@ By default `/var/log/traffic_ops/error.log` is configured for output, to change 
 `$HOME/cdn.conf`
 
 ```
-    "traffic_ops_golang" : {
+    "traffic_ops" : {
         "..."
         "log_location_error": "stdout",
         "log_location_warning": "stdout",

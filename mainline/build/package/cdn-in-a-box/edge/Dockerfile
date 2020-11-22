@@ -155,5 +155,4 @@ RUN rpm -Uvh --nodeps /$(basename $ORT_RPM) &&\
 FROM common-cache-server-layers AS edge
 
 COPY build/package/cdn-in-a-box/edge/init.d/ /opt/init.d/
-RUN chmod +x /run.sh /opt/init.d/*.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh

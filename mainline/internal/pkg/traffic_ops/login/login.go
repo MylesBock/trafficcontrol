@@ -298,7 +298,7 @@ func OauthLoginHandler(db *sqlx.DB, cfg config.Config) http.HandlerFunc {
 			publicKeyUrl := unverifiedToken.Header["jku"].(string)
 			publicKeyId := unverifiedToken.Header["kid"].(string)
 
-			matched, err := VerifyUrlOnWhiteList(publicKeyUrl, cfg.ConfigTrafficOpsGolang.WhitelistedOAuthUrls)
+			matched, err := VerifyUrlOnWhiteList(publicKeyUrl, cfg.ConfigTrafficOps.WhitelistedOAuthUrls)
 			if err != nil {
 				return nil, err
 			}

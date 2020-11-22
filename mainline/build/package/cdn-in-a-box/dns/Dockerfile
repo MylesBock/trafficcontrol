@@ -45,7 +45,7 @@ COPY build/package/cdn-in-a-box/dns/set-self-dns.sh \
      build/package/cdn-in-a-box/dns/set-dns-update.sh \
      /usr/local/sbin/
 
-RUN chmod 755 /sbin/entrypoint.sh; chmod -R +x /usr/local/sbin;
+RUN chmod 755 /sbin/entrypoint.sh;
 
 EXPOSE 53/udp 53/tcp
 ENTRYPOINT ["/sbin/entrypoint.sh"]

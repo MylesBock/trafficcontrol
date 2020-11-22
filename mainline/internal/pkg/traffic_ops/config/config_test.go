@@ -45,7 +45,7 @@ var debugLogging = flag.Bool("debug", false, "enable debug logging in test")
 var cfg = Config{
 	URL:             nil,
 	ConfigHypnotoad: ConfigHypnotoad{},
-	ConfigTrafficOpsGolang: ConfigTrafficOpsGolang{
+	ConfigTrafficOps: ConfigTrafficOpsGolang{
 		LogLocationError:   logError,
 		LogLocationWarning: logWarning,
 		LogLocationInfo:    logInfo,

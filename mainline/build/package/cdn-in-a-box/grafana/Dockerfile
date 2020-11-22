@@ -41,6 +41,5 @@ RUN cd ~ \
 COPY dns/set-dns.sh \
      dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 ENTRYPOINT [ "/run-grafana.sh" ]
 EXPOSE 443

@@ -29,7 +29,7 @@ COPY build/package/cdn-in-a-box/dns/set-dns.sh \
      build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
-RUN chmod +x /usr/bin/run.sh; chmod -R +x /usr/local/sbin;
+
 # Unset entrypoint
 ENTRYPOINT []
 CMD ["/usr/bin/env", "run.sh"]

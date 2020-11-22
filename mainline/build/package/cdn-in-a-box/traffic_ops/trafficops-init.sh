@@ -99,7 +99,7 @@ load_data_from() {
 
     local status=0
     local has_ds_servers=''
-    if ls deliveryservice_servers/'*.json'; then
+    if [ ! -z $(find . -wholename "deliveryservice_servers/*.json") ]; then
       has_ds_servers='true'
     fi
     for d in $endpoints; do

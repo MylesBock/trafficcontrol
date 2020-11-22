@@ -111,7 +111,6 @@ RUN export POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 && \
         carton || exit 1; \
     fi && \
     rm -rf $HOME/.cpan* /tmp/Dockerfile /tmp/local.tar.gz ./cpanfile
-RUN chmod +x ./install_goose.sh
 RUN ./install_goose.sh
 
 FROM trafficops-perl-deps
@@ -134,7 +133,7 @@ ADD build/package/cdn-in-a-box/enroller/server_template.json \
     build/package/cdn-in-a-box/traffic_ops/to-access.sh \
     build/package/cdn-in-a-box/traffic_ops/generate-certs.sh \
     build/package/cdn-in-a-box/traffic_ops/trafficops-init.sh \
-    build/package/cdn-in-a-box/variables.env \
+    deployments/cdn-in-a-box/variables.env \
     /
 
 COPY build/package/cdn-in-a-box/dns/set-dns.sh \
@@ -143,5 +142,4 @@ COPY build/package/cdn-in-a-box/dns/set-dns.sh \
      /usr/local/sbin/
 
 ADD build/package/cdn-in-a-box/traffic_ops_data /traffic_ops_data
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh

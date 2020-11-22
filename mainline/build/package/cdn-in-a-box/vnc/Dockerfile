@@ -57,7 +57,6 @@ ADD build/package/cdn-in-a-box/vnc/run.sh /
 COPY build/package/cdn-in-a-box/dns/set-dns.sh \
      build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 EXPOSE 5909/tcp
 

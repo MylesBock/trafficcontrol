@@ -85,5 +85,4 @@ COPY build/package/cdn-in-a-box/traffic_ops/to-access.sh \
      build/package/cdn-in-a-box/dns/set-dns.sh \
      build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD run.sh

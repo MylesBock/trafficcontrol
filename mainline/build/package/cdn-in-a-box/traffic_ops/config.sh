@@ -84,7 +84,7 @@ cat <<-EOF >/opt/traffic_ops/app/conf/cdn.conf
         "workers" : 12
     },
     "use_ims": true,
-    "traffic_ops_golang" : {
+    "traffic_ops" : {
         "insecure": true,
         "port" : "$TO_PORT",
         "proxy_timeout" : ${DEBUGGING_TIMEOUT:-60},

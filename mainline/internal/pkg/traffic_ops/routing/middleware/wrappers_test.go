@@ -210,7 +210,7 @@ func TestWrapAuth(t *testing.T) {
 	}
 
 	r = r.WithContext(context.WithValue(context.Background(), api.DBContextKey, db))
-	r = r.WithContext(context.WithValue(r.Context(), api.ConfigContextKey, &config.Config{ConfigTrafficOpsGolang: config.ConfigTrafficOpsGolang{DBQueryTimeoutSeconds: 20}}))
+	r = r.WithContext(context.WithValue(r.Context(), api.ConfigContextKey, &config.Config{ConfigTrafficOps: config.ConfigTrafficOpsGolang{DBQueryTimeoutSeconds: 20}}))
 
 	f(w, r)
 

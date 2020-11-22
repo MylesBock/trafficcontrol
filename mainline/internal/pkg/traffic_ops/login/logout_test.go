@@ -84,7 +84,7 @@ func TestLogout(t *testing.T) {
 	ctx := req.Context()
 	ctx = context.WithValue(ctx, api.DBContextKey, db)
 	conf := config.Config{}
-	conf.ConfigTrafficOpsGolang.DBQueryTimeoutSeconds = 100
+	conf.ConfigTrafficOps.DBQueryTimeoutSeconds = 100
 	ctx = context.WithValue(ctx, api.ConfigContextKey, &conf)
 	ctx = context.WithValue(ctx, api.ReqIDContextKey, uint64(1))
 	ctx = context.WithValue(ctx, api.APIRespWrittenKey, false)

@@ -59,7 +59,6 @@ COPY build/package/cdn-in-a-box/dns/set-dns.sh \
 
 EXPOSE 80
 ADD build/package/cdn-in-a-box/traffic_monitor/run.sh /
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh
 HEALTHCHECK --interval=10s --timeout=1s \
     CMD bash -c 'source /to-access.sh && [[ "$(curl -s http://trafficmonitor.infra.ciab.test/api/traffic-ops-uri)" == "$TO_URL" ]]'

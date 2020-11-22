@@ -82,7 +82,7 @@ To configure OAuth login:
 		:caption: Example OAuth Configuration Properties In cdn.conf
 
 		{
-			"traffic_ops_golang": {
+			"traffic_ops": {
 				"whitelisted_oauth_urls": [
 					"oauth.example.com",
 					"*.example.com"

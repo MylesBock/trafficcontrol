@@ -39,17 +39,17 @@ import (
 
 // Config reflects the structure of the cdn.conf file
 type Config struct {
-	URL                    *url.URL `json:"-"`
-	CertPath               string   `json:"-"`
-	KeyPath                string   `json:"-"`
-	ConfigHypnotoad        `json:"hypnotoad"`
-	ConfigTrafficOpsGolang `json:"traffic_ops"`
-	ConfigTO               *ConfigTO   `json:"to"`
-	SMTP                   *ConfigSMTP `json:"smtp"`
-	ConfigPortal           `json:"portal"`
-	ConfigLetsEncrypt      `json:"lets_encrypt"`
-	DB                     ConfigDatabase `json:"db"`
-	Secrets                []string       `json:"secrets"`
+	URL               *url.URL `json:"-"`
+	CertPath          string   `json:"-"`
+	KeyPath           string   `json:"-"`
+	ConfigHypnotoad   `json:"hypnotoad"`
+	ConfigTrafficOps  `json:"traffic_ops"`
+	ConfigTO          *ConfigTO   `json:"to"`
+	SMTP              *ConfigSMTP `json:"smtp"`
+	ConfigPortal      `json:"portal"`
+	ConfigLetsEncrypt `json:"lets_encrypt"`
+	DB                ConfigDatabase `json:"db"`
+	Secrets           []string       `json:"secrets"`
 	// NOTE: don't care about any other fields for now..
 	RiakAuthOptions  *riak.AuthOptions
 	RiakEnabled      bool
@@ -69,8 +69,8 @@ type ConfigHypnotoad struct {
 	// NOTE: don't care about any other fields for now..
 }
 
-// ConfigTrafficOpsGolang carries settings specific to traffic_ops server
-type ConfigTrafficOpsGolang struct {
+// ConfigTrafficOps carries settings specific to traffic_ops server
+type ConfigTrafficOps struct {
 	// Deprecated in 5.0
 	Insecure bool `json:"insecure"`
 	// end deprecated

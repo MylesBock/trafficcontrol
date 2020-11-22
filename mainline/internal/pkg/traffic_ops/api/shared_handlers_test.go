@@ -45,7 +45,7 @@ type tester struct {
 	errCode     int   //only for testing
 }
 
-var cfg = config.Config{ConfigTrafficOpsGolang: config.ConfigTrafficOpsGolang{DBQueryTimeoutSeconds: 20}, UseIMS: true}
+var cfg = config.Config{ConfigTrafficOps: config.ConfigTrafficOpsGolang{DBQueryTimeoutSeconds: 20}, UseIMS: true}
 
 func (i tester) GetKeyFieldsInfo() []KeyFieldInfo {
 	return []KeyFieldInfo{{"id", GetIntKey}}

@@ -57,5 +57,4 @@ COPY build/package/cdn-in-a-box/dns/set-dns.sh \
      /usr/local/sbin/
 
 EXPOSE 53 80 3333 3443
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh
