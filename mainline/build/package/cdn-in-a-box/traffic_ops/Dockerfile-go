@@ -74,6 +74,7 @@ COPY build/package/cdn-in-a-box/dns/set-dns.sh \
      build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
+RUN chmod +x /run-go.sh; chmod -R +x /usr/local/sbin
 WORKDIR /opt/traffic_ops/app
 EXPOSE  443
 CMD     /run-go.sh

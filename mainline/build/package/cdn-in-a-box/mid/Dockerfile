@@ -155,6 +155,6 @@ FROM common-cache-server-layers AS mid
 
 COPY build/package/cdn-in-a-box/mid/init.d/ /opt/init.d/
 
-RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
+RUN chmod +x /run.sh /opt/init.d/*.sh; chmod -R +x /usr/local/sbin;
 
 CMD /run.sh

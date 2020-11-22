@@ -18,9 +18,9 @@ package v2
 import (
 	"database/sql"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"os"
 
-	"github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang/auth"
 )
 
 var (

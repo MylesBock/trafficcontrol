@@ -48,7 +48,7 @@ services:
       - /var/lib/postgresql/data
       - shared:/shared
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     # TODO: change to expose: "5432" to limit to containers
 
   # trafficops runs only the Go version of Traffic Ops in a container.  All Traffic Ops API endpoints that have
@@ -68,7 +68,7 @@ services:
       - trafficops-perl
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: trafficops
     image: trafficops-go
     volumes:
@@ -88,7 +88,7 @@ services:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     environment:
       DIG_IP_RETRY: ${DIG_IP_RETRY:-10}
       LOAD_TRAFFIC_OPS_DATA: ${LOAD_TRAFFIC_OPS_DATA:-true}
@@ -112,7 +112,7 @@ services:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: trafficportal
     image: trafficportal
     volumes:
@@ -132,7 +132,7 @@ services:
       - shared:/shared
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: trafficmonitor
     image: trafficmonitor
 
@@ -149,7 +149,7 @@ services:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: trafficrouter
     volumes:
       - shared:/shared
@@ -167,7 +167,7 @@ services:
       - influxdb
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: trafficstats
     volumes:
       - shared:/shared
@@ -181,7 +181,7 @@ services:
     depends_on:
       - dns
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     volumes:
       - shared:/shared
 
@@ -202,7 +202,7 @@ services:
       - shared:/shared
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: trafficvault
 
   # edge cache
@@ -213,7 +213,7 @@ services:
       dockerfile: ./build/package/cdn-in-a-box/edge/Dockerfile
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: edge
     volumes:
       - shared:/shared
@@ -226,7 +226,7 @@ services:
       dockerfile: ./build/package/cdn-in-a-box/mid/Dockerfile
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: mid-01
     volumes:
       - shared:/shared
@@ -239,7 +239,7 @@ services:
       dockerfile: ./build/package/cdn-in-a-box/mid/Dockerfile
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: mid-02
     volumes:
       - shared:/shared
@@ -253,7 +253,7 @@ services:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: origin
     volumes:
       - shared:/shared
@@ -268,7 +268,7 @@ services:
     depends_on:
       - dns
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     hostname: enroller
     volumes:
       - shared:/shared
@@ -279,7 +279,7 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/dns/Dockerfile
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     volumes:
       - shared:/shared
     hostname: dns
@@ -293,7 +293,7 @@ services:
     depends_on:
       - dns
     env_file:
-      - ../../build/package/cdn-in-a-box/variables.env
+      - variables.env
     volumes:
       - shared:/shared
     domainname: infra.ciab.test
