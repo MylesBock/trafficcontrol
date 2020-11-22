@@ -20,11 +20,12 @@ import (
 	"database/sql"
 	"flag"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"os"
 	"testing"
 	"time"
 
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/config"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/config"
 	_ "github.com/lib/pq"
 )
 

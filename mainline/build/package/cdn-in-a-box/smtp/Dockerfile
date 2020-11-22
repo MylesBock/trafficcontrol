@@ -22,13 +22,14 @@ RUN apk add --no-cache \
 		bash \
 		bind-tools
 
-COPY traffic_ops/to-access.sh /
-COPY smtp/run.sh /usr/bin/
+COPY build/package/cdn-in-a-box/traffic_ops/to-access.sh /
+COPY build/package/cdn-in-a-box/smtp/run.sh /usr/bin/
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 # Unset entrypoint
 ENTRYPOINT []
 CMD ["/usr/bin/env", "run.sh"]

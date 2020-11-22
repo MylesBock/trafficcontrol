@@ -52,14 +52,14 @@ ADD $TRAFFIC_PORTAL_RPM /
 RUN rpm -Uvh /$(basename $TRAFFIC_PORTAL_RPM) && \
     rm /$(basename $TRAFFIC_PORTAL_RPM)
 
-ADD enroller/server_template.json \
-    traffic_portal/run.sh \
-    traffic_ops/to-access.sh /
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_portal/run.sh \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
 EXPOSE 443
-
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh

@@ -32,20 +32,20 @@ RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends \
         bind9=${BIND_VERSION}* bind9-host=${BIND_VERSION}* dnsutils \
  && rm -rf /var/lib/apt/lists/*
 
-COPY dns/entrypoint.sh /sbin/entrypoint.sh
-COPY dns/named.conf.local /etc/bind
-COPY dns/named.conf.options /etc/bind
-COPY dns/zone.ciab.test /etc/bind
-COPY dns/zone.ip4.arpa /etc/bind
-COPY dns/zone.ip6.arpa /etc/bind
-COPY traffic_ops/to-access.sh /
-COPY enroller/server_template.json /
+COPY build/package/cdn-in-a-box/dns/entrypoint.sh /sbin/entrypoint.sh
+COPY build/package/cdn-in-a-box/dns/named.conf.local /etc/bind
+COPY build/package/cdn-in-a-box/dns/named.conf.options /etc/bind
+COPY build/package/cdn-in-a-box/dns/zone.ciab.test /etc/bind
+COPY build/package/cdn-in-a-box/dns/zone.ip4.arpa /etc/bind
+COPY build/package/cdn-in-a-box/dns/zone.ip6.arpa /etc/bind
+COPY build/package/cdn-in-a-box/traffic_ops/to-access.sh /
+COPY build/package/cdn-in-a-box/enroller/server_template.json /
 
-COPY dns/set-self-dns.sh \
-     dns/set-dns-update.sh \
+COPY build/package/cdn-in-a-box/dns/set-self-dns.sh \
+     build/package/cdn-in-a-box/dns/set-dns-update.sh \
      /usr/local/sbin/
 
-RUN chmod 755 /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh; chmod -R +x /usr/local/sbin;
 
 EXPOSE 53/udp 53/tcp
 ENTRYPOINT ["/sbin/entrypoint.sh"]

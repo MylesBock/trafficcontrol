@@ -14,7 +14,7 @@
 
 package config
 
-import "github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang/test"
+import "github.com/apache/trafficcontrol/internal/pkg/traffic_ops/test"
 
 // Error codes:
 const (

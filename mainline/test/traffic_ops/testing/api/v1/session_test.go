@@ -16,6 +16,7 @@ package v1
 */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/client"
 	"time"
 
 	_ "github.com/lib/pq"

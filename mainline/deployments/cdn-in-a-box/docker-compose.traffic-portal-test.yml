@@ -34,7 +34,7 @@ services:
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: portal-integration
     domainname: infra.ciab.test
     volumes:

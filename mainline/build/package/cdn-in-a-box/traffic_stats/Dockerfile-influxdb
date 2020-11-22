@@ -27,13 +27,14 @@ RUN apt-get update && \
 		net-tools && \
     rm -rf /var/lib/apt/lists/*
 
-ADD enroller/server_template.json \
-    traffic_ops/to-access.sh \
-    traffic_stats/run-influxdb.sh \
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
+    build/package/cdn-in-a-box/traffic_stats/run-influxdb.sh \
     /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
+RUN chmod +x /run-influxdb.sh
 
 ENTRYPOINT ["/run-influxdb.sh"]

@@ -111,7 +111,7 @@ RUN dnf install -y bind-utils kyotocabinet-libs initscripts iproute net-tools nm
 
 RUN python3 -m pip install --upgrade pip && python3 -m pip install requests urllib3 distro
 
-ADD traffic_server/plugins/astats_over_http/astats_over_http.c traffic_server/plugins/astats_over_http/Makefile.am /
+ADD build/package/cdn-in-a-box/mid/plugins/astats_over_http/astats_over_http.c build/package/cdn-in-a-box/mid/plugins/astats_over_http/Makefile.am /
 
 RUN tsxs -v -c astats_over_http.c -o astats_over_http.so
 
@@ -131,8 +131,8 @@ RUN setcap CAP_NET_BIND_SERVICE=+eip /bin/traffic_server && setcap CAP_NET_BIND_
 
 WORKDIR /opt
 
-ADD infrastructure/cdn-in-a-box/ort /opt/ort/
-ADD traffic_control/clients/python /opt/Apache-TrafficControl/
+ADD build/package/cdn-in-a-box/ort /opt/ort/
+ADD tools/traffic_control/clients/python /opt/Apache-TrafficControl/
 
 RUN touch /var/log/ort.log && \
 	pip3 install ./Apache-TrafficControl && \
@@ -140,10 +140,10 @@ RUN touch /var/log/ort.log && \
 	cp ort/traffic_ops_ort.crontab /etc/cron.d/traffic_ops_ort-cron-template && \
 	cp ort/traffic_ops_ort.logrotate /etc/logrotate.d/ort
 
-ADD infrastructure/cdn-in-a-box/cache/run.sh infrastructure/cdn-in-a-box/traffic_ops/to-access.sh infrastructure/cdn-in-a-box/enroller/server_template.json /
+ADD build/package/cdn-in-a-box/cache/run.sh build/package/cdn-in-a-box/traffic_ops/to-access.sh build/package/cdn-in-a-box/enroller/server_template.json /
 
-COPY infrastructure/cdn-in-a-box/dns/set-dns.sh \
-     infrastructure/cdn-in-a-box/dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
 ARG ORT_RPM=build/package/cdn-in-a-box/rpm/traffic_ops_ort.rpm
@@ -153,6 +153,8 @@ RUN rpm -Uvh --nodeps /$(basename $ORT_RPM) &&\
 
 FROM common-cache-server-layers AS mid
 
-COPY infrastructure/cdn-in-a-box/mid/init.d/ /opt/init.d/
+COPY build/package/cdn-in-a-box/mid/init.d/ /opt/init.d/
+
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 CMD /run.sh

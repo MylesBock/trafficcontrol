@@ -18,7 +18,7 @@ echo "Using ${DIST_DIR} to search for rpms to copy"
 #traffic_ops/traffic_ops.rpm
 #traffic_portal/traffic_portal.rpm
 mkdir -p ${TC_DIR}/mainline/build/package/cdn-in-a-box/rpm
-NEEDED_RPMS=("traffic_ops_ort" "traffic_ops" "traffic_portal" "traffic_monitor")
+NEEDED_RPMS=("traffic_ops_ort" "traffic_ops" "traffic_portal" "traffic_monitor" "tomcat" "traffic_router" "traffic_stats")
 for NEEDED_RPM in ${NEEDED_RPMS[@]}
 do
   COPY_ME=$(find ${DIST_DIR} -name "*${NEEDED_RPM}*x86_64.rpm" -print0 | \

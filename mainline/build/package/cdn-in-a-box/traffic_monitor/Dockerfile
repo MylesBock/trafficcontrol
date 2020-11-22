@@ -47,18 +47,19 @@ RUN rpm -Uvh  /$(basename $RPM) && \
     rm /$(basename $RPM)
 
 RUN mkdir -p /opt/traffic_monitor/conf
-ADD traffic_monitor/traffic_monitor.cfg /opt/traffic_monitor/conf/traffic_monitor.cfg.template
+ADD build/package/cdn-in-a-box/traffic_monitor/traffic_monitor.cfg /opt/traffic_monitor/conf/traffic_monitor.cfg.template
 
-ADD enroller/server_template.json \
-    traffic_ops/to-access.sh \
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
     /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
 EXPOSE 80
-ADD traffic_monitor/run.sh /
+ADD build/package/cdn-in-a-box/traffic_monitor/run.sh /
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh
 HEALTHCHECK --interval=10s --timeout=1s \
     CMD bash -c 'source /to-access.sh && [[ "$(curl -s http://trafficmonitor.infra.ciab.test/api/traffic-ops-uri)" == "$TO_URL" ]]'

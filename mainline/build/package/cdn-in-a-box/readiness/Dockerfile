@@ -27,10 +27,12 @@ RUN apk add --no-cache --update \
 # MANIFEST
 # to-access.sh (sourced, get to-get and env vars)
 # run.sh       (wait on TO, then to-get deliveryservices, then curl the exampleURLs)
-COPY readiness/run.sh traffic_ops/to-access.sh /opt/readiness/
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/readiness/run.sh traffic_ops/to-access.sh /opt/readiness/
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
+
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 WORKDIR /opt/readiness
 CMD ./run.sh

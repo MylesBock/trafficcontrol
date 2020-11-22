@@ -96,13 +96,12 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -ge 8 ]]; then \
     mkdir -p /opt/traffic_ops/app/public && \
     cpanm Carton
 
-ADD traffic_router/core/src/test/resources/geo/GeoLite2-City.mmdb.gz /opt/traffic_ops/app/public/
+ADD cmd/traffic_router/core/src/test/resources/geo/GeoLite2-City.mmdb.gz /opt/traffic_ops/app/public/
 
 WORKDIR /opt/traffic_ops/app
-ADD traffic_ops/app/cpanfile traffic_ops/install/bin/install_goose.sh ./
-
+ADD build/package/traffic_ops/app/cpanfile build/package/traffic_ops/install/bin/install_goose.sh ./
 # Start with the existing traffic_ops/app/local directory
-COPY infrastructure/cdn-in-a-box/traffic_ops/local local
+COPY build/package/cdn-in-a-box/traffic_ops/local local
 RUN export POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 && \
     echo 'Running carton...' && \
     [[ -d "${PERL5LIB}/x86_64-linux-thread-multi" ]]; existing_install=$? && \
@@ -112,6 +111,7 @@ RUN export POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 && \
         carton || exit 1; \
     fi && \
     rm -rf $HOME/.cpan* /tmp/Dockerfile /tmp/local.tar.gz ./cpanfile
+RUN chmod +x ./install_goose.sh
 RUN ./install_goose.sh
 
 FROM trafficops-perl-deps
@@ -127,21 +127,21 @@ RUN rpm -Uvh /$(basename $TRAFFIC_OPS_RPM) && \
 RUN POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 carton && \
     rm -rf $HOME/.cpan* /tmp/Dockerfile /tmp/local.tar.gz
 
-ADD infrastructure/cdn-in-a-box/enroller/server_template.json \
-    infrastructure/cdn-in-a-box/traffic_ops/run.sh \
-    infrastructure/cdn-in-a-box/traffic_ops/config.sh \
-    infrastructure/cdn-in-a-box/traffic_ops/adduser.pl \
-    infrastructure/cdn-in-a-box/traffic_ops/to-access.sh \
-    infrastructure/cdn-in-a-box/traffic_ops/generate-certs.sh \
-    infrastructure/cdn-in-a-box/traffic_ops/trafficops-init.sh \
-    infrastructure/cdn-in-a-box/variables.env \
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_ops/run.sh \
+    build/package/cdn-in-a-box/traffic_ops/config.sh \
+    build/package/cdn-in-a-box/traffic_ops/adduser.pl \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
+    build/package/cdn-in-a-box/traffic_ops/generate-certs.sh \
+    build/package/cdn-in-a-box/traffic_ops/trafficops-init.sh \
+    build/package/cdn-in-a-box/variables.env \
     /
 
-COPY infrastructure/cdn-in-a-box/dns/set-dns.sh \
-     infrastructure/cdn-in-a-box/dns/insert-self-into-dns.sh \
-     infrastructure/cdn-in-a-box/traffic_ops/set-to-ips-from-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
+     build/package/cdn-in-a-box/traffic_ops/set-to-ips-from-dns.sh \
      /usr/local/sbin/
 
-ADD infrastructure/cdn-in-a-box/traffic_ops_data /traffic_ops_data
-
+ADD build/package/cdn-in-a-box/traffic_ops_data /traffic_ops_data
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh

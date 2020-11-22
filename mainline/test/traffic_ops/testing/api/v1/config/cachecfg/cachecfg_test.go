@@ -16,10 +16,10 @@ package cachecfg_test
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/v1/config"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/v1/config/cachecfg"
 	"testing"
 
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/v1/config"
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/v1/config/cachecfg"
 )
 
 var commonNegativeTests = []config.NegativeTest{

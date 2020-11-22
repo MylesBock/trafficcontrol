@@ -16,10 +16,10 @@ package ip_allow_test
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/v1/config"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/v1/config/ip_allow"
 	"testing"
 
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/v1/config"
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/v1/config/ip_allow"
 )
 
 var negativeTests = []config.NegativeTest{

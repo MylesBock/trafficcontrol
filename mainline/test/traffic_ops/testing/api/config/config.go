@@ -28,7 +28,7 @@ import (
 	"reflect"
 	"strings"
 
-	log "github.com/apache/trafficcontrol/lib/log"
+	log "github.com/apache/trafficcontrol/pkg/log"
 	"github.com/kelseyhightower/envconfig"
 )
 

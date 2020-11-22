@@ -24,7 +24,7 @@ RUN apt-get update && \
         wget && \
     apt-get clean
 
-COPY GO_VERSION /
+COPY build/package/GO_VERSION /
 RUN go_version=$(cat /GO_VERSION) && \
     wget -O go.tar.gz https://dl.google.com/go/go${go_version}.linux-amd64.tar.gz && \
     tar -C /usr/local -xvzf go.tar.gz && \
@@ -33,14 +33,17 @@ RUN go_version=$(cat /GO_VERSION) && \
 ENV GOPATH=/go
 
 # enroller source and dependencies
-COPY ./lib/ /go/src/github.com/apache/trafficcontrol/lib/
-COPY ./vendor/ /go/src/github.com/apache/trafficcontrol/vendor/
-COPY ./traffic_ops/client/ /go/src/github.com/apache/trafficcontrol/traffic_ops/client/
-COPY ./traffic_ops/vendor/ /go/src/github.com/apache/trafficcontrol/traffic_ops/vendor/
-COPY ./infrastructure/cdn-in-a-box/ /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/
-
-WORKDIR /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/enroller
-RUN go clean && go get -v && go build
+# todo tentatively these are no longer necessary
+#COPY pkg/ /go/src/github.com/apache/trafficcontrol/lib/
+#COPY ./vendor/ /go/src/github.com/apache/trafficcontrol/vendor/
+#COPY ./pkg/client/ /go/src/github.com/apache/trafficcontrol/traffic_ops/client/
+#COPY ./traffic_ops/vendor/ /go/src/github.com/apache/trafficcontrol/traffic_ops/vendor/
+#COPY ./infrastructure/cdn-in-a-box/ /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/
+# todo copying the entire mainline dir is a little much
+COPY ./ /trafficcontrol
+COPY build/package/cdn-in-a-box/traffic_ops/to-access.sh /traffic_ops/to-access.sh
+WORKDIR /trafficcontrol
+RUN go clean && go get ./... && go build -o enroller ./build/package/cdn-in-a-box/enroller/enroller.go
 
 FROM debian:buster
 
@@ -50,15 +53,15 @@ RUN apt-get update && apt-get install -y \
         jq gettext && \
     apt-get clean
 COPY --from=enroller-builder \
-   /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/enroller/enroller \
-   /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/enroller/run.sh \
-   /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/enroller/server_template.json \
-   /go/src/github.com/apache/trafficcontrol/infrastructure/cdn-in-a-box/traffic_ops/to-access.sh \
+   /trafficcontrol/enroller \
+   /trafficcontrol/build/package/cdn-in-a-box/enroller/run.sh \
+   /trafficcontrol/build/package/cdn-in-a-box/enroller/server_template.json \
+   /trafficcontrol/build/package/cdn-in-a-box/traffic_ops/to-access.sh \
    /
 
-COPY infrastructure/cdn-in-a-box/dns/set-dns.sh \
-     infrastructure/cdn-in-a-box/dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 WORKDIR /shared/enroller
 CMD /run.sh

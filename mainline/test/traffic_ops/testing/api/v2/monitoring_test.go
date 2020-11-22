@@ -16,6 +16,7 @@
 package v2
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"testing"
 )
 

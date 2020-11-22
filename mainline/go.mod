@@ -1,7 +1,9 @@
 module github.com/apache/trafficcontrol
 
 go 1.15
+
 replace github.com/basho/riak-go-client => github.com/basho/riak-go-client v1.7.1-0.20170327205844-5587c16e0b8b
+
 require (
 	code.cloudfoundry.org/bytefmt v0.0.0-20200131002437-cf55d5288a48
 	github.com/GehirnInc/crypt v0.0.0-20200316065508-bb7000b8a962
@@ -21,12 +23,15 @@ require (
 	github.com/influxdata/influxdb v1.8.3
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/json-iterator/go v1.1.10
-	github.com/lestrrat-go/jwx v1.0.5
+	github.com/kelseyhightower/envconfig v1.4.0
+	github.com/lestrrat-go/jwx v1.0.5 // indirect
 	github.com/lestrrat/go-jwx v0.0.0-20180221005942-b7d4802280ae
 	github.com/lestrrat/go-pdebug v0.0.0-20180220043741-569c97477ae8 // indirect
 	github.com/lib/pq v1.8.0
 	github.com/miekg/dns v1.1.35
 	github.com/ogier/pflag v0.0.1
+	github.com/onsi/ginkgo v1.14.2 // indirect
+	github.com/onsi/gomega v1.10.3 // indirect
 	github.com/pborman/getopt v1.1.0
 	github.com/pkg/errors v0.9.1
 	go.etcd.io/bbolt v1.3.5
@@ -35,8 +40,10 @@ require (
 	golang.org/x/sys v0.0.0-20201119102817-f84b799fce68
 	golang.org/x/text v0.3.4 // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
+	gopkg.in/DATA-DOG/go-sqlmock.v1 v1.3.0
 	gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d // indirect
 	gopkg.in/fsnotify.v1 v1.4.7
 	gopkg.in/ldap.v2 v2.5.1
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
+	gopkg.in/yaml.v2 v2.3.0
 )

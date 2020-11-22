@@ -70,7 +70,7 @@ might be getting stuck.
 
 ## Components
 > The following assumes that the default configuration provided in
-> [`variables.env`](variables.env) is used.
+> [`variables.env`](../../build/package/cdn-in-a-box/variables.env) is used.
 
 Once your CDN is running, you should see a cascade of output on your terminal. This is
 typically the output of the build, then setup, and finally logging infrastructure

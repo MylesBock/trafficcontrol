@@ -18,8 +18,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/v1/config"
-	"github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang/test"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/test"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/v1/config"
 	"github.com/go-ozzo/ozzo-validation/is"
 )
 

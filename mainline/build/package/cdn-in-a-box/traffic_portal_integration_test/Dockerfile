@@ -24,7 +24,7 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
     fi
 
 # Installs the Google Chrome dnf repo
-COPY infrastructure/cdn-in-a-box/traffic_portal_integration_test/etc etc
+COPY build/package/cdn-in-a-box/traffic_portal_integration_test/etc etc
 
 RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
         utils_package=yum-utils; \
@@ -53,9 +53,9 @@ RUN curl -Lo node.tar.xz https://nodejs.org/dist/v12.16.3/node-v12.16.3-linux-x6
 
 FROM node-dependencies
 
-COPY    traffic_portal/ /lang/traffic_portal/
+COPY    build/package/cdn-in-a-box/traffic_portal/ /lang/traffic_portal/
 WORKDIR /lang/traffic_portal/test/end_to_end
-COPY    infrastructure/cdn-in-a-box/traffic_portal_integration_test/junit-jasmine-onprepare.js .
+COPY    build/package/cdn-in-a-box/traffic_portal_integration_test/junit-jasmine-onprepare.js .
 
 RUN npm install --save-dev jasmine-reporters@^2.0.0
 
@@ -80,10 +80,10 @@ RUN webdriver-manager clean && \
     repoquery --installed --qf='%{version}' google-chrome-stable | \
         xargs webdriver-manager update --versions.chrome
 
-COPY infrastructure/cdn-in-a-box/traffic_ops/to-access.sh \
-     infrastructure/cdn-in-a-box/traffic_portal_integration_test/run.sh \
-     infrastructure/cdn-in-a-box/dns/set-dns.sh \
-     infrastructure/cdn-in-a-box/dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/traffic_ops/to-access.sh \
+     build/package/cdn-in-a-box/traffic_portal_integration_test/run.sh \
+     build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD run.sh

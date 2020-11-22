@@ -28,7 +28,7 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
     fi
 
 # Default values for RPM -- override with `docker build --build-arg RPM=...'
-ARG TRAFFIC_TS_RPM=traffic_stats/traffic_stats.rpm
+ARG TRAFFIC_TS_RPM=build/package/cdn-in-a-box/rpm/traffic_stats.rpm
 
 RUN dnf install -y epel-release && \
     dnf install -y \
@@ -44,13 +44,13 @@ ADD $TRAFFIC_TS_RPM /
 RUN rpm -Uvh /$(basename $TRAFFIC_TS_RPM) && \
     rm /$(basename $TRAFFIC_TS_RPM)
 
-ADD enroller/server_template.json \
-    traffic_ops/to-access.sh \
-    traffic_stats/run.sh \
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
+    build/package/cdn-in-a-box/traffic_stats/run.sh \
     /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 ENTRYPOINT /run.sh

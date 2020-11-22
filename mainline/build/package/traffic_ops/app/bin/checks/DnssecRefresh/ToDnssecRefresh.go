@@ -28,8 +28,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/apache/trafficcontrol/lib/go-log"
-	"github.com/apache/trafficcontrol/traffic_ops/app/bin/checks/DnssecRefresh/config"
+	"github.com/apache/trafficcontrol/build/package/traffic_ops/app/bin/checks/DnssecRefresh/config"
+	"github.com/apache/trafficcontrol/pkg/log"
 )
 
 func main() {

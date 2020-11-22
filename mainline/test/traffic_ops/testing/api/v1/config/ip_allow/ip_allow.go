@@ -15,11 +15,11 @@
 package ip_allow
 
 import (
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/v1/config"
 	"regexp"
 	"strings"
 
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/v1/config"
-	"github.com/apache/trafficcontrol/traffic_ops/traffic_ops_golang/test"
+	"github.com/apache/trafficcontrol/internal/pkg/traffic_ops/test"
 )
 
 // Parse takes a string presumed to be an ATS ip_allow.config and validates that it is

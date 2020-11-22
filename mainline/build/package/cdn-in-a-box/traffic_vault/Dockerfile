@@ -27,16 +27,16 @@ RUN echo 'APT::Install-Recommends 0;' >> /etc/apt/apt.conf.d/01norecommends \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y net-tools ca-certificates dnsutils gettext-base \
  && rm -rf /var/lib/apt/lists/* && rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes
 
-ADD traffic_vault/prestart.d/* /etc/riak/prestart.d/
-ADD traffic_vault/poststart.d/* /etc/riak/poststart.d/
-ADD enroller/server_template.json \
-    traffic_vault/run.sh \
-    traffic_vault/sslkeys.xml \
-    traffic_ops/to-access.sh \
+ADD build/package/cdn-in-a-box/traffic_vault/prestart.d/* /etc/riak/prestart.d/
+ADD build/package/cdn-in-a-box/traffic_vault/poststart.d/* /etc/riak/poststart.d/
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_vault/run.sh \
+    build/package/cdn-in-a-box/traffic_vault/sslkeys.xml \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
     /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh

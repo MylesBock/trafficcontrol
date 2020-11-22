@@ -45,18 +45,19 @@ RUN rm -rf /home/$VNC_USER/.vnc && \
     dd if=/dev/urandom of=/dev/stdout count=12 bs=1 | vncpasswd -f > /home/$VNC_USER/.vnc/passwd && \
     chmod 600 /home/$VNC_USER/.vnc/passwd
 
-ADD optional/vnc/vnc_startup.sh /home/$VNC_USER/.vnc/xstartup 
+ADD build/package/cdn-in-a-box/vnc/vnc_startup.sh /home/$VNC_USER/.vnc/xstartup
 
 USER root
 
 RUN systemd-machine-id-setup && \
     chmod +x /home/$VNC_USER/.vnc/xstartup
 
-ADD optional/vnc/run.sh /
+ADD build/package/cdn-in-a-box/vnc/run.sh /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 EXPOSE 5909/tcp
 

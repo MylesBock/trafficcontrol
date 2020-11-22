@@ -32,7 +32,7 @@ services:
       context: ../../..
       dockerfile: ../../build/package/cdn-in-a-box/traffic_ops_integration_test/Dockerfile
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: integration
     domainname: infra.ciab.test
     volumes:

@@ -38,7 +38,7 @@ services:
       context: ""
       dockerfile: ../../build/package/cdn-in-a-box/readiness/Dockerfile
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: readiness
     domainname: infra.ciab.test
     volumes:

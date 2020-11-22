@@ -31,9 +31,9 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/apache/trafficcontrol/lib/log"
-	tc "github.com/apache/trafficcontrol/lib/tc"
-	"github.com/apache/trafficcontrol/traffic_ops/client"
+	log "github.com/apache/trafficcontrol/pkg/log"
+	tc "github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/client"
 	"github.com/kelseyhightower/envconfig"
 	"gopkg.in/fsnotify.v1"
 )

@@ -34,17 +34,19 @@ RUN apk add --no-cache \
 RUN rm /etc/lighttpd/lighttpd.conf
 RUN rm -rf /var/www/localhost/
 
-ADD origin/content /var/www/html/
+ADD build/package/cdn-in-a-box/origin/content /var/www/html/
 
-ADD origin/lighttpd.conf /etc/lighttpd/lighttpd.conf
-ADD origin/run.sh \
-    traffic_ops/to-access.sh \
-    enroller/server_template.json \
+ADD build/package/cdn-in-a-box/origin/lighttpd.conf /etc/lighttpd/lighttpd.conf
+ADD build/package/cdn-in-a-box/origin/run.sh \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
+    build/package/cdn-in-a-box/enroller/server_template.json \
     /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
+
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 EXPOSE 80
 

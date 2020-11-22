@@ -15,20 +15,32 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM ubuntu:18.04
-RUN apt-get update && apt-get install -y vim tree wget iptables openvpn iputils-ping net-tools dnsutils
-ENV EASYRSA_BIN https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.5/EasyRSA-nix-3.0.5.tgz
-RUN cd /root && \
-    wget $EASYRSA_BIN && \
-    tar -zxf $(basename $EASYRSA_BIN) && \
-    rm $(basename $EASYRSA_BIN) && \
-    mkdir /vpnca
-ADD ./optional/vpn/server.conf /etc/openvpn/server.conf
-ADD ./optional/vpn/run.sh ./optional/vpn/vars /
+FROM grafana/grafana:5.4.3
+
+USER root
+ARG TRAFFIC_TS_RPM=traffic_stats/traffic_stats.rpm
+
+RUN apt-get update && \
+    apt-get install -y dnsutils net-tools gettext-base p7zip-full netcat && \
+    rm -rf /var/lib/apt/lists/*
+
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    traffic_ops/to-access.sh \
+    optional/grafana/run-grafana.sh \
+    optional/grafana/datasources.yml.template \
+    $TRAFFIC_TS_RPM \
+    /
+
+RUN cd ~ \
+    && 7z x /traffic_stats.rpm \
+    && 7z e traffic_stats-*.cpio *.js -r \
+    && mv *.js /usr/share/grafana/public/dashboards \
+    && rm /traffic_stats.rpm \
+    && rm ~/traffic_stats-*.cpio
 
 COPY dns/set-dns.sh \
      dns/insert-self-into-dns.sh \
      /usr/local/sbin/
-
-ENTRYPOINT /run.sh
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
+ENTRYPOINT [ "/run-grafana.sh" ]
 EXPOSE 443

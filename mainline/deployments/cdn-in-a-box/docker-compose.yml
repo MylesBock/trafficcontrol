@@ -38,8 +38,8 @@ services:
   # All other components access the database thru the Traffic Ops API
   db:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_ops/Dockerfile-db
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_ops/Dockerfile-db
     hostname: db
     domainname: infra.ciab.test
     depends_on:
@@ -48,7 +48,7 @@ services:
       - /var/lib/postgresql/data
       - shared:/shared
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     # TODO: change to expose: "5432" to limit to containers
 
   # trafficops runs only the Go version of Traffic Ops in a container.  All Traffic Ops API endpoints that have
@@ -56,11 +56,11 @@ services:
   # defined below
   trafficops:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_ops/Dockerfile-go
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_ops/Dockerfile-go
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        TRAFFIC_OPS_RPM: traffic_ops/traffic_ops.rpm
+        #TRAFFIC_OPS_RPM: traffic_ops/traffic_ops.rpm
     depends_on:
       - db
       - enroller
@@ -68,7 +68,7 @@ services:
       - trafficops-perl
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: trafficops
     image: trafficops-go
     volumes:
@@ -78,17 +78,17 @@ services:
   # in place until all API endpoints have been rewritten in Go
   trafficops-perl:
     build:
-      context: ../../..
-      dockerfile: ../../test/traffic_ops/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_ops/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        TRAFFIC_OPS_RPM: infrastructure/cdn-in-a-box/traffic_ops/traffic_ops.rpm
+        #TRAFFIC_OPS_RPM: infrastructure/cdn-in-a-box/traffic_ops/traffic_ops.rpm
     depends_on:
       - db
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     environment:
       DIG_IP_RETRY: ${DIG_IP_RETRY:-10}
       LOAD_TRAFFIC_OPS_DATA: ${LOAD_TRAFFIC_OPS_DATA:-true}
@@ -103,16 +103,16 @@ services:
   # and passes any /api/... routes directly to Traffic Ops
   trafficportal:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_portal/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_portal/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        TRAFFIC_PORTAL_RPM: traffic_portal/traffic_portal.rpm
+        #TRAFFIC_PORTAL_RPM: traffic_portal/traffic_portal.rpm
     depends_on:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: trafficportal
     image: trafficportal
     volumes:
@@ -121,35 +121,35 @@ services:
   # trafficmonitor is an HTTP service that monitors the caches in a CDN for a variety of metrics
   trafficmonitor:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_monitor/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_monitor/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        TRAFFIC_MONITOR_RPM: traffic_monitor/traffic_monitor.rpm
+        #TRAFFIC_MONITOR_RPM: traffic_monitor/traffic_monitor.rpm
     depends_on:
       - enroller
     volumes:
       - shared:/shared
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: trafficmonitor
     image: trafficmonitor
 
   # trafficrouter routes clients to the most optimal cache
   trafficrouter:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_router/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_router/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        TRAFFIC_ROUTER_RPM: traffic_router/traffic_router.rpm
-        TOMCAT_RPM: traffic_router/tomcat.rpm
+        TRAFFIC_ROUTER_RPM: ./build/package/cdn-in-a-box/rpm/traffic_router.rpm
+        #TOMCAT_RPM: traffic_router/tomcat.rpm
     depends_on:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: trafficrouter
     volumes:
       - shared:/shared
@@ -157,8 +157,8 @@ services:
   # trafficstats collect traffic information
   trafficstats:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_stats/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_stats/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
     image: trafficstats
@@ -167,29 +167,30 @@ services:
       - influxdb
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: trafficstats
     volumes:
       - shared:/shared
 
   influxdb:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_stats/Dockerfile-influxdb
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_stats/Dockerfile-influxdb
     hostname: influxdb
     domainname: infra.ciab.test
     depends_on:
       - dns
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     volumes:
       - shared:/shared
 
   # trafficvault runs a riak container to store private keys
   trafficvault:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/traffic_vault/Dockerfile
+      # todo (restructure): this can maybe be narrowed down a little to like build/package/cdn-in-a-box
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/traffic_vault/Dockerfile
     depends_on:
       - enroller
     environment:
@@ -201,7 +202,7 @@ services:
       - shared:/shared
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: trafficvault
 
   # edge cache
@@ -212,7 +213,7 @@ services:
       dockerfile: ./build/package/cdn-in-a-box/edge/Dockerfile
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: edge
     volumes:
       - shared:/shared
@@ -225,7 +226,7 @@ services:
       dockerfile: ./build/package/cdn-in-a-box/mid/Dockerfile
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: mid-01
     volumes:
       - shared:/shared
@@ -238,7 +239,7 @@ services:
       dockerfile: ./build/package/cdn-in-a-box/mid/Dockerfile
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: mid-02
     volumes:
       - shared:/shared
@@ -246,13 +247,13 @@ services:
   # origin provides the content to be distributed through the CDN caches
   origin:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/origin/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/origin/Dockerfile
     depends_on:
       - enroller
     domainname: infra.ciab.test
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: origin
     volumes:
       - shared:/shared
@@ -267,7 +268,7 @@ services:
     depends_on:
       - dns
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     hostname: enroller
     volumes:
       - shared:/shared
@@ -275,10 +276,10 @@ services:
   # Bind9 DNS services work in combination with the traffic router to route clients to the optimal cache
   dns:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/dns/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/dns/Dockerfile
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     volumes:
       - shared:/shared
     hostname: dns
@@ -286,13 +287,13 @@ services:
 
   smtp:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/smtp/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/smtp/Dockerfile
     hostname: smtp
     depends_on:
       - dns
     env_file:
-      - variables.env
+      - ../../build/package/cdn-in-a-box/variables.env
     volumes:
       - shared:/shared
     domainname: infra.ciab.test

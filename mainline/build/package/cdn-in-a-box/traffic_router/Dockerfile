@@ -30,8 +30,8 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
 MAINTAINER dev@trafficcontrol.apache.org
 
 # Default values for TOMCAT RPM and RPM -- override with `docker build --build-arg JDK=...'
-ARG TRAFFIC_ROUTER_RPM=traffic_router/traffic_router.rpm
-ARG TOMCAT_RPM=traffic_router/tomcat.rpm
+ARG TRAFFIC_ROUTER_RPM=build/package/cdn-in-a-box/rpm/traffic_router.rpm
+ARG TOMCAT_RPM=build/package/cdn-in-a-box/rpm/tomcat.rpm
 
 RUN dnf -y install epel-release && \
     dnf -y install jq git rpm-build net-tools iproute nc wget tar unzip \
@@ -47,15 +47,15 @@ ADD $TOMCAT_RPM /tomcat.rpm
 RUN rpm -Uvh /traffic_router.rpm /tomcat.rpm && \
     find /usr/lib* -name libtc\* -exec ln -sfv {} /opt/tomcat/lib \;
 
-ADD enroller/server_template.json \
-    traffic_router/run.sh \
-    traffic_ops/to-access.sh \
+ADD build/package/cdn-in-a-box/enroller/server_template.json \
+    build/package/cdn-in-a-box/traffic_router/run.sh \
+    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
     /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
 EXPOSE 53 80 3333 3443
-
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 CMD /run.sh

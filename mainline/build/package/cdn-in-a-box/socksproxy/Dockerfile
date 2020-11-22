@@ -45,9 +45,11 @@ RUN dnf install -y net-tools bind-utils iproute wget curl automake autoconf gcc 
 COPY optional/socksproxy/sockd.conf /etc
 COPY optional/socksproxy/run.sh /
 
-COPY dns/set-dns.sh \
-     dns/insert-self-into-dns.sh \
+COPY build/package/cdn-in-a-box/dns/set-dns.sh \
+     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
+
+RUN chmod +x /run.sh; chmod -R +x /usr/local/sbin;
 
 EXPOSE 1080
 
