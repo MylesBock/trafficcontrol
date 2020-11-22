@@ -34,22 +34,24 @@ An HTTP Caching Proxy
 tar -xvzf %{_sourcedir}/%{name}-%{version}.tgz --directory %{_builddir}
 
 %install
+
 rm -rf %{buildroot}/usr/sbin/%{name}
 mkdir -p %{buildroot}/usr/sbin/
-cp -p %{name} %{buildroot}/usr/sbin/
+# todo this is really nasty refactor
+cp -p /tmp/go/src/github.com/apache/trafficcontrol/mainline/cmd/grove/%{name} %{buildroot}/usr/sbin/
 
 rm -rf %{buildroot}/etc/%{name}
 mkdir -p -m 777 %{buildroot}/etc/%{name}
-cp -p conf/%{name}.cfg %{buildroot}/etc/%{name}
+cp -p /tmp/go/src/github.com/apache/trafficcontrol/mainline/build/package/grove/%{name}.cfg %{buildroot}/etc/%{name}
 
 rm -rf %{buildroot}/var/log/%{name}
 mkdir -p -m 777 %{buildroot}/var/log/%{name}
 
 mkdir -p -m 777 %{buildroot}/etc/init.d/
-cp -p  build/%{name}.init %{buildroot}/etc/init.d/%{name}
+cp -p  /tmp/go/src/github.com/apache/trafficcontrol/mainline/build/package/grove/build/%{name}.init %{buildroot}/etc/init.d/%{name}
 
 mkdir -p -m 777 %{buildroot}/etc/logrotate.d/
-cp -p build/%{name}.logrotate %{buildroot}/etc/logrotate.d/%{name}
+cp -p /tmp/go/src/github.com/apache/trafficcontrol/mainline/build/package/grove/build/%{name}.logrotate %{buildroot}/etc/logrotate.d/%{name}
 
 %clean
 echo "cleaning"

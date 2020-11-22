@@ -22,8 +22,8 @@ importFunctions() {
 	 xargs -n1 -I {} echo '"{}"' | \
 	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
 	)
-	[ -z "$TC_DIR" ] || { echo "Cannot find repository root." >&2 ; return 1; }
-	export TC_DIR
+	GROVE_DIR=$(find "${TC_DIR}" -wholename "*/cmd/grove" -type d)
+	export TC_DIR GROVE_DIR
   functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
   if [ -z "$functions_sh" ]; then
 		echo "Error: Can't find $functions_sh"
@@ -40,23 +40,23 @@ checkGroveEnvironment() {
 	script="$(realpath "$0")"
 	scriptdir="$(dirname "$script")"
 
-	GROVE_DIR='' GROVE_VERSION='' PACKAGE='' RPMBUILD='' DIST='' RPM=''
-	GROVE_DIR=$(dirname "$scriptdir")
-	GROVE_VERSION="$(cat "${GROVE_DIR}/VERSION")"
+	GROVE_BUILD_DIR='' GROVE_VERSION='' PACKAGE='' RPMBUILD='' DIST='' RPM=''
+	GROVE_BUILD_DIR=$(dirname "$scriptdir")
+	GROVE_VERSION="$(cat "${GROVE_BUILD_DIR}/VERSION")"
 	PACKAGE="grove"
 	BUILD_NUMBER=${BUILD_NUMBER:-$(getBuildNumber)}
-	RPMBUILD="${GROVE_DIR}/rpmbuild"
+	RPMBUILD="${GROVE_BUILD_DIR}/rpmbuild"
 	DIST="${TC_DIR}/dist"
 	RPM="${PACKAGE}-${GROVE_VERSION}-${BUILD_NUMBER}.x86_64.rpm"
 	GOOS="${GOOS:-linux}"
 	RPM_TARGET_OS="${RPM_TARGET_OS:-$GOOS}"
-	export GROVE_DIR GROVE_VERSION PACKAGE BUILD_NUMBER RPMBUILD DIST RPM GOOS RPM_TARGET_OS
+	export GROVE_BUILD_DIR GROVE_VERSION PACKAGE BUILD_NUMBER RPMBUILD DIST RPM GOOS RPM_TARGET_OS
 
 	echo "=================================================="
 	echo "GO_VERSION: $GO_VERSION"
 	echo "TC_DIR: $TC_DIR"
 	echo "PACKAGE: $PACKAGE"
-	echo "GROVE_DIR: $GROVE_DIR"
+	echo "GROVE_BUILD_DIR: $GROVE_BUILD_DIR"
 	echo "GROVE_VERSION: $GROVE_VERSION"
 	echo "BUILD_NUMBER: $BUILD_NUMBER"
 	echo "DIST: $DIST"
@@ -67,7 +67,7 @@ checkGroveEnvironment() {
 
 # ---------------------------------------
 initBuildArea() {
-	cd "$GROVE_DIR"
+	cd "$GROVE_BUILD_DIR"
 
 	# prep build environment
 	[ -e "$RPMBUILD" ] && rm -rf "$RPMBUILD"
@@ -79,26 +79,32 @@ initBuildArea() {
 
 # ---------------------------------------
 buildRpmGrove() {
+
 	# build
 	ldflags='-s -w'
 	tags='osusergo netgo'
+	cd $GROVE_DIR
 	go get -v -d . || { echo "Failed to go get dependencies: $?" >&2; return 1; }
 	go build -v -ldflags "${ldflags} -X main.Version=$GROVE_VERSION" -tags "$tags" || { echo "Failed to build grove: $?" >&2; return 1; }
 
 	# tar
-	tar -cvzf "${RPMBUILD}/SOURCES/grove-${GROVE_VERSION}.tgz" grove conf/grove.cfg build/grove.init build/grove.logrotate || { echo "Failed to create archive for rpmbuild: $?" >&2; return 1; }
+	tar -cvzf "${RPMBUILD}/SOURCES/grove-${GROVE_VERSION}.tgz" \
+	 ${GROVE_DIR} \
+	 ${GROVE_BUILD_DIR}/grove.cfg \
+	 ${GROVE_BUILD_DIR}/build/grove.init \
+	 ${GROVE_BUILD_DIR}/build/grove.logrotate || { echo "Failed to create archive for rpmbuild: $?" >&2; return 1; }
 
 	# Work around bug in rpmbuild. Fixed in rpmbuild 4.13.
 	# See: https://github.com/rpm-software-management/rpm/commit/916d528b0bfcb33747e81a57021e01586aa82139
 	# Takes ownership of the spec file.
-	spec=build/grove.spec
+	spec="${GROVE_BUILD_DIR}/build/grove.spec"
 	spec_owner=$(stat -c%u $spec)
 	spec_group=$(stat -c%g $spec)
 	if ! id "$spec_owner" >/dev/null 2>&1; then
-		chown "$(id -u):$(id -g)" build/grove.spec
+		chown "$(id -u):$(id -g)" "${GROVE_BUILD_DIR}/build/grove.spec"
 
 		give_spec_back() {
-		chown "${spec_owner}:${spec_group}" build/grove.spec
+		chown "${spec_owner}:${spec_group}" "${GROVE_BUILD_DIR}/build/grove.spec"
 		}
 		trap give_spec_back EXIT
 	fi
@@ -111,7 +117,7 @@ buildRpmGrove() {
 		--define "_target_os ${RPM_TARGET_OS}" \
 		--define '%_source_payload w2.xzdio' \
 		--define '%_binary_payload w2.xzdio' \
-		-ba build/grove.spec ||
+		-ba "${GROVE_BUILD_DIR}/build/grove.spec" ||
 		{ echo "rpmbuild failed: $?" >&2; return 1; }
 
 	# copy build RPM to .
