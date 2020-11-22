@@ -55,6 +55,6 @@ RUN	echo '{ "allow_root": true }' > /root/.bowerrc
 
 ###
 
-CMD /trafficcontrol/go/scripts/build/clean_build.sh traffic_portal
+CMD /trafficcontrol/mainline/build/package/build/clean_build.sh traffic_portal
 
 # vi:syntax=Dockerfile

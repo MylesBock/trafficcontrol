@@ -22,6 +22,7 @@ importFunctions() {
 	 xargs -n1 -I {} echo '"{}"' | \
 	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
 	)
+	# todo (restructure): ort maybe should be moved to `tools`?
   ORT_DIR=$(find ${TC_DIR} -wholename "*/cmd/traffic_ops_ort" -type d)
 	export ORT_DIR TC_DIR;
   functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
@@ -74,14 +75,14 @@ initBuildArea() {
 
 	echo "build_rpm.sh lsing for logrotate";
 	ls -lah .;
-	ls -lah ./build;
-
-	cp -p build/atstccfg.logrotate "$dest"/build;
+  LOGROTATE_LOC=$(find ${TC_DIR} -name "*atstccfg.logrotate")
+  SPEC_LOC=$(find ${TC_DIR} -name "*traffic_ops_ort.spec")
+	cp -p $LOGROTATE_LOC "$dest"/build;
 	mkdir -p "${dest}/atstccfg";
 	cp -a atstccfg/* "${dest}/atstccfg";
 	tar -czvf "$dest".tgz -C "$RPMBUILD"/SOURCES "$(basename "$dest")";
-	cp build/traffic_ops_ort.spec "$RPMBUILD"/SPECS/.;
-	cp build/atstccfg.logrotate "$RPMBUILD"/.;
+	cp $SPEC_LOC "$RPMBUILD"/SPECS/.;
+	cp $LOGROTATE_LOC "$RPMBUILD"/.;
 
 	echo "The build area has been initialized.";
 }

@@ -42,14 +42,14 @@ tar xvf %{SOURCE0} -C $RPM_SOURCE_DIR
 godir=src/github.com/apache/trafficcontrol/traffic_ops_ort/atstccfg
 ( mkdir -p "$godir" && \
 	cd "$godir" && \
-	cp "$TC_DIR"/traffic_ops_ort/atstccfg/atstccfg .
+	cp "$TC_DIR"/mainline/cmd/traffic_ops_ort/atstccfg/atstccfg .
 ) || { echo "Could not copy go program at $(pwd): $!"; exit 1; }
 
 # copy t3c binary
 got3cdir=src/github.com/apache/trafficcontrol/traffic_ops_ort/t3c
 ( mkdir -p "$got3cdir" && \
 	cd "$got3cdir" && \
-	cp "$TC_DIR"/traffic_ops_ort/t3c/t3c .
+	cp "$TC_DIR"/mainline/cmd/traffic_ops_ort/t3c/t3c .
 ) || { echo "Could not copy go program at $(pwd): $!"; exit 1; }
 
 
