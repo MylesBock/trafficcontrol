@@ -28,7 +28,7 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
     fi
 
 # Default values for RPM -- override with `docker build --build-arg RPM=...'
-ARG RPM=traffic_monitor/traffic_monitor.rpm
+ARG RPM=build/package/cdn-in-a-box/rpm/traffic_monitor.rpm
 
 RUN dnf install -y epel-release && \
     dnf install -y \

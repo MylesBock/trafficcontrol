@@ -31,7 +31,7 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
 RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash -
 
 # Override TRAFFIC_PORTAL_RPM arg to use a different one using --build-arg TRAFFIC_PORTAL_RPM=...  Can be local file or http://...
-ARG TRAFFIC_PORTAL_RPM=traffic_portal/traffic_portal.rpm
+ARG TRAFFIC_PORTAL_RPM=build/package/cdn-in-a-box/rpm/traffic_portal.rpm
 
 ARG TO_HOST=$TO_HOST
 

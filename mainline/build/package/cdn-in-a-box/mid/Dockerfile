@@ -146,7 +146,7 @@ COPY infrastructure/cdn-in-a-box/dns/set-dns.sh \
      infrastructure/cdn-in-a-box/dns/insert-self-into-dns.sh \
      /usr/local/sbin/
 
-ARG ORT_RPM=infrastructure/cdn-in-a-box/cache/traffic_ops_ort.rpm
+ARG ORT_RPM=build/package/cdn-in-a-box/rpm/traffic_ops_ort.rpm
 ADD $ORT_RPM /
 RUN rpm -Uvh --nodeps /$(basename $ORT_RPM) &&\
     rm /$(basename $ORT_RPM)
