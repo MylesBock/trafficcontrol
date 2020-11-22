@@ -35,7 +35,7 @@ go get -v bitbucket.org/liamstask/goose/cmd/goose
 mv $GOPATH/bin/goose /bin/ &&\
 	apk del git gcc musl-dev
 
-cd "traffic_ops/app/db"
+cd "mainline/cmd/traffic_ops/app/db"
 
 mv /dbconf.yml ./
 

@@ -48,7 +48,8 @@ function runProcess(...commandArguments) {
 }
 
 moveRPMs();
-process.chdir(`${process.env.GITHUB_WORKSPACE}/infrastructure/cdn-in-a-box`);
-runProcess("make"); // Place the RPMs for docker-compose build. All RPMs should have already been built.
+process.chdir(`${process.env.GITHUB_WORKSPACE}/mainline/build/package/cdn-in-a-box`);
+runProcess("make", "quick-start"); // Place the RPMs for docker-compose build. All RPMs should have already been built.
+process.chdir(`${process.env.GITHUB_WORKSPACE}/mainline/deployments/cdn-in-a-box`);
 runProcess(...dockerCompose, "build", "--parallel");
 

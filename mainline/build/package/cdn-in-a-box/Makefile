@@ -52,7 +52,7 @@ TP_SOURCE := $(wildcard ../../../cmd/traffic_portal/**/*)
 TR_SOURCE := $(wildcard ../../../cmd/traffic_router/**/*)
 TS_SOURCE := $(wildcard ../../../cmd/traffic_stats/**/*)
 
-.PHONY: clean very-clean all nearly-all debug native
+.PHONY: clean very-clean all nearly-all debug native quick-start
 
 # Default target; builds all pre-requisite rpms from source trees
 all: cache traffic_monitor traffic_portal traffic_ops traffic_router traffic_router traffic_stats
@@ -83,39 +83,42 @@ endif
 #.PHONY: native
 
 # Actual output rpm recipies
-traffic_monitor/traffic_monitor.rpm: ../../dist/traffic_monitor-$(SPECIAL_SAUCE)
+traffic_monitor/traffic_monitor.rpm: ../../../../dist/traffic_monitor-$(SPECIAL_SAUCE)
 	cp -f $? $@
-traffic_ops/traffic_ops.rpm: ../../dist/traffic_ops-$(SPECIAL_SAUCE)
+traffic_ops/traffic_ops.rpm: ../../../../dist/traffic_ops-$(SPECIAL_SAUCE)
 	cp -f $? $@
-traffic_portal/traffic_portal.rpm: ../../dist/traffic_portal-$(SPECIAL_SAUCE)
+traffic_portal/traffic_portal.rpm: ../../../../dist/traffic_portal-$(SPECIAL_SAUCE)
 	cp -f $? $@
-traffic_router/traffic_router.rpm: ../../dist/traffic_router-$(SPECIAL_SAUCE)
+traffic_router/traffic_router.rpm: ../../../../dist/traffic_router-$(SPECIAL_SAUCE)
 	cp -f $? $@
-traffic_router/tomcat.rpm: ../../dist/tomcat-$(SPECIAL_SEASONING)
+traffic_router/tomcat.rpm: ../../../../dist/tomcat-$(SPECIAL_SEASONING)
 	cp -f $? $@
-traffic_stats/traffic_stats.rpm: ../../dist/traffic_stats-$(SPECIAL_SAUCE)
+traffic_stats/traffic_stats.rpm: ../../../../dist/traffic_stats-$(SPECIAL_SAUCE)
 	cp -f $? $@
-cache/traffic_ops_ort.rpm: ../../dist/traffic_ops_ort-$(SPECIAL_SAUCE)
+cache/traffic_ops_ort.rpm: ../../../../dist/traffic_ops_ort-$(SPECIAL_SAUCE)
 	cp -f $? $@
 
 # Dist rpms
-../../dist/traffic_monitor-$(SPECIAL_SAUCE): $(TM_SOURCE)
+../../../../dist/traffic_monitor-$(SPECIAL_SAUCE): $(TM_SOURCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_monitor$(BUILD_SUFFIX)
 
-../../dist/traffic_ops-$(SPECIAL_SAUCE): $(TO_SOURCE)
+../../../../dist/traffic_ops-$(SPECIAL_SAUCE): $(TO_SOURCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_ops$(BUILD_SUFFIX)
 
-../../dist/traffic_portal-$(SPECIAL_SAUCE): $(TP_SOURCE)
+../../../../dist/traffic_portal-$(SPECIAL_SAUCE): $(TP_SOURCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_portal$(BUILD_SUFFIX)
 
-../../dist/traffic_rou%er-$(SPECIAL_SAUCE) ../../dist/tomca%-$(SPECIAL_SEASONING): $(TR_SOURCE)
+../../../../dist/traffic_rou%er-$(SPECIAL_SAUCE) ../../dist/tomca%-$(SPECIAL_SEASONING): $(TR_SOURCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_router$(BUILD_SUFFIX)
 
-../../dist/traffic_stats-$(SPECIAL_SAUCE): $(TS_SOURCE)
+../../../../dist/traffic_stats-$(SPECIAL_SAUCE): $(TS_SOURCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_stats$(BUILD_SUFFIX)
 
-../../dist/traffic_ops_ort-$(SPECIAL_SAUCE): $(ORT_SOURCE)
+../../../../dist/traffic_ops_ort-$(SPECIAL_SAUCE): $(ORT_SOURCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_ops_ort$(BUILD_SUFFIX)
+
+quick-start:
+    $(shell ./copy_rpms.sh)
 
 clean:
 	$(RM) traffic_monitor/traffic_monitor.rpm traffic_ops/traffic_ops.rpm traffic_portal/traffic_portal.rpm traffic_router/traffic_router.rpm traffic_router/tomcat.rpm cache/traffic_ops_ort.rpm traffic_stats/traffic_stats.rpm

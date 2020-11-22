@@ -231,5 +231,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ciab-logs
-          path: infrastructure/cdn-in-a-box/logs/*.log
+          path: mainline/deployments/cdn-in-a-box/logs/*.log
         if: ${{ failure() }}
