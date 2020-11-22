@@ -22,7 +22,7 @@ importFunctions() {
 	 xargs -n1 -I {} echo '"{}"' | \
 	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
 	)
-	[ -z "$TC_DIR" ] || { echo "Cannot find repository root." >&2 ; return 1; }
+	TP_BUILD_DIR=$(find ${TC_DIR} -wholename "*/package/traffic_portal" -type d)
 	TP_DIR=$(find ${TC_DIR} -wholename "*/web/traffic_portal" -type d)
 	export TC_DIR TP_DIR
   functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
@@ -40,7 +40,7 @@ initBuildArea() {
 	(mkdir -p "$RPMBUILD"
 	 cd "$RPMBUILD"
 	 mkdir -p SPECS SOURCES RPMS SRPMS BUILD BUILDROOT) || { echo "Could not create $RPMBUILD: $?"; return 1; }
-
+  SPEC_LOC=$(find ${TC_DIR} -name "*traffic_portal.spec")
 	# tar/gzip the source
 	local tp_dest
 	tp_dest="$(createSourceDir traffic_portal)"
@@ -49,9 +49,9 @@ initBuildArea() {
 	rsync -av ./ "$tp_dest"/ || \
 		 { echo "Could not copy to $to_dest: $?"; return 1; }
 	cp -r "$TP_DIR"/ "$tp_dest" || { echo "Could not copy $TP_DIR to $tp_dest: $?"; return 1; }
-
+  cp -r "$TP_BUILD_DIR"/build/etc "$tp_dest"
 	tar -czvf "$tp_dest".tgz -C "$RPMBUILD"/SOURCES "$(basename "$tp_dest")" || { echo "Could not create tar archive ${tp_dest}.tgz: $?"; return 1; }
-	cp "$TP_DIR"/build/*.spec "$RPMBUILD"/SPECS/. || { echo "Could not copy spec files: $?"; return 1; }
+	cp ${SPEC_LOC} "$RPMBUILD"/SPECS/. || { echo "Could not copy spec files: $?"; return 1; }
 
 	echo "The build area has been initialized."
 }

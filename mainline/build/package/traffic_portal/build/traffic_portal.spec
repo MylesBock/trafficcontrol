@@ -54,9 +54,9 @@ tar -xzvf $RPM_SOURCE_DIR/traffic_portal-%{version}.tgz
 
 		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/server.js ${RPM_BUILD_ROOT}%{traffic_portal_home}/.
 		%__cp -r ${RPM_BUILD_DIR}/traffic_portal-%{version}/conf ${RPM_BUILD_ROOT}/etc/traffic_portal/.
-		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/build/etc/init.d/traffic_portal ${RPM_BUILD_ROOT}/etc/init.d/.
-		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/build/etc/logrotate.d/traffic_portal ${RPM_BUILD_ROOT}/etc/logrotate.d/.
-		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/build/etc/logrotate.d/traffic_portal-access ${RPM_BUILD_ROOT}/etc/logrotate.d/.
+		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/etc/init.d/traffic_portal ${RPM_BUILD_ROOT}/etc/init.d/.
+		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/etc/logrotate.d/traffic_portal ${RPM_BUILD_ROOT}/etc/logrotate.d/.
+		%__cp ${RPM_BUILD_DIR}/traffic_portal-%{version}/etc/logrotate.d/traffic_portal-access ${RPM_BUILD_ROOT}/etc/logrotate.d/.
 		%__rm -f ${RPM_BUILD_DIR}/traffic_portal-%{version}/app/dist/package-lock.json
 		%__cp -r ${RPM_BUILD_DIR}/traffic_portal-%{version}/app/dist/* ${RPM_BUILD_ROOT}%{traffic_portal_home}/.
 
