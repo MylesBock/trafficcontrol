@@ -118,7 +118,7 @@ cache/traffic_ops_ort.rpm: ../../../../dist/traffic_ops_ort-$(SPECIAL_SAUCE)
 	$(PKG_COMMAND) $(PKG_FLAGS) traffic_ops_ort$(BUILD_SUFFIX)
 
 quick-start:
-    $(shell ./copy_rpms.sh)
+	$(shell ./copy_rpms.sh)
 
 clean:
 	$(RM) traffic_monitor/traffic_monitor.rpm traffic_ops/traffic_ops.rpm traffic_portal/traffic_portal.rpm traffic_router/traffic_router.rpm traffic_router/tomcat.rpm cache/traffic_ops_ort.rpm traffic_stats/traffic_stats.rpm
