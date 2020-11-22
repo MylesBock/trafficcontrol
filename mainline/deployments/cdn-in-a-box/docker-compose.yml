@@ -39,7 +39,7 @@ services:
   db:
     build:
       context: ""
-      dockerfile: traffic_ops/Dockerfile-db
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_ops/Dockerfile-db
     hostname: db
     domainname: infra.ciab.test
     depends_on:
@@ -57,7 +57,7 @@ services:
   trafficops:
     build:
       context: ""
-      dockerfile: traffic_ops/Dockerfile-go
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_ops/Dockerfile-go
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
         TRAFFIC_OPS_RPM: traffic_ops/traffic_ops.rpm
@@ -104,7 +104,7 @@ services:
   trafficportal:
     build:
       context: ""
-      dockerfile: traffic_portal/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_portal/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
         TRAFFIC_PORTAL_RPM: traffic_portal/traffic_portal.rpm
@@ -122,7 +122,7 @@ services:
   trafficmonitor:
     build:
       context: ""
-      dockerfile: traffic_monitor/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_monitor/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
         TRAFFIC_MONITOR_RPM: traffic_monitor/traffic_monitor.rpm
@@ -140,7 +140,7 @@ services:
   trafficrouter:
     build:
       context: ""
-      dockerfile: traffic_router/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_router/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
         TRAFFIC_ROUTER_RPM: traffic_router/traffic_router.rpm
@@ -158,7 +158,7 @@ services:
   trafficstats:
     build:
       context: ""
-      dockerfile: traffic_stats/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_stats/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
     image: trafficstats
@@ -175,7 +175,7 @@ services:
   influxdb:
     build:
       context: ""
-      dockerfile: traffic_stats/Dockerfile-influxdb
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_stats/Dockerfile-influxdb
     hostname: influxdb
     domainname: infra.ciab.test
     depends_on:
@@ -189,7 +189,7 @@ services:
   trafficvault:
     build:
       context: ""
-      dockerfile: traffic_vault/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_vault/Dockerfile
     depends_on:
       - enroller
     environment:
@@ -208,8 +208,8 @@ services:
   edge:
     privileged: True
     build:
-      context: ../../..
-      dockerfile: edge/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/edge/Dockerfile
     domainname: infra.ciab.test
     env_file:
       - variables.env
@@ -221,8 +221,8 @@ services:
   mid-01:
     privileged: True
     build:
-      context: ../../..
-      dockerfile: mid/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/mid/Dockerfile
     domainname: infra.ciab.test
     env_file:
       - variables.env
@@ -234,8 +234,8 @@ services:
   mid-02:
     privileged: True
     build:
-      context: ../../..
-      dockerfile: mid/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/mid/Dockerfile
     domainname: infra.ciab.test
     env_file:
       - variables.env
@@ -247,7 +247,7 @@ services:
   origin:
     build:
       context: ""
-      dockerfile: origin/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/origin/Dockerfile
     depends_on:
       - enroller
     domainname: infra.ciab.test
@@ -261,8 +261,8 @@ services:
   # enroller provides a way to register component instances with traffic_ops
   enroller:
     build:
-      context: ../../..
-      dockerfile: enroller/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/enroller/Dockerfile
     domainname: infra.ciab.test
     depends_on:
       - dns
@@ -276,7 +276,7 @@ services:
   dns:
     build:
       context: ""
-      dockerfile: dns/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/dns/Dockerfile
     env_file:
       - variables.env
     volumes:
@@ -287,7 +287,7 @@ services:
   smtp:
     build:
       context: ""
-      dockerfile: smtp/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/smtp/Dockerfile
     hostname: smtp
     depends_on:
       - dns

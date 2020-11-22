@@ -34,7 +34,7 @@ via the distribution's package manager under the names `docker-ce` and
 
 Each container (except the origin) requires an `.rpm` file to install the Traffic Control
 component for which it is responsible. You can download these `*.rpm` files from an archive
-(e.g. under "Releases"), use the provided [Makefile](Makefile) to generate them (simply
+(e.g. under "Releases"), use the provided [Makefile](../../build/package/cdn-in-a-box/Makefile) to generate them (simply
 type `make` while in the `cdn-in-a-box` directory) or create them yourself by using the
 [`pkg`](../../../pkg) script at the root of the repository. If you choose the latter, copy
 the `*.rpm`s without any version/architecture information to their respective component

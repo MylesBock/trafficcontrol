@@ -30,7 +30,7 @@ services:
   portal-integration-test:
     build:
       context: ../../..
-      dockerfile: traffic_portal_integration_test/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_portal_integration_test/Dockerfile
       args:
         CENTOS_VERSION: ${CENTOS_VERSION:-8}
     env_file:

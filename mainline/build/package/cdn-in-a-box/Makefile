@@ -33,9 +33,9 @@ PKG_COMMAND := ../../pkg
 PKG_FLAGS := -v
 BUILD_SUFFIX := _build
 BUILD_NUMBER := $(shell git rev-list HEAD 2>/dev/null | wc -l | tr -d '[[:space:]]').$(shell git rev-parse --short=8 HEAD)
-TC_VERSION := $(shell cat "../../VERSION")
-TOMCAT_VERSION := $(shell grep '^\s*TOMCAT_VERSION=' ../../traffic_router/build/build_rpm.sh  | cut -d= -f2)
-TOMCAT_RELEASE := $(shell grep '^\s*TOMCAT_RELEASE=' ../../traffic_router/build/build_rpm.sh  | cut -d= -f2)
+TC_VERSION := $(shell cat $(find ../../../.. -wholename "trafficcontrol/VERSION"))
+TOMCAT_VERSION := $(shell grep '^\s*TOMCAT_VERSION=' $(find ../.. -wholename "*/traffic_router/build/build_rpm.sh")  | cut -d= -f2)
+TOMCAT_RELEASE := $(shell grep '^\s*TOMCAT_RELEASE=' $(find ../.. -wholename "*/traffic_router/build/build_rpm.sh")   | cut -d= -f2)
 
 RHEL_VERSION := el7
 
@@ -43,19 +43,19 @@ SPECIAL_SAUCE := $(TC_VERSION)-$(BUILD_NUMBER).$(RHEL_VERSION).x86_64.rpm
 SPECIAL_SEASONING := $(TOMCAT_VERSION).$(TOMCAT_RELEASE)-$(BUILD_NUMBER).$(RHEL_VERSION).x86_64.rpm
 
 # todo (restructure) update these to reflect new structure
-TO_SOURCE := $(wildcard ../../traffic_ops/**/*)
-TO_SOURCE += $(wildcard ../../traffic_ops_db/**/*)
-ORT_SOURCE:= $(wildcard ../../traffic_ops_ort/atstccfg/**/*.go)
-ORT_SOURCE+= $(wildcard ../../lib/**/*.go)
-TM_SOURCE := $(wildcard ../../traffic_monitor/**/*)
-TP_SOURCE := $(wildcard ../../traffic_portal/**/*)
-TR_SOURCE := $(wildcard ../../traffic_router/**/*)
-TS_SOURCE := $(wildcard ../../traffic_stats/**/*)
+TO_SOURCE := $(wildcard ../../../cmd/traffic_ops/**/*)
+TO_SOURCE += $(wildcard ../../../tools/traffic_ops_db/**/*)
+ORT_SOURCE:= $(wildcard ../../../cmd/traffic_ops_ort/atstccfg/**/*.go)
+ORT_SOURCE+= $(wildcard ../../../pkg/**/*.go)
+TM_SOURCE := $(wildcard ../../../cmd/traffic_monitor/**/*)
+TP_SOURCE := $(wildcard ../../../cmd/traffic_portal/**/*)
+TR_SOURCE := $(wildcard ../../../cmd/traffic_router/**/*)
+TS_SOURCE := $(wildcard ../../../cmd/traffic_stats/**/*)
 
 .PHONY: clean very-clean all nearly-all debug native
 
 # Default target; builds all pre-requisite rpms from source trees
-all: cache/traffic_ops_ort.rpm traffic_monitor/traffic_monitor.rpm traffic_portal/traffic_portal.rpm traffic_ops/traffic_ops.rpm traffic_router/traffic_router.rpm traffic_router/tomcat.rpm traffic_stats/traffic_stats.rpm
+all: cache traffic_monitor traffic_portal traffic_ops traffic_router traffic_router traffic_stats
 
 ifneq ($(filter debug,$(MAKECMDGOALS)),)
 PKG_FLAGS += -d

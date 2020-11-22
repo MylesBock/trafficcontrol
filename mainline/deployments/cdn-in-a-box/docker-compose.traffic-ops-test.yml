@@ -30,7 +30,7 @@ services:
   integration:
     build:
       context: ../../..
-      dockerfile: traffic_ops_integration_test/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/traffic_ops_integration_test/Dockerfile
     env_file:
       - variables.env
     hostname: integration

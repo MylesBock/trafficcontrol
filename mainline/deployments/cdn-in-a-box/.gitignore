@@ -16,5 +16,5 @@
 # under the License.
 #
 *.rpm
-traffic_ops/ca
-optional/vpn/vpnca
+../../build/package/cdn-in-a-box/traffic_ops/ca
+../../build/package/cdn-in-a-box/optional/vpn/vpnca

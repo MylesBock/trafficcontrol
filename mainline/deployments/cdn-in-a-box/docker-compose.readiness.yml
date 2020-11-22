@@ -36,7 +36,7 @@ services:
   readiness:
     build:
       context: ""
-      dockerfile: readiness/Dockerfile
+      dockerfile: ../../build/package/cdn-in-a-box/readiness/Dockerfile
     env_file:
       - variables.env
     hostname: readiness
