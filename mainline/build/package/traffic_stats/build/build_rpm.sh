@@ -17,15 +17,15 @@ set -o errexit -o nounset -o pipefail;
 
 #----------------------------------------
 importFunctions() {
-	local script scriptdir
-	TS_DIR='' TC_DIR=''
-	script="$(realpath "$0")"
-	scriptdir="$(dirname "$script")"
-	TS_DIR="$(dirname "$scriptdir")"
-	TC_DIR="$(dirname "$TS_DIR")"
+	TC_DIR=$(\
+	 pwd | \
+	 xargs -n1 -I {} echo '"{}"' | \
+	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
+	)
+  TS_DIR=$(find ${TC_DIR} -wholename "*/cmd/traffic_stats" -type d)
 	export TS_DIR TC_DIR
-	functions_sh="$TC_DIR/go/scripts/build/functions.sh"
-	if [ ! -r "$functions_sh" ]; then
+  functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
+  if [ -z "$functions_sh" ]; then
 		echo "error: can't find $functions_sh"
 		return 1
 	fi

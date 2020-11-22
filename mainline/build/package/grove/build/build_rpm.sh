@@ -17,10 +17,15 @@ set -o errexit -o nounset -o pipefail;
 
 #----------------------------------------
 importFunctions() {
-	[ -n "$TC_DIR" ] || { echo "Cannot find repository root." >&2 ; return 1; }
+  TC_DIR=$(\
+	 pwd | \
+	 xargs -n1 -I {} echo '"{}"' | \
+	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
+	)
+	[ -z "$TC_DIR" ] || { echo "Cannot find repository root." >&2 ; return 1; }
 	export TC_DIR
-	functions_sh="$TC_DIR/go/scripts/build/functions.sh"
-	if [ ! -r "$functions_sh" ]; then
+  functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
+  if [ -z "$functions_sh" ]; then
 		echo "Error: Can't find $functions_sh"
 		return 1
 	fi

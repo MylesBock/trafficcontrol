@@ -35,6 +35,7 @@ RUN	yum -y install \
 		# gcc is necessary in case -gcflags 'all=-N -l' is passed to go build
 		gcc \
 		git \
+		jq \
 		rpm-build && \
 	yum -y clean all
 

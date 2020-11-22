@@ -18,15 +18,15 @@ set -o errexit -o nounset -o pipefail;
 #----------------------------------------
 importFunctions() {
 	echo "Verifying the build configuration environment."
-	local script scriptdir
-	script="$(realpath "$0")"
-	scriptdir="$(dirname "$script")"
-	TR_DIR='' TC_DIR=''
-	TR_DIR="$(dirname "$scriptdir")"
-	TC_DIR="$(dirname "$TR_DIR")"
+	TC_DIR=$(\
+	 pwd | \
+	 xargs -n1 -I {} echo '"{}"' | \
+	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
+	)
+  TR_DIR=$(find ${TC_DIR} -wholename "*/cmd/traffic_router" -type d)
 	export TR_DIR TC_DIR
-	functions_sh="$TC_DIR/go/scripts/build/functions.sh"
-	if [ ! -r "$functions_sh" ]; then
+  functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
+  if [ -z "$functions_sh" ]; then
 		echo "Error: Can't find $functions_sh"
 		return 1
 	fi

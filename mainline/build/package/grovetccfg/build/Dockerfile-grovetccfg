@@ -33,6 +33,7 @@ RUN	rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
 ### grovetccfg specific requirements
 RUN	yum -y install \
 		git \
+		jq \
 		rpm-build && \
 	yum -y clean all
 

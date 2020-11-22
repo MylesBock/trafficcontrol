@@ -36,10 +36,10 @@ Installs traffic_monitor
 
 %build
 # copy traffic_monitor binary
-godir=src/github.com/apache/trafficcontrol/traffic_monitor
+godir=src/github.com/apache/trafficcontrol/cmd/traffic_monitor
 ( mkdir -p "$godir" && \
 	cd "$godir" && \
-	cp -r "$TC_DIR"/traffic_monitor/* .
+	cp -r "$TC_DIR"/mainline/cmd/traffic_monitor/traffic_monitor .
 ) || { echo "Could not copy go program at $(pwd): $!"; exit 1; }
 
 %install
@@ -53,15 +53,15 @@ mkdir -p "${RPM_BUILD_ROOT}"/opt/traffic_monitor/var/log
 mkdir -p "${RPM_BUILD_ROOT}"/etc/init.d
 mkdir -p "${RPM_BUILD_ROOT}"/etc/logrotate.d
 
-src=src/github.com/apache/trafficcontrol/traffic_monitor
+src=src/github.com/apache/trafficcontrol/cmd/traffic_monitor
 cp -p "$src"/traffic_monitor               "${RPM_BUILD_ROOT}"/opt/traffic_monitor/bin/traffic_monitor
-cp "$src"/static/index.html                "${RPM_BUILD_ROOT}"/opt/traffic_monitor/static/index.html
-cp "$src"/static/script.js                 "${RPM_BUILD_ROOT}"/opt/traffic_monitor/static/script.js
-cp "$src"/static/style.css                 "${RPM_BUILD_ROOT}"/opt/traffic_monitor/static/style.css
-cp "$src"/conf/traffic_ops.cfg             "${RPM_BUILD_ROOT}"/opt/traffic_monitor/conf/traffic_ops.cfg
-cp "$src"/conf/traffic_monitor.cfg         "${RPM_BUILD_ROOT}"/opt/traffic_monitor/conf/traffic_monitor.cfg
-cp "$src"/build/traffic_monitor.init       "${RPM_BUILD_ROOT}"/etc/init.d/traffic_monitor
-cp "$src"/build/traffic_monitor.logrotate  "${RPM_BUILD_ROOT}"/etc/logrotate.d/traffic_monitor
+cp static/index.html                "${RPM_BUILD_ROOT}"/opt/traffic_monitor/static/index.html
+cp static/script.js                 "${RPM_BUILD_ROOT}"/opt/traffic_monitor/static/script.js
+cp static/style.css                 "${RPM_BUILD_ROOT}"/opt/traffic_monitor/static/style.css
+cp conf/traffic_ops.cfg             "${RPM_BUILD_ROOT}"/opt/traffic_monitor/conf/traffic_ops.cfg
+cp conf/traffic_monitor.cfg         "${RPM_BUILD_ROOT}"/opt/traffic_monitor/conf/traffic_monitor.cfg
+cp conf/traffic_monitor.init       "${RPM_BUILD_ROOT}"/etc/init.d/traffic_monitor
+cp conf/traffic_monitor.logrotate  "${RPM_BUILD_ROOT}"/etc/logrotate.d/traffic_monitor
 
 %pre
 /usr/bin/getent group traffic_monitor >/dev/null

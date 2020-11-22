@@ -33,7 +33,9 @@ RUN	rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
 
 ### source specific requirements
 RUN	yum -y install \
-		git && \
+		git \
+		jq \
+		&& \
 	yum -y clean all
 
 WORKDIR /trafficcontrol

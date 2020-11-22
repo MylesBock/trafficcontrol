@@ -34,6 +34,7 @@ RUN	rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
 RUN	yum -y install \
 		gcc \
 		git \
+		jq \
 		libffi-devel \
 		make \
 		nodejs \
@@ -54,6 +55,6 @@ RUN	echo '{ "allow_root": true }' > /root/.bowerrc
 
 ###
 
-CMD /trafficcontrol/mainline/build/package/build/clean_build.sh traffic_portal
+CMD /trafficcontrol/go/scripts/build/clean_build.sh traffic_portal
 
 # vi:syntax=Dockerfile

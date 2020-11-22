@@ -17,15 +17,15 @@ set -o errexit -o nounset -o pipefail;
 
 #----------------------------------------
 importFunctions() {
-	local script scriptdir
-	TM_DIR='' TC_DIR=''
-	script=$(realpath "$0")
-	scriptdir=$(dirname "$script")
-	TM_DIR="$(dirname "$scriptdir")"
-	TC_DIR="$(dirname "$TM_DIR")"
-	export TM_DIR TC_DIR
-	functions_sh="$TC_DIR/go/scripts/build/functions.sh"
-	if [ ! -r "$functions_sh" ]; then
+	TC_DIR=$(\
+	 pwd | \
+	 xargs -n1 -I {} echo '"{}"' | \
+	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
+	)
+	TM_DIR=$(find ${TC_DIR} -wholename "*/cmd/traffic_monitor" -type d)
+	export TC_DIR TM_DIR
+  functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
+  if [ -z "$functions_sh" ]; then
 		echo "error: can't find $functions_sh"
 		return 1
 	fi
@@ -71,11 +71,11 @@ initBuildArea() {
 
 	cp -av ./ "$tm_dest"/ || \
 		 { echo "Could not copy to $tm_dest: $?"; return 1; }
-	cp -av "$TM_DIR"/build/*.spec "$RPMBUILD"/SPECS/. || \
+	cp -av "$TC_DIR"/mainline/build/package/traffic_monitor/build/*.spec "$RPMBUILD"/SPECS/. || \
 		 { echo "Could not copy spec files: $?"; return 1; }
 
 	tar -czvf "$tm_dest".tgz -C "$RPMBUILD"/SOURCES "$(basename "$tm_dest")" || { echo "Could not create tar archive $tm_dest.tgz: $?"; return 1; }
-	cp "$TM_DIR"/build/*.spec "$RPMBUILD"/SPECS/. || { echo "Could not copy spec files: $?"; return 1; }
+	cp "$TC_DIR"/mainline/build/package/traffic_monitor/build/*.spec "$RPMBUILD"/SPECS/. || { echo "Could not copy spec files: $?"; return 1; }
 
 	echo "The build area has been initialized."
 }

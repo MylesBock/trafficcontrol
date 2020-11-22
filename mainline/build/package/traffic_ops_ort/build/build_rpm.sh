@@ -17,14 +17,15 @@ set -o errexit -o nounset -o pipefail -o xtrace;
 
 #----------------------------------------
 importFunctions() {
-	local script scriptdir;
-	script="$(realpath "$0")";
-	scriptdir="$(dirname "$script")";
-	ORT_DIR="$(dirname "$scriptdir")";
-	TC_DIR="$(dirname "$ORT_DIR")";
+	TC_DIR=$(\
+	 pwd | \
+	 xargs -n1 -I {} echo '"{}"' | \
+	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
+	)
+  ORT_DIR=$(find ${TC_DIR} -wholename "*/cmd/traffic_ops_ort" -type d)
 	export ORT_DIR TC_DIR;
-	functions_sh="$TC_DIR/go/scripts/build/functions.sh";
-	if [ ! -r "$functions_sh" ]; then
+  functions_sh=$(find ${TC_DIR} -wholename "*functions.sh")
+  if [ -z "$functions_sh" ]; then
 		echo "error: can't find $functions_sh" >&2;
 		return 1;
 	fi
