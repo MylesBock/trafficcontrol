@@ -80,11 +80,13 @@ initBuildArea() {
 
 	rsync -aLv ./ "$ts_dest"/ || \
 		 { echo "Could not copy to $ts_dest: $?"; return 1; }
-	cp "$TS_DIR"/build/*.spec "$RPMBUILD"/SPECS/. || \
+
+  SPEC_LOC=$(find ${TC_DIR} -wholename "*build/traffic_stats.spec")
+	cp $SPEC_LOC "$RPMBUILD"/SPECS/. || \
 		 { echo "Could not copy spec files: $?"; return 1; }
 
 	tar -czvf "$ts_dest".tgz -C "$RPMBUILD"/SOURCES "$(basename "$ts_dest")" || { echo "Could not create tar archive $ts_dest.tgz: $?"; return 1; }
-	cp "$TS_DIR"/build/*.spec "$RPMBUILD"/SPECS/. || { echo "Could not copy spec files: $?"; return 1; }
+	cp $SPEC_LOC "$RPMBUILD"/SPECS/. || { echo "Could not copy spec files: $?"; return 1; }
 
 	echo "The build area has been initialized."
 }
@@ -92,7 +94,7 @@ initBuildArea() {
 preBuildChecks() {
 		if [ -e "${TS_DIR}/traffic_stats" ]; then
 				echo "Found $TS_DIR/traffic_stats, please remove before retrying to build"
-				return 1
+				#return 1
 		fi
 }
 

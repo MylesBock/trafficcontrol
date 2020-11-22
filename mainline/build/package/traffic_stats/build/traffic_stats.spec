@@ -41,14 +41,14 @@ Installs traffic_stats which performs the follwing functions:
 godir=src/github.com/apache/trafficcontrol/traffic_stats
 ( mkdir -p "$godir" && \
 	cd "$godir" && \
-	cp -LR "$TC_DIR"/traffic_stats/* .
+	cp -LR $(find "$TC_DIR" -wholename "*/cmd/traffic_stats" -type d)/* .
 ) || { echo "Could not copy go program at $(pwd): $!"; exit 1; }
 
 # copy influxdb_tools
 godir=src/github.com/apache/trafficcontrol/traffic_stats/influxdb_tools
 ( mkdir -p "$godir" && \
 	cd "$godir" && \
-	cp -R "$TC_DIR"/traffic_stats/influxdb_tools/* .
+	cp -R $(find "$TC_DIR" -wholename "*/cmd/traffic_stats/influxdb_tools" -type d) .
 ) || { echo "Could not copy go program at $(pwd): $!"; exit 1; }
 
 %install
