@@ -28,7 +28,7 @@ FROM centos:${CENTOS_VERSION} as trafficops-common-deps
 ARG CENTOS_VERSION=8
 # Makes CENTOS_VERSION available in later layers without needing to specify it again
 ENV CENTOS_VERSION=$CENTOS_VERSION
-
+COPY . /trafficcontrol
 RUN if [[ "${CENTOS_VERSION%%.*}" -eq 7 ]]; then \
         yum -y install dnf || exit 1; \
     fi
@@ -114,6 +114,7 @@ RUN export POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 && \
 RUN ./install_goose.sh
 
 FROM trafficops-perl-deps
+COPY --from=0 /trafficcontrol /trafficcontrol
 # Override TRAFFIC_OPS_RPM arg to use a different one using --build-arg TRAFFIC_OPS_RPM=...  Can be local file or http://...
 ARG TRAFFIC_OPS_RPM=build/package/cdn-in-a-box/rpm/traffic_ops.rpm
 ADD $TRAFFIC_OPS_RPM /
@@ -125,7 +126,7 @@ RUN rpm -Uvh /$(basename $TRAFFIC_OPS_RPM) && \
 # build (should never happen - Perl is supposed to be going away)
 RUN POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 carton && \
     rm -rf $HOME/.cpan* /tmp/Dockerfile /tmp/local.tar.gz
-
+WORKDIR /trafficcontrol
 ADD build/package/cdn-in-a-box/enroller/server_template.json \
     build/package/cdn-in-a-box/traffic_ops/run.sh \
     build/package/cdn-in-a-box/traffic_ops/config.sh \
