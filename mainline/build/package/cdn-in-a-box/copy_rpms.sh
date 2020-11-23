@@ -2,7 +2,7 @@
 TC_DIR=$(\
 	 pwd | \
 	 xargs -n1 -I {} echo '"{}"' | \
-	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value] | join("/")' \
+	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value][-1] | join("/")' \
 )
 DIST_DIR=$(find ${TC_DIR} -wholename "*trafficcontrol/dist" -type d)
 
