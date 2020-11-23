@@ -15,12 +15,12 @@ fi
 #traffic_monitor/traffic_monitor.rpm
 #traffic_ops/traffic_ops.rpm
 #traffic_portal/traffic_portal.rpm
-echo "$(pwd)"
+echo "${TC_DIR}"
 mkdir -p ${TC_DIR}/mainline/build/package/cdn-in-a-box/rpm
 NEEDED_RPMS=("traffic_ops_ort" "traffic_ops" "traffic_portal" "traffic_monitor" "tomcat" "traffic_router" "traffic_stats")
 for NEEDED_RPM in ${NEEDED_RPMS[@]}
 do
-  COPY_ME=$(find ${ACTUAL_DIST} -name "*${NEEDED_RPM}-*x86_64.rpm" -print0 | \
+  COPY_ME=$(find ${DIST_DIR} -name "*${NEEDED_RPM}-*x86_64.rpm" -print0 | \
   xargs -r -0 ls -1 -t | \
   xargs -n1 -I {} echo '"{}"' | \
   jq --slurp -r '.[0]')
