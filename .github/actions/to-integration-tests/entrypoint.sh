@@ -192,7 +192,6 @@ pwd
 cd "../mainline/test/traffic_ops/testing/api/v$INPUT_VERSION"
 
 cp "${resources}/traffic-ops-test.json" traffic-ops-test.conf
-go get ./...
 go test -test.v --cfg traffic-ops-test.conf
 CODE=$?
 rm traffic-ops-test.conf
