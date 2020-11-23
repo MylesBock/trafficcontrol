@@ -127,20 +127,18 @@ RUN rpm -Uvh /$(basename $TRAFFIC_OPS_RPM) && \
 RUN POSTGRES_HOME=/usr/pgsql-9.6 PERL5LIB=$(pwd)/local/lib/perl5 carton && \
     rm -rf $HOME/.cpan* /tmp/Dockerfile /tmp/local.tar.gz
 WORKDIR /trafficcontrol
-ADD build/package/cdn-in-a-box/enroller/server_template.json \
-    build/package/cdn-in-a-box/traffic_ops/run.sh \
-    build/package/cdn-in-a-box/traffic_ops/config.sh \
-    build/package/cdn-in-a-box/traffic_ops/adduser.pl \
-    build/package/cdn-in-a-box/traffic_ops/to-access.sh \
-    build/package/cdn-in-a-box/traffic_ops/generate-certs.sh \
-    build/package/cdn-in-a-box/traffic_ops/trafficops-init.sh \
-    deployments/cdn-in-a-box/variables.env \
-    /
+RUN cp build/package/cdn-in-a-box/enroller/server_template.json / && \
+    cp build/package/cdn-in-a-box/traffic_ops/run.sh / && \
+    cp build/package/cdn-in-a-box/traffic_ops/config.sh / && \
+    cp build/package/cdn-in-a-box/traffic_ops/adduser.pl / && \
+    cp build/package/cdn-in-a-box/traffic_ops/to-access.sh / && \
+    cp build/package/cdn-in-a-box/traffic_ops/generate-certs.sh / &&\
+    cp build/package/cdn-in-a-box/traffic_ops/trafficops-init.sh / &&\
+    cp deployments/cdn-in-a-box/variables.env /
 
-COPY build/package/cdn-in-a-box/dns/set-dns.sh \
-     build/package/cdn-in-a-box/dns/insert-self-into-dns.sh \
-     build/package/cdn-in-a-box/traffic_ops/set-to-ips-from-dns.sh \
-     /usr/local/sbin/
+RUN cp build/package/cdn-in-a-box/dns/set-dns.sh /usr/local/sbin && \
+    cp build/package/cdn-in-a-box/dns/insert-self-into-dns.sh /usr/local/sbin && \
+    cp build/package/cdn-in-a-box/traffic_ops/set-to-ips-from-dns.sh /usr/local/sbin/
 
 ADD build/package/cdn-in-a-box/traffic_ops_data /traffic_ops_data
 CMD /run.sh
