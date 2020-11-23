@@ -3,7 +3,7 @@ module github.com/apache/trafficcontrol
 go 1.15
 
 replace github.com/basho/riak-go-client => github.com/basho/riak-go-client v1.7.1-0.20170327205844-5587c16e0b8b
-
+replace github.com/apache/trafficcontrol => ./
 require (
 	code.cloudfoundry.org/bytefmt v0.0.0-20200131002437-cf55d5288a48
 	github.com/GehirnInc/crypt v0.0.0-20200316065508-bb7000b8a962

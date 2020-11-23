@@ -22,9 +22,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/apache/trafficcontrol/cmd/traffic_stats/assert"
 	"testing"
 
-	"github.com/apache/trafficcontrol/traffic_stats/assert"
 	influx "github.com/influxdata/influxdb/client/v2"
 	"github.com/influxdata/influxdb/models"
 )
