@@ -10,7 +10,6 @@ if [  -z "$DIST_DIR" ]; then
   echo "Run docker-compose -f ${TC_DIR}/mainline/build/package/build/docker-compose.yml up before running this!"
   return 1
 fi
-ACTUAL_DIST=${DIST_DIR[0]}
 #edge/traffic_ops_ort.rpm
 #mid/traffic_ops_ort.rpm
 #traffic_monitor/traffic_monitor.rpm

@@ -215,7 +215,7 @@ jobs:
           CENTOS_VERSION: 8
         uses: actions/cache@v2
         with:
-          path: ${{ github.workspace }}/infrastructure/cdn-in-a-box/traffic_ops/local
+          path: ${{ github.workspace }}/mainline/deployments/cdn-in-a-box/traffic_ops/local
           key: ${{ runner.os }}-cpan-centos-${{ env.CENTOS_VERSION }}-${{ hashFiles('cache/**.tar.gz') }}-${{ hashFiles('**/perllocal.pod') }}
           restore-keys: |
             ${{ runner.os }}-cpan-centos-${{ env.CENTOS_VERSION }}-${{ hashFiles('cache/**.tar.gz') }}-${{ hashFiles('**/perllocal.pod') }}
@@ -225,6 +225,8 @@ jobs:
         env:
           CENTOS_VERSION: 8
         uses: ./.github/actions/build-ciab
+        with:
+          path: ${{ github.workspace }}
       - name: Start CDN-in-a-Box
         uses: ./.github/actions/run-ciab
       - name: Upload CDN-in-a-Box logs

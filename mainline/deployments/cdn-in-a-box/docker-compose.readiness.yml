@@ -35,8 +35,8 @@ version: '2.1'
 services:
   readiness:
     build:
-      context: ""
-      dockerfile: ../../build/package/cdn-in-a-box/readiness/Dockerfile
+      context: ../../
+      dockerfile: ./build/package/cdn-in-a-box/readiness/Dockerfile
     env_file:
       - variables.env
     hostname: readiness
