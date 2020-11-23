@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"testing"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
+
 )
 
 func TestTypes(t *testing.T) {

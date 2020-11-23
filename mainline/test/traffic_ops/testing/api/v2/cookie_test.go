@@ -21,7 +21,7 @@ import (
 	"net/http"
 	"testing"
 
-	toclient "github.com/apache/trafficcontrol/traffic_ops/v2-client"
+
 )
 
 func TestCookies(t *testing.T) {

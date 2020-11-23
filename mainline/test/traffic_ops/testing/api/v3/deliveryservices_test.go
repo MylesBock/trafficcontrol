@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	toclient "github.com/apache/trafficcontrol/traffic_ops/v3-client"
+
 )
 
 func TestDeliveryServices(t *testing.T) {

@@ -18,6 +18,7 @@ package v1
 import (
 	"errors"
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"testing"
 )
 

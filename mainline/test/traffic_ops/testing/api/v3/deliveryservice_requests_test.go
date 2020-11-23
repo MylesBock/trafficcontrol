@@ -16,13 +16,11 @@ package v3
 */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/rfc"
 	"net/http"
 	"strings"
 	"testing"
 	"time"
-
-	tc "github.com/apache/trafficcontrol/lib/tc"
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/utils"
 )
 
 const (

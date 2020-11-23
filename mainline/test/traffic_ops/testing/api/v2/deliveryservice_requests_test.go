@@ -18,9 +18,6 @@ package v2
 import (
 	"strings"
 	"testing"
-
-	tc "github.com/apache/trafficcontrol/lib/tc"
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/utils"
 )
 
 const (

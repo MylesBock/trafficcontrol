@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	toclient "github.com/apache/trafficcontrol/traffic_ops/client"
+
 )
 
 func TestReadOnlyCannotModify(t *testing.T) {

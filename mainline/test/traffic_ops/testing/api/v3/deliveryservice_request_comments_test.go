@@ -16,6 +16,7 @@ package v3
 */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/rfc"
 	"net/http"
 	"sort"
 	"testing"

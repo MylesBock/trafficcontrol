@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
+
 )
 
 func TestStaticDNSEntries(t *testing.T) {

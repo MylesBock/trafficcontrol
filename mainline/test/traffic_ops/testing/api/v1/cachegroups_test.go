@@ -17,6 +17,7 @@ package v1
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"reflect"
 	"testing"
 )

@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
+
 )
 
 func TestParameters(t *testing.T) {

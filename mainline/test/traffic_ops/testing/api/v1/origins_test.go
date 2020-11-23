@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	toclient "github.com/apache/trafficcontrol/traffic_ops/v1-client"
+
 )
 
 func TestOrigins(t *testing.T) {

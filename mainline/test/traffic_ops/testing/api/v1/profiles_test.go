@@ -16,10 +16,10 @@
 package v1
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"strings"
 	"testing"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
 )
 
 func TestProfiles(t *testing.T) {

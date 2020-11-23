@@ -17,6 +17,7 @@ package v1
 
 import (
 	"encoding/json"
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"strings"
 	"testing"
 )

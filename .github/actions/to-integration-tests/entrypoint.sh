@@ -59,7 +59,7 @@ start_traffic_vault() {
 		172.17.0.1    trafficvault.infra.ciab.test
 	/ETC/HOSTS
 
-	<<-'BASH_LINES' cat >infrastructure/cdn-in-a-box/traffic_vault/prestart.d/00-0-standalone-config.sh;
+	<<-'BASH_LINES' cat >mainline/build/package/cdn-in-a-box/traffic_vault/prestart.d/00-0-standalone-config.sh;
 		TV_FQDN="${TV_HOST}.${INFRA_SUBDOMAIN}.${TLD_DOMAIN}" # Also used in 02-add-search-schema.sh
 		certs_dir=/etc/ssl/certs;
 		X509_INFRA_CERT_FILE="${certs_dir}/trafficvault.crt";

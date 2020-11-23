@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 TC_DIR=$(\
-	 pwd | \
-	 xargs -n1 -I {} echo '"{}"' | \
-	 jq -r '. | split("/") |  to_entries | .[:(.[] | select(.value == "trafficcontrol").key + 1)] | [.[].value][-1] | join("/")' \
+ pwd | \
+ xargs -n1 -I {} echo '"{}"' | \
+ jq -r '. | split("/") |  to_entries | .[:(.[] | ([select(.value == "trafficcontrol")][-1].key) + 1)] | [.[].value] | join("/")' \
 )
+
 DIST_DIR=$(find ${TC_DIR} -wholename "*trafficcontrol/dist" -type d)
 
 if [  -z "$DIST_DIR" ]; then

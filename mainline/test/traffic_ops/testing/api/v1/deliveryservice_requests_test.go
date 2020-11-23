@@ -16,11 +16,12 @@ package v1
 */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/test/traffic_ops/testing/api/utils"
 	"strings"
 	"testing"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
-	"github.com/apache/trafficcontrol/traffic_ops/testing/api/utils"
+
 )
 
 const (

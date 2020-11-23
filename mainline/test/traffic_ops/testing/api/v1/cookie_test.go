@@ -17,11 +17,12 @@ package v1
 
 import (
 	"encoding/json"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	toclient "github.com/apache/trafficcontrol/pkg/v1-client"
 	"io/ioutil"
 	"net/http"
 	"testing"
 
-	toclient "github.com/apache/trafficcontrol/traffic_ops/v1-client"
 )
 
 func TestCookies(t *testing.T) {

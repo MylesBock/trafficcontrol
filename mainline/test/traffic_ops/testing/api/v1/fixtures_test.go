@@ -21,6 +21,7 @@ package v1
 
 import (
 	"encoding/json"
+	"github.com/apache/trafficcontrol/pkg/log"
 	"io/ioutil"
 	"os"
 )

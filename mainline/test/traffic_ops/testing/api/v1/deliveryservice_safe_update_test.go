@@ -13,6 +13,8 @@ package v1
 */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"testing"
 )
 

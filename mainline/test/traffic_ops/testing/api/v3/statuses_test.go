@@ -16,12 +16,12 @@ package v3
 */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/rfc"
 	"net/http"
 	"sort"
 	"testing"
 	"time"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
 )
 
 func TestStatuses(t *testing.T) {

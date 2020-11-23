@@ -16,11 +16,11 @@ package v3
 */
 
 import (
+	client "github.com/apache/trafficcontrol/pkg/v3-client"
 	"net/http"
 	"testing"
 	"time"
 
-	"github.com/apache/trafficcontrol/traffic_ops/client"
 )
 
 var SteeringUserSession *client.Session

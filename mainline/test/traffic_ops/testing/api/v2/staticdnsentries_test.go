@@ -18,7 +18,7 @@ package v2
 import (
 	"testing"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
+
 	"reflect"
 )
 

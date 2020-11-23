@@ -19,7 +19,10 @@ package v1
  * under the License.
  */
 
-import "testing"
+import (
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"testing"
+)
 
 // These capabilities are defined during the setup process in todb.go.
 // ANY TIME THOSE ARE CHANGED THIS MUST BE UPDATED.

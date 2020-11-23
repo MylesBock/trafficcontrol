@@ -15,6 +15,8 @@
 
 package v1
 
+import "github.com/apache/trafficcontrol/pkg/tc"
+
 // TrafficControl - maps to the tc-fixtures.json file
 type TrafficControl struct {
 	ASNs                                 []tc.ASN                           `json:"asns"`

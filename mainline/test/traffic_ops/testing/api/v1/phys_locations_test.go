@@ -19,7 +19,7 @@ import (
 	"sort"
 	"testing"
 
-	tc "github.com/apache/trafficcontrol/lib/tc"
+
 )
 
 func TestPhysLocations(t *testing.T) {

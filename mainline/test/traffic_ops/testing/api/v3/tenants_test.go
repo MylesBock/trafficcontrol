@@ -22,8 +22,6 @@ import (
 	"strings"
 	"testing"
 	"time"
-
-	"github.com/apache/trafficcontrol/traffic_ops/client"
 )
 
 func TestTenants(t *testing.T) {

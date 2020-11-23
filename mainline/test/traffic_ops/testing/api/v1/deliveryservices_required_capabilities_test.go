@@ -17,6 +17,8 @@ package v1
 
 import (
 	"fmt"
+	"github.com/apache/trafficcontrol/pkg/tc"
+	"github.com/apache/trafficcontrol/pkg/util"
 	"strings"
 	"testing"
 )

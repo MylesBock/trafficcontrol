@@ -20,6 +20,7 @@ package v1
  */
 
 import (
+	"github.com/apache/trafficcontrol/pkg/tc"
 	"testing"
 )
 
