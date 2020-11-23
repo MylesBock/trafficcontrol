@@ -140,5 +140,6 @@ RUN cp build/package/cdn-in-a-box/dns/set-dns.sh /usr/local/sbin && \
     cp build/package/cdn-in-a-box/dns/insert-self-into-dns.sh /usr/local/sbin && \
     cp build/package/cdn-in-a-box/traffic_ops/set-to-ips-from-dns.sh /usr/local/sbin/
 
-ADD build/package/cdn-in-a-box/traffic_ops_data /traffic_ops_data
+RUN cp -r build/package/cdn-in-a-box/traffic_ops_data/* /traffic_ops_data
+
 CMD /run.sh
