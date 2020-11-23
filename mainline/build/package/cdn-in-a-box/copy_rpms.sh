@@ -15,6 +15,7 @@ fi
 #traffic_monitor/traffic_monitor.rpm
 #traffic_ops/traffic_ops.rpm
 #traffic_portal/traffic_portal.rpm
+echo "$(pwd)"
 mkdir -p ${TC_DIR}/mainline/build/package/cdn-in-a-box/rpm
 NEEDED_RPMS=("traffic_ops_ort" "traffic_ops" "traffic_portal" "traffic_monitor" "tomcat" "traffic_router" "traffic_stats")
 for NEEDED_RPM in ${NEEDED_RPMS[@]}
