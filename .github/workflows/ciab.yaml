@@ -225,8 +225,6 @@ jobs:
         env:
           CENTOS_VERSION: 8
         uses: ./.github/actions/build-ciab
-        with:
-          path: ${{ github.workspace }}
       - name: Start CDN-in-a-Box
         uses: ./.github/actions/run-ciab
       - name: Upload CDN-in-a-Box logs

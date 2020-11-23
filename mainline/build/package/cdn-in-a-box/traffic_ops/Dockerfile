@@ -95,7 +95,7 @@ RUN if [[ "${CENTOS_VERSION%%.*}" -ge 8 ]]; then \
     dnf -y clean all && \
     mkdir -p /opt/traffic_ops/app/public && \
     cpanm Carton
-
+RUN pwd
 ADD cmd/traffic_router/core/src/test/resources/geo/GeoLite2-City.mmdb.gz /opt/traffic_ops/app/public/
 
 WORKDIR /opt/traffic_ops/app
