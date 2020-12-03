@@ -796,6 +796,11 @@ func updateV30(w http.ResponseWriter, r *http.Request, inf *api.APIInfo, ds *tc.
 				return nil, status, userErr, sysErr
 			}
 		}
+
+		userErr, sysErr, status := dbhelpers.CheckOriginServerInCacheGroupTopology(tx, *ds.ID, *ds.Topology)
+		if userErr != nil || sysErr != nil {
+			return nil, status, userErr, sysErr
+		}
 	}
 
 	resultRows, err := tx.Query(updateDSQuery(),
@@ -1029,6 +1034,7 @@ func readGetDeliveryServices(h http.Header, params map[string]string, tx *sqlx.T
 		"signingAlgorithm": {"ds.signing_algorithm", nil},
 		"topology":         {"ds.topology", nil},
 		"serviceCategory":  {"ds.service_category", nil},
+		"active":           {"ds.active", api.IsBool},
 	}
 
 	where, orderBy, pagination, queryValues, errs := dbhelpers.BuildWhereAndOrderByAndPagination(params, queryParamsToSQLCols)
