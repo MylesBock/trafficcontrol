@@ -1295,7 +1295,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		}
 		cacheGroupIds := []int{*origServer.CachegroupID}
 		serverIds := []int{*origServer.ID}
-		if err = topology.CheckForEmptyCacheGroups(inf.Tx, cacheGroupIds, CDNIDs, true, serverIds); err != nil {
+		if err = topology_validation.CheckForEmptyCacheGroups(inf.Tx, cacheGroupIds, CDNIDs, true, serverIds); err != nil {
 			api.HandleErr(w, r, tx, http.StatusBadRequest, errors.New("server is the last one in its cachegroup, which is used by a topology, so it cannot be moved to another cachegroup: "+err.Error()), nil)
 			return
 		}
@@ -1646,7 +1646,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	if hasDSOnCDN {
 		CDNIDs = append(CDNIDs, *server.CDNID)
 	}
-	if err := topology.CheckForEmptyCacheGroups(inf.Tx, cacheGroupIds, CDNIDs, true, serverIds); err != nil {
+	if err := topology_validation.CheckForEmptyCacheGroups(inf.Tx, cacheGroupIds, CDNIDs, true, serverIds); err != nil {
 		api.HandleErr(w, r, tx, http.StatusBadRequest, errors.New("server is the last one in its cachegroup, which is used by a topology: "+err.Error()), nil)
 		return
 	}

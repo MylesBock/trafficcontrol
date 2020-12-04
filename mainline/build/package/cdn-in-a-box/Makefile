@@ -29,18 +29,22 @@ ifneq ($(PWD),$(makefile_dir))
 $(error This makefile MUST be run from within its directory)
 endif
 
+ifeq ($(RHEL_VERSION),)
+	export RHEL_VERSION := 8
+else
+	RHEL_VERSION := $(shell echo $(RHEL_VERSION) | cut -f1 -d.)
+endif
+
 PKG_COMMAND := ../../pkg
-PKG_FLAGS := -v
+PKG_FLAGS := -v -$(RHEL_VERSION)
 BUILD_SUFFIX := _build
 BUILD_NUMBER := $(shell git rev-list HEAD 2>/dev/null | wc -l | tr -d '[[:space:]]').$(shell git rev-parse --short=8 HEAD)
 TC_VERSION := $(shell cat $(find ../../../.. -wholename "trafficcontrol/VERSION"))
 TOMCAT_VERSION := $(shell grep '^\s*TOMCAT_VERSION=' $(find ../.. -wholename "*/traffic_router/build/build_rpm.sh")  | cut -d= -f2)
 TOMCAT_RELEASE := $(shell grep '^\s*TOMCAT_RELEASE=' $(find ../.. -wholename "*/traffic_router/build/build_rpm.sh")   | cut -d= -f2)
 
-RHEL_VERSION := el7
-
-SPECIAL_SAUCE := $(TC_VERSION)-$(BUILD_NUMBER).$(RHEL_VERSION).x86_64.rpm
-SPECIAL_SEASONING := $(TOMCAT_VERSION).$(TOMCAT_RELEASE)-$(BUILD_NUMBER).$(RHEL_VERSION).x86_64.rpm
+SPECIAL_SAUCE := $(TC_VERSION)-$(BUILD_NUMBER).el$(RHEL_VERSION).x86_64.rpm
+SPECIAL_SEASONING := $(TOMCAT_VERSION).$(TOMCAT_RELEASE)-$(BUILD_NUMBER).el$(RHEL_VERSION).x86_64.rpm
 
 # todo (restructure) update these to reflect new structure
 TO_SOURCE := $(wildcard ../../../cmd/traffic_ops/**/*)
@@ -52,10 +56,20 @@ TP_SOURCE := $(wildcard ../../../cmd/traffic_portal/**/*)
 TR_SOURCE := $(wildcard ../../../cmd/traffic_router/**/*)
 TS_SOURCE := $(wildcard ../../../cmd/traffic_stats/**/*)
 
-.PHONY: clean very-clean all nearly-all debug native quick-start
+.PHONY: all build-builders clean debug native nearly-all pull-builders very-clean quick-start
 
 # Default target; builds all pre-requisite rpms from source trees
 all: cache traffic_monitor traffic_portal traffic_ops traffic_router traffic_router traffic_stats
+
+ifneq ($(filter build-builders,$(MAKECMDGOALS)),)
+PKG_FLAGS += -b
+ifneq ($(MAKECMDGOALS),build-builders)
+MAKECMDGOALS := $(filter-out build-builders,$(MAKECMDGOALS))
+build-builders: $(MAKECMDGOALS)
+else
+build-builders: all
+endif
+endif
 
 ifneq ($(filter debug,$(MAKECMDGOALS)),)
 PKG_FLAGS += -d
@@ -80,7 +94,15 @@ native: all
 endif
 endif
 
-#.PHONY: native
+ifneq ($(filter pull-builders,$(MAKECMDGOALS)),)
+PKG_FLAGS += -p
+ifneq ($(MAKECMDGOALS),pull-builders)
+MAKECMDGOALS := $(filter-out pull-builders,$(MAKECMDGOALS))
+pull-builders: $(MAKECMDGOALS)
+else
+pull-builders: all
+endif
+endif
 
 # Actual output rpm recipies
 traffic_monitor/traffic_monitor.rpm: ../../../../dist/traffic_monitor-$(SPECIAL_SAUCE)

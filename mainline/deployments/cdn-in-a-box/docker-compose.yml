@@ -59,8 +59,8 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/traffic_ops/Dockerfile-go
       args:
-        CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        #TRAFFIC_OPS_RPM: traffic_ops/traffic_ops.rpm
+        RHEL_VERSION: ${RHEL_VERSION:-8}
+        TRAFFIC_OPS_RPM: traffic_ops/traffic_ops.rpm
     depends_on:
       - db
       - enroller
@@ -81,8 +81,8 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/traffic_ops/Dockerfile
       args:
-        CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        #TRAFFIC_OPS_RPM: infrastructure/cdn-in-a-box/traffic_ops/traffic_ops.rpm
+        RHEL_VERSION: ${RHEL_VERSION:-8}
+        TRAFFIC_OPS_RPM: infrastructure/cdn-in-a-box/traffic_ops/traffic_ops.rpm
     depends_on:
       - db
       - enroller
@@ -106,8 +106,8 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/traffic_portal/Dockerfile
       args:
-        CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        #TRAFFIC_PORTAL_RPM: traffic_portal/traffic_portal.rpm
+        RHEL_VERSION: ${RHEL_VERSION:-8}
+        TRAFFIC_PORTAL_RPM: traffic_portal/traffic_portal.rpm
     depends_on:
       - enroller
     domainname: infra.ciab.test
@@ -124,8 +124,8 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/traffic_monitor/Dockerfile
       args:
-        CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        #TRAFFIC_MONITOR_RPM: traffic_monitor/traffic_monitor.rpm
+        RHEL_VERSION: ${RHEL_VERSION:-8}
+        TRAFFIC_MONITOR_RPM: traffic_monitor/traffic_monitor.rpm
     depends_on:
       - enroller
     volumes:
@@ -142,9 +142,9 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/traffic_router/Dockerfile
       args:
-        CENTOS_VERSION: ${CENTOS_VERSION:-8}
-        TRAFFIC_ROUTER_RPM: ./build/package/cdn-in-a-box/rpm/traffic_router.rpm
-        #TOMCAT_RPM: traffic_router/tomcat.rpm
+        RHEL_VERSION: ${RHEL_VERSION:-8}
+        TRAFFIC_ROUTER_RPM: traffic_router/traffic_router.rpm
+        TOMCAT_RPM: traffic_router/tomcat.rpm
     depends_on:
       - enroller
     domainname: infra.ciab.test
@@ -160,7 +160,7 @@ services:
       context: ../../
       dockerfile: ./build/package/cdn-in-a-box/traffic_stats/Dockerfile
       args:
-        CENTOS_VERSION: ${CENTOS_VERSION:-8}
+        RHEL_VERSION: ${RHEL_VERSION:-8}
     image: trafficstats
     depends_on:
       - enroller
