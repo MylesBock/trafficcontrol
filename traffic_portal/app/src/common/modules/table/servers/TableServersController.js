@@ -25,7 +25,7 @@ var TableServersController = function(tableName, servers, filter, $scope, $state
 	SSHCellRenderer.prototype.init = function(params) {
 		this.eGui = document.createElement("div");
 		this.eGui.textContent = params.value;
-		this.data.cellHrefValue = "ssh://" + userModel.user.username + "@" + params.value;
+		this.eGui.cellHrefValue = "ssh://" + userModel.user.username + "@" + params.value;
 
 	};
 	SSHCellRenderer.prototype.getGui = function() {return this.eGui;};
@@ -34,7 +34,7 @@ var TableServersController = function(tableName, servers, filter, $scope, $state
 	ILOCellRenderer.prototype.init = function(params) {
 		this.eGui = document.createElement("div");
 		this.eGui.textContent =  params.value;
-		this.data.cellHrefValue = "https://" + params.value;
+		this.eGui.cellHrefValue = "https://" + params.value;
 	};
 	ILOCellRenderer.prototype.getGui = function() { return this.eGui;};
 
@@ -82,7 +82,7 @@ var TableServersController = function(tableName, servers, filter, $scope, $state
 	/**** Constants, scope data, etc. ****/
 
 	function openCellInNewWindow(event) {
-		window.open(event.cell.data.cellHrefValue, "_blank");
+		window.open(event.cellHrefValue, "_blank");
 	}
 
 	/** The columns of the ag-grid table */
@@ -127,7 +127,7 @@ var TableServersController = function(tableName, servers, filter, $scope, $state
 		{
 			headerName: "ILO IP Address",
 			field: "iloIpAddress",
-			hide: true,
+			hide: false,
 			cellRenderer: "iloCellRenderer",
 			onCellClicked: openCellInNewWindow
 		},
